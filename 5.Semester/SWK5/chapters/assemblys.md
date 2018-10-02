@@ -1,0 +1,76 @@
+# Assemblys
+
+Zusammenfassung von IL-Code, Metadaten und Resourcen in Assembly Datein (.dll). Resources können eingebettet oder referneziert werden. Code und Metadaten können auf mehrere Module verteilt werden. Enthält Manifest, das den Inhalt des Assemblys beschreibt.
+
+## Aufbau con Assemblys
+
+Besteht aus mehreren Modulen, damit selektiv benötigte Daten geladen werden können.
+
+## Aufbau von Module
+
+* **PE/COFF**: Standard Windows Object Format
+* **CLR-Header**: Versionsnummer, Entrypoint, Referenz auf Metadaten
+* **IL/Maschinencode**: Kann auch vorkompiliert sein
+* **Resourcen**
+* **Metadaten**: Enthaltenen und Referenzierte Typen
+
+### Metadaten
+
+Bestehen aus Definitionstabellen:
+
+* **TypeDef**: definierte Typen
+* **Field**: Typ unud Attribute (Zugriffsrechte,...) der Datenkomponenten.
+* **Method**: Signatur, Attribute, Parameter der Methode
+
+Und aus Referenzmodellen:
+
+* **AssemblyRef**: Verweis auf referenzierte Assamblies
+* **ModuleRef**
+* **TypeRef**
+
+## Arten von Assemblys
+
+### Private Assemblys
+
+Werden nur von der einen Anwendung verwendet und werden nicht über der Regitry anderen Anwendungen zur Verfügung gestellt. Werden durch kopieren installiert (.dll liegt im Verzeichnis der .exe). Kann in Unterverzeichnissen liegen oder deren Pfad durch eine .exe.config Datei festgelegt werden.
+
+### Shared Assemblys
+
+Werden anwendungsübergreifend verwendet. Es wird ein Strong Name zugewiesen, der auf die verwendete Version hinweist. (DLL Hell wird dadurch vermieden). String Name: Hauptversion.Nebenversion.BuildNr.LfdN.
+
+Diese Assemblys werden im Global Assembly Cache (GAC) gespeichert und verwaltet. Es können somit mehrer Versionen der gleichen Assembly gleichzeitig geladen und verwendet werden.
+**Jede Anwendung ist fest an bestimmte Assembly-Versionen gebunden.**
+
+### Digitales Signieren von Assemblys
+
+Zur feststellung von veränderten .dll Dateien. Ist seit .NET 4.0 standardmäßig deaktiviert.
+
+## Resourcen
+
+Um Resourcen plattformunabhängig verwendet zu können werden sie in Binätform gespeichert und in den Manifsten referenziert. Verwenden einer generischen .resource Endung. Für sprachdateien können pro Sprache eigene Resourcen Assemblys verwendet werden.
+
+## Das Assembly Manifest
+
+Enthält:
+
+* Referenzierte Assamblys
+* Public Key, Versionnummer
+* Liste der enthaltenen Module
+* Exportierte Typen
+* Assembly Art (Library oder .exe)
+
+## Global Assambly Cache (GAC)
+
+Zentraler Speicherort für Shared Assemblys. Enthält Komponenten in verschiedenn Versionen und Architekturausführungen (x64/x86, etc.).
+GAC_MSIL: Architekturunabhängiger Code.
+
+## .NET-Core: Framework-depenedent Deployment
+
+Verdung einer geteilten Installation von .NET. Vermeidung von Verdoppelung aber dafür können spezielle Anforderungen nicht umgesetzt werden, da man mit der installierten Variante auskommen muss.
+
+## .NET-Core: Self-contained Deployment
+
+Für jede Applikation eine .NET Version die nicht mit anderen geteilt wird. Mehrere Runtimes können nebeneinander existieren, Speicher wird dafür verdoppelt.
+
+TreeShaking: Nur die wirklich verwendeten Teile des Frameworks werden gepackt.
+

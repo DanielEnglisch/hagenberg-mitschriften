@@ -1,0 +1,95 @@
+# .NET Architektur
+
+## Komponenten des .NET Full-Frameworks
+
+* **Common Language Runtime**: Führt .NET Code aus (vgl. JVM)
+* **.NET Framework Class Library**
+  * Base Class Library
+  * ADO.NET: Database Zugriff
+  * ASP.NET: Für REST APis und Web
+  * WPF: Windows presentation framework
+  * WCF
+* **Common Type System**: Damit mehrere Sprachen auf das Framework zugreifen können.
+* C#, C++, VB.NET, F#,...
+
+## Weitere Varianten von .NET
+
+* .NET Core: Open Source Entwicklung von Microsoft
+  * CoreCLR als Laufzeitumgebung
+  * Unterstützt mehrere Plattformen
+  * CoreFX enthält Basisfunktionalität der Class Library
+* Mono
+  * Open Source
+  * Runtime mit .NET kompatibel
+  * Mehrere Plattformen
+* Xamarin
+  * basiert auf Mono
+  * Native entwicklung auf mobilen Plattformen
+  * Von Microsoft 2016 übernommen
+
+## .NET Core
+
+Um Komptiablität verschiedener Versionen zu standardisieren.  
+Verwendung des Packagemanagers *Nuget* um Komponenten nachzuladen.  
+Self-contained deployment: Applikation wird gemeinsam mit den benötigten Framework deployed.
+
+## Die .NET Plattform
+
+## .NET Framework und die UWP (Windows 10)
+
+Die Verwendung des Full Frames erleichtert die Entwicklung von grafischen Windows Desktop Anwendungen erheblich. Diese docken an der Win32 API an.
+
+## .NET Standard
+
+Da mehrere Varianten des .NET Frameworks und somit viele verschiedene Basisklassen exitsieren, ist das Portieren von Code sehr aufwändig. Es wurde der .NET Standard entwicklet, der vorgibt, welche Methoden in den APIs vorhanden sein müssen. Die Frameworks können diesen Standard in einer gewissen Version unterstützen. Es herrscht Binärkompatiblität für die verschiedenen Class Libraries.
+
+## Framework Compatibility Mode
+
+DLLs die unter einer beliebige Version und Variante des Frameworks entwickelt wurden können mit dem Kompatiblitätsmodus wegen der Binärkompatiblität wobmöglich bei API Gleichheit des .NET Standards verwendet werden.  
+
+## Common Language Runtime
+
+Aufgaben sind die Speicherverwenaltung, Sicherheitsüberprüfung und das Laden dynamischer Komponenten. Stellt Verbindung zum OS her und überprüft die Verfügbarkeit der benötigten Features. Versteht eine Zwischensprache.
+
+CLR ist eine virtualle Maschiene und kann auf andere Plattformen portiert werden. Dies ist kein Nachteil, denn es können Optimierungen in der Laufzeit durchgeführt werden. 
+
+### Unterschiede zur JVM
+
+* JVM interpretiert den Bytecode
+* Oft verwendete Code Bereiche werden nativ übersetzt
+* CLR Übersetzt Zwischencode immer -> JIT-Compiler
+* CLR unterstützt mehrere Sprachen/Paradigmen
+* CLR hat Selbstdefinierte Wertetypen
+* CLR unterstützt Call by reference
+* CLR verwendet Methodenzeiger
+
+### Common Type System (CTS)
+
+Legt fest wie Datentypen im Speicher dargestellt werden, somit können sie von verschiednenen Sprachen verwendet werden.
+
+Beispiel: Person Klasse wird in Visual Basic implementiert und zur .dll kompiliert. Die Studen Klasse wird in C# implementiert und leitet von Person ab. C# Kompiler findet Person.dll, wenn als Referenzparameter die Person.dll mitgegeben wird.
+
+### Common Language Specification (CLS)
+
+Bei manchen Sprachen wird die Groß/Kleinschreibung anders behandelt. Die Specification gibt an ab wann eine Komponente Sprachübergreifend verwendbar ist. Weitere Beispiele: Verschiedene Namen von Feldern und Methoden, ..
+
+### Intermediate Language (IL)
+
+Es wird in eine Zwischensprache übersetzt die der JIT-Compiler versteht.
+
+### Virtual Execution System (VES)
+
+Just in Time: Nur wenn eine Methode aufgerufen wird.
+
+## Zusammenfassung
+Quelcode -> Compiler für .NET -> Code/Metadaten (IL)
+Ausführung mit VES : JIT-Compiler->Native Code
+
+## Just in Time Compiler
+Zwischenspreche wird immer kompiliert.
+Sobald eine Methode aufgerufen wird, wird diese falls noch nicht kompiliert nicht aufgerufen, sondern der Stub zum anstoßen des JIT-Compilers, der die gewünschte Methode übersetzt.
+
+## .NET Native (.NET Core)
+
+Es wird hierbei gleich nativer Code nach Optimierung erzeugt.
+Bessere Ausführungszeiten (Programmstart), Kleinerer Memoryfootprint, Kleinere Pakete. Wird bei UWP Apps verwendet.
