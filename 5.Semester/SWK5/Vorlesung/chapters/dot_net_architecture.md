@@ -9,12 +9,13 @@
   * ASP.NET: Für REST APis und Web
   * WPF: Windows presentation framework
   * WCF
-* **Common Type System**: Damit mehrere Sprachen auf das Framework zugreifen können.
+* **Common Type System**: Damit mehrere Sprachen auf das Framework zugreifen können. Bereitet Klassen für alle Sprachen auf
 * C#, C++, VB.NET, F#,...
 
 ## Weitere Varianten von .NET
-
+Da das FullFramework nicht alles abdecken kann, wurden verschiedene Varianten von .NET eingeführt.
 * .NET Core: Open Source Entwicklung von Microsoft
+  * hat sich in den letzten 2-3 Jahren etabliert
   * CoreCLR als Laufzeitumgebung
   * Unterstützt mehrere Plattformen
   * CoreFX enthält Basisfunktionalität der Class Library
