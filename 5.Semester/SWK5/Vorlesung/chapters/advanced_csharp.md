@@ -22,6 +22,7 @@ Neue Eigenschaften
 * Wertetypen (Eigene Structs)
 
 ## Neue Operatoren
+
 as: Casting  
 ?: Nullable  
 ...
@@ -91,6 +92,7 @@ Dient zur Ressourcenfreigabe (Schließen von Files)
 Zeigt an, dass diese Klasse Resourcen verwaltet, die freigegeben werden müssen. Wenn die Klasse nicht mehr benötigt werden muss explizit die Dispose Methode aufgerufen werden. Der Finalizer ruft vor beseitigung die Dispose Methode auf. Wenn die Dispose Methode explizit aufgreufen wurde, wird ein Flag gesetzt, der verhindert, dass das Objekt nicht zweimal durch den Finalizer Disposed wird.
 
 Kurzschreibweise:
+
 ```csharp
 using(A a = new A()){
     // Verwenden von a

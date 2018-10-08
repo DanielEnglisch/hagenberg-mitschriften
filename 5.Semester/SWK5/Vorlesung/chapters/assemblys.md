@@ -73,4 +73,3 @@ Verdung einer geteilten Installation von .NET. Vermeidung von Verdoppelung aber 
 Für jede Applikation eine .NET Version die nicht mit anderen geteilt wird. Mehrere Runtimes können nebeneinander existieren, Speicher wird dafür verdoppelt.
 
 TreeShaking: Nur die wirklich verwendeten Teile des Frameworks werden gepackt.
-

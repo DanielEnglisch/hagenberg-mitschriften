@@ -13,7 +13,9 @@
 * C#, C++, VB.NET, F#,...
 
 ## Weitere Varianten von .NET
-Da das FullFramework nicht alles abdecken kann, wurden verschiedene Varianten von .NET eingeführt.
+
+Da das FullFramework nicht alles abdecken kann oder nicht immer notwendig ist, wurden verschiedene Varianten von .NET eingeführt.
+
 * .NET Core: Open Source Entwicklung von Microsoft
   * hat sich in den letzten 2-3 Jahren etabliert
   * CoreCLR als Laufzeitumgebung
@@ -83,10 +85,12 @@ Es wird in eine Zwischensprache übersetzt die der JIT-Compiler versteht.
 Just in Time: Nur wenn eine Methode aufgerufen wird.
 
 ## Zusammenfassung
+
 Quelcode -> Compiler für .NET -> Code/Metadaten (IL)
 Ausführung mit VES : JIT-Compiler->Native Code
 
 ## Just in Time Compiler
+
 Zwischenspreche wird immer kompiliert.
 Sobald eine Methode aufgerufen wird, wird diese falls noch nicht kompiliert nicht aufgerufen, sondern der Stub zum anstoßen des JIT-Compilers, der die gewünschte Methode übersetzt.
 
