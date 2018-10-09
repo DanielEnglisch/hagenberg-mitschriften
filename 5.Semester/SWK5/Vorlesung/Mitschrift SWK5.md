@@ -15,4 +15,6 @@ Vorlesungsklausur ohne Unterlagen
 
 [Architektur](chapters/dot_net_architecture.md)  
 [Assemblys](chapters/assemblys.md)  
-[Advanced C#](chapters/advanced_csharp.md)
+[Advanced C#](chapters/advanced_csharp.md)  
+[Enticklung von C\#]()  
+[Generics](chapters/generics.md)

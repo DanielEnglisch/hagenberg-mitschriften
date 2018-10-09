@@ -137,4 +137,12 @@ Mit new deklerierte Methoden muss der statische Typ (Links) derselbe sein, in de
 
 **Anwendung**: Austausch von Basisklassen soll sich nicht auf Funktionalität von abgeleiteten Klassen auswirken. (Fragile Base Class Problem: Es wird unbeabsichtigt eine Methode überschrieben).
 
+## TODO: ADD REST
+
 ## Abstrakte Klassen und Interfaces
+
+### Explizite Implementierung von Interfaces
+
+## Exceptions
+
+## Arrays
