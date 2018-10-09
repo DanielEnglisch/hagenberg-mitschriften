@@ -2,15 +2,26 @@
 
 ## Einstiegsfragen
 
-Warum kann in Java auf Template-Parameter der new-Operator nicht angewandt werden?
+- Warum kann in Java auf Template-Parameter der new-Operator nicht angewandt werden?
 
-Auswirkungen von ?
-```csharp=
-ArrayList<? extends Person> pList = new ArrayList<Student>();
-```
+- Was bedeutet:
+    ```csharp
+    Set<T>.addAll(Collection<? extends T> c) bzw. 
+    Set<T>.containsAll(Collection<?> c)?
+    ```
+
+- Auswirkungen von ?
+    ```csharp
+    ArrayList<? extends Person> pList = new ArrayList<Student>();
+    ```
+- Ist `ArrayList` dasselbe wie `ArrayList<Object>?`
+
+- Ist `ArrayList<Person>` eine Oberklasse von `ArrayList<Student>`, ist also `ArrayList<Person> pList = new ArrayList<Student>()` möglich? Wenn nein, warum nicht?
+- Was sind die Auswirkungen der Zuweisung `ArrayList<? extends Person> pList = new ArrayList<Student>()` ?
+
 Keine Möglichkeit Methoden aufzurufen, die einen Eingangeparameter haben.
 
-```csharp=
+```csharp
 ArrayList<Person> pList = new ArrayList<Student>();
 ```
 Hier können hingegen alle Personen Objekte eingefügt werden.
@@ -19,13 +30,13 @@ Hier können hingegen alle Personen Objekte eingefügt werden.
 
 Einsatz vom Datentyp `object` anstatt Generics erzeugt einen erheblichen Overhead beim Un/Boxing. Aufpassen auf statischer/dynamischer Typ zu Laufzeit. Wenn nur ein homogener Stack erzeugt werden will kann trotzdem zb. ein double oder string hineingeworfen werden.
 
-```csharp=
+```csharp
 // unboxing / boxing laufzeit verlust
 Stack s = new Stack(10); s.Push(1);
 int i = (int)s.Pop();
 ```
 
-```csharp=
+```csharp
 // typsicherheit zur Laufzeit nicht überprüfbar
 s.Push(3.14); 
 string str = (string)s.Pop();
@@ -33,13 +44,29 @@ string str = (string)s.Pop();
 
 ## Verwendung von Generics
 
+Beispiel für generischen Stack:
+```csharp
+class Stack<ElemType> { 
+    private readonly int size; 
+    private ElemType[] items;
+    public Stack(int size) {..} 
+    public void Push(ElemType item) {..} 
+    public ElemType Pop() {..}
+}
+```
+
 Anstatt der Verwendung von `object` wird mit den Diamantklammern `class Stack<ElementType>{...}` ein generischer Typ erzeugt. Kein Casten notwending, da der beinhaltete Typ des Behälters zur Kompilezeit festgelegt wird. Typsicherheit und bessere Performance sind deutliche Vorteile gegenüber der Verwendung von `object`.
 
-```csharp=
+Erzeugung konkreter Stack-Klassen:
+```csharp
 Stack<int> s1 = new Stack<int>(10);
 s1.Push(1);
 int i= s1.Pop();
 ```
+Vorteile:
+- keine Typkonversionen, 
+- kein Boxing/Unboxing bei Wertetypen,
+- gleiche Implementierung für verschiedene Elementtypen.
 
 Bei Java müssen Wrapperklassen verwendet werden (nur Referenzdatentypen/Objekttypen verwendbar).
 
@@ -47,7 +74,8 @@ Bei Java müssen Wrapperklassen verwendet werden (nur Referenzdatentypen/Objektt
 
 Beim Aufruf vom Methoden bei generischen Typen z.B `compareTo` wird in C++ vorausgesetzt, dass nur Typen verwendet werden, die diese Methoden unterstützen. Der C# Kompiler lässt dies nicht zu.
 
-```csharp=
+Für Parametertypen dürfen nur die Eigenschaften von Object angenommen werden:
+```csharp
 public class LinkedList<K,V> { 
     public V Find(K key) { 
         while (…) { 
@@ -57,7 +85,8 @@ public class LinkedList<K,V> {
 
 In C# kann man Contraints zum generischen Typ angeben, um weniger Probleme beim Instanziieren von diesem Datentyp zu bekommen (Aufruf von nicht implementierten Methoden).
 
-```csharp=
+where-Bedingung schreibt vor, dass Parametertyp bestimmte Interfaces implementiert oder von einer bestimmten Klasse abgeleitet sein muss.
+```csharp
 public class LinkedList<K,V> where K : IComparable<K> { 
     V Find(K key) { 
         while (…) { 
@@ -72,7 +101,7 @@ Unterschiede zu C++ und Java für die Klausur relevant auch einordnen können.
 
 Es kann ein Default Kontruktor von einem generischen Typ gefordert werden, falls das Anlegen einer Variable dieses Typs erforderlich ist. Auch andere Konstruktoren können gefordert werden. Man kann auch bestimmen, dass ein Wertetyp übergeben wird: where V: struct.
 
-```csharp=
+```csharp
 public class Node<K,V> where V : new() { 
     private K key; 
     private V value; 
@@ -82,6 +111,7 @@ public class Node<K,V> where V : new() {
     }
 }
 ```
+Die Verwendung von new für generische Typparameter ist in Java nicht möglich.
 
 ## Struct Constraint
 
@@ -91,7 +121,7 @@ Es kann auch von einem generischen Typ gefordert werden, dass er ein struct ist.
 
 Wie in Java können auch generische Methoden definiert werden, wobei auch wieder Contraints angegeben werden können.
 
-```csharp=
+```csharp
 public class Math { 
     public static T Min<T>(T a, T b) where T : IComparable<T> {
         if (a.CompareTo(b) < 0) 
@@ -103,12 +133,12 @@ public class Math {
 ```
 
 Methode kann mit beliebigem Typ instanziert werden.
-```csharp=
+```csharp
 string minStr = Math.Min<string>("abc", "efg");
 ```
 
 Parametertyp kann meistens vom Compiler ermittelt werden.
-```csharp=
+```csharp
 string minStr = Math.Min("abc", "efg");
 ```
 
@@ -120,55 +150,102 @@ Das Laufzeitsystem von C# kennt generische Typen, in Java kennt der Bytecode die
 
 Auf IL Ebene gibt es Generics. Erst zur Laufzeit folgt die Instanzierung. Erst dann wird für T ein Typ eingesetzt. Für alle refernztypen gemeinsam wird einmal instanziert. In Java hingegen schon beim Kompilieren.
 
-## Vorteile von Generics
-Kein Code-bloat ->
-    - Mehrfache Instanzierung von Templates für gleiche Elementtypen. 
-    - Längere Ladezeiten, erhöhter Speicherbedarf.
-
-Generics werden mit Assemblys ausgeliefert unf können wiederverwendet werden, somit wird CodeBloat verhindert.
-
-Keine Typenkonversion bei Referenztypen.
-
-Kein Un/Boxing bei Wertetypen. Beim Boxing wird WrapperObjekt erzeugt, mit geringen Nutzdatenanteil und großem Overhead.
-```csharp=
-List<int> list = new List<int>(); 
-list.add(100); 
-int item = list[0]; // hier kein unboxing
+C#
+```csharp
+class Stack<T> { 
+    private readonly int size; 
+    private T[ items;]
+    public Stack() { size = 10; items = new T[10]; }
+}
 ```
 
-Geringerer Speicherplatzbedarf bei Behältern mit Wertetypen.
+In IL Code
+```csharp
+.class Stack<T> { 
+    .field private initonly int32 size 
+    .field private !T[] items 
+    .method public … void .ctor() … … 
+        ldarg.0 
+        ldc.i4.s 10 
+        newarr !T 
+        stfld !0[] class Stack<!T>::items …
+}
+```
 
-Zugriff auf Typeparameter mit Reflection während der Laufzeit.
+- CLR und IL wurden für generische Typen erweitert. 
+- Generische Typen können in Sprache A implementiert und in Sprache B instanziert werden. 
+- Generische Typen werden zur Laufzeit (aber nur bei Bedarf) 
+    - für jeden Wertetyp und
+    - einmal für alle Referenztypen gemeinsam instanziert.
 
-```csharp=
+## Vorteile von Generics
+Gemeinsame Nutzung des Codes, Kein Code-bloat ->
+    - Mehrfache Instanzierung von Templates für gleiche Elementtypen. 
+    - Längere Ladezeiten, erhöhter Speicherbedarf.
+  
+Performance-Gewinn bei generischen Behälterklassen:
+- keine Typkonversionen bei Referenztypen:
+  ```csharp
+  List<string> list = new List<string>(); 
+  string item = list[0]; // keine Typkonversion notwendig.
+  ```
+- Kein Boxing/Unboxing bei Wertetypen. Beim Boxing wird WrapperObjekt erzeugt, mit geringen Nutzdatenanteil und großem Overhead.:
+  ```csharp
+  List<int> list = new List<int>(); 
+  list.add(100); int item = list[0];
+  ```
+
+Geringerer Speicherplatzbedarf bei Behältern mit Wertetypen.   
+Zugriff auf generische Typparameter zur Laufzeit:
+```csharp
 List<int> list = new List<int>(); 
 Type collType = list.GetType();
 Type[] paramType = collType.GetTypeParameters();
 ```
 Type ist das Gegenstück zu GetClass() in Java.
 
+Generics werden mit Assemblys ausgeliefert und können wiederverwendet werden, somit wird CodeBloat verhindert.
+Keine Typenkonversion bei Referenztypen.
+
+Geringerer Speicherplatzbedarf bei Behältern mit Wertetypen.  
+Zugriff auf Typeparameter mit Reflection während der Laufzeit.
+
 ## Unterschiede zu Generics in Java
 
-Primitive Datentypen können in Java nicht verwendet werden.
+Standarddatentypen können in Java nicht als Typparameter verwendet werden.
 Es können keine Contraints definiert werden.
+- Umwandlung in Referenztypen mithilfe von Wrapper-Klassen.
+
+In Java stehen für Typparameter keine Konstruktoren zur Verfügung (auch nicht der Standardkonstruktor).
+
+Metadaten zu Typparametern sind in Java nur eingeschränkt verfügbar.
+- z. B. für Objekte vom Typ ArrayList<String> geht die Information über den Elementtyp verloren (type erasure). Es wird nur `object` zurückgegeben. Dieses Phänomen gibt es NICHT in C#.
  
-Type erasure: In Java geht die Typeninformation von generischen Typen verloren, es wird nur `Object` zurückgegeben. Dieses Phänomen gibt es NICHT in C#.
-```csharp=
-ArrayList<Integer> list = ...
-list.add(1); // Type erasure 
-```
-Integer geht zur Laufzeit verloren, kann nicht überreflection gefundne werden. Statische Typen werden gehen nicht verloren.
+    ```csharp
+    ArrayList<Integer> list = ...
+    list.add(1); // Type erasure 
+    ```
+    Integer geht zur Laufzeit verloren, kann nicht überreflection gefunden werden. Statische Typen gehen nicht verloren.
 
-Statische Metadaten können schon herausgefunden werden.
-```cshart=
-class X implements List<String>{...}
-```
+- Statische Metadaten werden hingegen im Bytecode abgelegt: Für die Klasse class X implements List<String> { … } kann der Typparameter der generischen Basisklasse bestimmt werden.
 
-Man darf für T keine Konstruktoren voraussetzen. Kein T[] möglich eher Objekt[].
+- Statische Metadaten können schon herausgefunden werden.
+    ```csharp
+    class X implements List<String>{...}
+    ```
+
+ <img src="../pics/1.PNG" alt="Java|Bytecode" width="500"/>
+  
 
 Für Generics musste die JVM nicht erweitert werden, da diese sowieso zur Kompilzeit übersetzt werden und es werden keine Metadaten gespeichert.
 
 Zur Laufzeit müssen Typenkonversionen durchgeführt werden, was die Performance verschechtert.
+
+Erhöhter Speicherplatzbedarf bei Verwendung von Wrapper-Klassen.
+
+Man darf für T keine Konstruktoren voraussetzen. Kein T[] möglich eher Objekt[].
+
+<img src="../pics/2.PNG" alt="Ko-Kontravarianz" width="500"/>
 
 ## Unterschiede zu C++ Templates
 
