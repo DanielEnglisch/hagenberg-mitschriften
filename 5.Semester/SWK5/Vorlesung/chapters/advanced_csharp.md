@@ -1,3 +1,27 @@
+- [.NET Fortgeschrittene Konzepte von C\](#net-fortgeschrittene-konzepte-von-c)
+    - [Abgrenzung C# - Java/C++](#abgrenzung-c---javac)
+    - [Neue Operatoren](#neue-operatoren)
+    - [Typen](#typen)
+        - [Einfache Typen](#einfache-typen)
+        - [Strukturen](#strukturen)
+        - [Nullable Types](#nullable-types)
+    - [Klassen](#klassen)
+    - [Sichtbarkeit](#sichtbarkeit)
+    - [Destructor](#destructor)
+    - [Verwenden von IDisposable](#verwenden-von-idisposable)
+    - [Felder und Konstanten](#felder-und-konstanten)
+    - [Arten von Parametern](#arten-von-parametern)
+    - [Variable Anzahl von Parametern](#variable-anzahl-von-parametern)
+    - [Properties](#properties)
+    - [Vererbung](#vererbung)
+        - [Überschrieben von Methoden](#Überschrieben-von-methoden)
+            - [Überschrieben von Methoden mit new](#Überschrieben-von-methoden-mit-new)
+    - [TODO: ADD REST](#todo-add-rest)
+    - [Abstrakte Klassen und Interfaces](#abstrakte-klassen-und-interfaces)
+        - [Explizite Implementierung von Interfaces](#explizite-implementierung-von-interfaces)
+    - [Exceptions](#exceptions)
+    - [Arrays](#arrays)
+
 # .NET Fortgeschrittene Konzepte von C\#
 
 ## Abgrenzung C# - Java/C++

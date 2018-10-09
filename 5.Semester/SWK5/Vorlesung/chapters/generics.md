@@ -1,3 +1,16 @@
+- [Generics](#generics)
+    - [Einstiegsfragen](#einstiegsfragen)
+    - [Probleme bei Objekt-basierten Behältern](#probleme-bei-objekt-basierten-behältern)
+    - [Verwendung von Generics](#verwendung-von-generics)
+    - [Derivation Constraint](#derivation-constraint)
+    - [Constructor Constraint](#constructor-constraint)
+    - [Struct Constraint](#struct-constraint)
+    - [Generische Methoden](#generische-methoden)
+    - [Implementierung von Generics in .NET](#implementierung-von-generics-in-net)
+    - [Vorteile von Generics](#vorteile-von-generics)
+    - [Unterschiede zu Generics in Java](#unterschiede-zu-generics-in-java)
+    - [Unterschiede zu C++ Templates](#unterschiede-zu-c-templates)
+
 # Generics
 
 ## Einstiegsfragen

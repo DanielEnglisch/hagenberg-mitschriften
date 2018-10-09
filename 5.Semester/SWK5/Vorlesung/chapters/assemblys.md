@@ -1,3 +1,17 @@
+- [Assemblys](#assemblys)
+    - [Aufbau con Assemblys](#aufbau-con-assemblys)
+    - [Aufbau von Module](#aufbau-von-module)
+        - [Metadaten](#metadaten)
+    - [Arten von Assemblys](#arten-von-assemblys)
+        - [Private Assemblys](#private-assemblys)
+        - [Shared Assemblys](#shared-assemblys)
+        - [Digitales Signieren von Assemblys](#digitales-signieren-von-assemblys)
+    - [Resourcen](#resourcen)
+    - [Das Assembly Manifest](#das-assembly-manifest)
+    - [Global Assambly Cache (GAC)](#global-assambly-cache-gac)
+    - [.NET-Core: Framework-depenedent Deployment](#net-core-framework-depenedent-deployment)
+    - [.NET-Core: Self-contained Deployment](#net-core-self-contained-deployment)
+
 # Assemblys
 
 Zusammenfassung von IL-Code, Metadaten und Resourcen in Assembly Datein (.dll). Resources können eingebettet oder referneziert werden. Code und Metadaten können auf mehrere Module verteilt werden. Enthält Manifest, das den Inhalt des Assemblys beschreibt.
