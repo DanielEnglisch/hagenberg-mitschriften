@@ -308,7 +308,7 @@ int fact = mathScript.factorial(5);
 
 ### Kovarianz und Kontravarianz
 
-Offizielle Microsoft [Dokumentation](https://docs.microsoft.com/de-de/dotnet/csharp/programming-guide/concepts/covariance-contravariance/).
+Offizielle Microsoft [Dokumentation](https://docs.microsoft.com/de-de/dotnet/csharp/programming-guide/concepts/covariance-contravariance).
 
 - Gegeben seien zwei Typen U und Vmit einer Relation <, die eine Ordnung auf Typen definiert im Bezug auf den Wertebereich. 
     - Beispiel 1: $int < float < double$
@@ -357,7 +357,7 @@ Würde `Liste<string>` von `List<obj>` abgeleitet werden, wäre sie kovariant. A
 
 Dasselbe gilt ab C# 4.0 schon auf Interfaces, die speziel gekennzeichnet sind, z.B IEnumerable.
 
-Falls bei einem generischen Typ G<T> der Typparameter T bei sämtlichen Methoden ausschließlich bei Ausgangsparametern verwendet wird, geht die
+Falls bei einem generischen Typ `G<T>` der Typparameter T bei sämtlichen Methoden ausschließlich bei Ausgangsparametern verwendet wird, geht die
 Typsicherheit nicht verloren:
 
 ```csharp
@@ -379,6 +379,20 @@ public interface IEnumerable<out T> {
 
 ### Ko- und Kontravarianz bei Delegates
 
+- Die Abbildung T -> delegate T D() ist kovariant (T ist der Typ eines Ausgangsparameters).
+    ```csharp
+    delegate Person PersonFactoryHandler();
+    private static Student CreateStudent() { … }
+    PersonFactoryHandler pfHandler = CreateStudent;
+    Person p = pfHandler();
+    ```
+- Die Abbildung T -> delegate void D(T t) ist kontravariant (T ist der Typ eines Eingangsparameters).
+    ```csharp
+    delegate void StudentHandler(Student s);
+    private static void PrintPerson(Person p) { … }
+    StudentHandler sHandler = PrintPerson;
+    sHandler(new Student { … });
+    ```
 
 ## Neuerungen in C# 5.0
 
@@ -389,26 +403,26 @@ public interface IEnumerable<out T> {
     - Die Synchronisation mit Threads ist sehr aufwändig und fehleranfällig.
 - In C# 5.0 können Methoden `async` deklariert werden:
     - Methode kann die Kontrolle an den Rufer zurückgeben, bevor alle Anweisungen durchgeführt wurden.
-    - Rückgabewert der Methode muss void, `Task` oder `Task<T>` sein.
+    - Rückgabewert der Methode muss void, `Task` oder `Task<T>` sein. Tasks sind vergleichbar mit Promises, also Resultate die berechnet werden.
 - Eine asynchrone Methode kann dem Schlüsselwort await auf die Ergebnisse länger andauernder Berechnungen warten.
     - Methode, in der await verwendet wird, muss asynchron sein.
-    - await kann auf Methoden angewandt werden, die Task oder Task<T> zurückgeben.
+    - await kann auf Methoden angewandt werden, die `Task` oder `Task<T>` zurückgeben.
     - Ist die Ausführung der Methode, auf deren Ergebnis gewartet wurde abgeschlossen, wird die Ausführung in der rufenden Methode fortgesetzt.
+    - Await blockiert jedoch nicht, es wird nur in der Methode nicht fortgesetzt in der das await geschreben wurde.
 
 - Der Synchronistionskontext regelt, welcher Thread die Kontrolle erhält, wenn eine awaitOperation abgeschlossen wurde.
-- Der Synchronisationskontext von Windows-Forms-, WPF- und Windows-Store-Anwendungen sorgt dafür, dass die gesamte asynchrone Methode im UI-Thread durchgeführt wird -> keine Synchronisation notwendig. 
+- Der Synchronisationskontext von Windows-Forms-, WPF- und Windows-Store-Anwendungen sorgt dafür, dass die gesamte asynchrone Methode im UI-Thread durchgeführt wird -> keine Synchronisation notwendig.  
     <img src="../pics/3.PNG" alt="async" width="500"/>  
-- Ist kein Synchronisationskontext vorhanden, wird die Kontrolle an den TaskScheduler
-übergeben, der wiederum einen Thread aus seinem Thread-Pool mit der Abarbeitung der
-restlichen Methode betraut.  
-    <img src="../pics/4.PNG" alt="async" width="500"/>
+- Ist kein Synchronisationskontext vorhanden, wird die Kontrolle an den TaskScheduler übergeben, der wiederum einen Thread aus seinem Thread-Pool mit der Abarbeitung der restlichen Methode betraut.  
+    
+<img src="../pics/4.PNG" alt="async" width="500"/>
 
 
 ## Neuerungen in C# 6.0
 
 ### Null-Conditional Operator
-- expr.Property bzw. expr[index] -> NullReferenceException, falls expr == null.
-- expr?.Property bzw. expr?[index] -> null, falls expr == null.
+- `expr.Property` bzw. `expr[index]` -> NullReferenceException, falls `expr == null`.
+- `expr?.Property` bzw. `expr?[index]` -> null, falls `expr == null`.
 - Beispiel:
     ```csharp
     public class Person {
@@ -458,11 +472,11 @@ restlichen Methode betraut.
     public class Person {
         private string lastName;
         public string LastName{
-        get { return lastName; }
-        set {
-            name = value;
-            OnNotifyPropertyChanged(nameof(LastName));
-        }
+            get { return lastName; }
+            set {
+                name = value;
+                OnNotifyPropertyChanged(nameof(LastName));
+            }
         }
     }
     ```
@@ -478,12 +492,13 @@ restlichen Methode betraut.
     ```csharp
     logger.Log($"{a} + {b} = {a+b:F2}");
     ```
+`2:F2` bedeutet, dass Argument an Stelle 2 soll mit 2 Nachkommastallen formatiert werden.
 
 ## Neuerungen in C# 7.0
 
 ### Tupel
 - Werte enterschiedlichen Datentyps können zu Tupel zusammengefasst werden.
-    - Werte werden auf Wertetyp System.ValueTuple<T1, …, Tn> abgebildet.
+    - Werte werden auf Wertetyp `System.ValueTuple<T1, …, Tn>` abgebildet.
     - NuGet-Paket System.ValueTuple muss hinzugefügt werden.
 - Syntax:
     ```csharp
@@ -504,9 +519,9 @@ restlichen Methode betraut.
 
 ### Pattern-Matching
 - C# 7.0 definiert folgende Arten von Mustern (patterns):
-    - Konstante Muster: v is null
-    - Typ-Muster: v is DateTime
-    - Variablen-Muster: v is DateTime d
+    - Konstante Muster: `v is null`
+    - Typ-Muster: `v is DateTime`
+    - Variablen-Muster: `v is DateTime d`
 - Beispiele:
     ```csharp
     dynamic v = 42;
@@ -563,7 +578,8 @@ private static void TestReferences() {
     }
 
     static void Main(string[] args) {
-        var result = SomeAsyncFunc().GetAwaiter().GetResult();
+        var result = SomeAsyncFunc().GetAwaiter().GetResult(); 
+        // blockiert da main methode nicht async ist
         …
     }
     ```
