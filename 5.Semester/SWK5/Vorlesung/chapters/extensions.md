@@ -1,17 +1,17 @@
 - [Spracherweiterungen C#](#spracherweiterungen-c)
     - [Neuerungen C# 3.0](#neuerungen-c-30)
         - [Objektinitialisierer(Object initializer)](#objektinitialisiererobject-initializer)
-        - [Behälterinitialisierer(Collection Initializer)](#behälterinitialisierercollection-initializer)
+        - [Behälterinitialisierer(Collection Initializer)](#beh%C3%A4lterinitialisierercollection-initializer)
         - [Automatische Typableitung (Local Variable Type Inference)](#automatische-typableitung-local-variable-type-inference)
         - [Anonyme Typen](#anonyme-typen)
-        - [Lambda-Ausdrücke](#lambda-ausdrücke)
+        - [Lambda-Ausdrücke](#lambda-ausdr%C3%BCcke)
         - [Erweiterungsmethoden (Extension Methods)](#erweiterungsmethoden-extension-methods)
         - [Automatische Implementierung von Properties](#automatische-implementierung-von-properties)
         - [LINQ: Language Integrated Query](#linq-language-integrated-query)
     - [Neuerungen in C# 4.0](#neuerungen-in-c-40)
         - [Benannte Parameter](#benannte-parameter)
         - [Optionale Parameter](#optionale-parameter)
-        - [Dynamische Typprüfung](#dynamische-typprüfung)
+        - [Dynamische Typprüfung](#dynamische-typpr%C3%BCfung)
         - [Kovarianz und Kontravarianz](#kovarianz-und-kontravarianz)
         - [Kovarianz bei Feldern](#kovarianz-bei-feldern)
         - [Kovarianz bei Generics](#kovarianz-bei-generics)
@@ -21,8 +21,8 @@
         - [Vereinfachte asynchrone Programmierung](#vereinfachte-asynchrone-programmierung)
     - [Neuerungen in C# 6.0](#neuerungen-in-c-60)
         - [Null-Conditional Operator](#null-conditional-operator)
-        - [Initialisierer für Auto-Properties](#initialisierer-für-auto-properties)
-        - [Verkürzte Methodendefinition](#verkürzte-methodendefinition)
+        - [Initialisierer für Auto-Properties](#initialisierer-f%C3%BCr-auto-properties)
+        - [Verkürzte Methodendefinition](#verk%C3%BCrzte-methodendefinition)
         - [Operator nameof](#operator-nameof)
         - [String-Interpolation](#string-interpolation)
     - [Neuerungen in C# 7.0](#neuerungen-in-c-70)
@@ -307,6 +307,8 @@ int fact = mathScript.factorial(5);
 ```
 
 ### Kovarianz und Kontravarianz
+
+Offizielle Microsoft [Dokumentation](https://docs.microsoft.com/de-de/dotnet/csharp/programming-guide/concepts/covariance-contravariance/).
 
 - Gegeben seien zwei Typen U und Vmit einer Relation <, die eine Ordnung auf Typen definiert im Bezug auf den Wertebereich. 
     - Beispiel 1: $int < float < double$

@@ -17,4 +17,5 @@ Vorlesungsklausur ohne Unterlagen
 [Assemblys](chapters/assemblys.md)  
 [Advanced C#](chapters/advanced_csharp.md)  
 [Erweiterungen von C#](chapters/extensions.md)  
-[Generics](chapters/generics.md)
+[Generics](chapters/generics.md)  
+[Delegates und Events](chapters/delegates.md)
