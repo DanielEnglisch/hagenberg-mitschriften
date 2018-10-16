@@ -135,8 +135,7 @@ Sind oberflächlich genauso wie in Java. Anonyme Methoden mit delegates möglich
 Methoden mit Delegateparametern sind sehr flexibel einsetzbar.
 ```csharp
 public delegate bool Predicate<T>(T obj); 
-private static IEnumerable<T> FilterWhere(IEnumerable<T> numbers,
-                        Predicate<T> filter) {
+private static IEnumerable<T> FilterWhere(IEnumerable<T> numbers, Predicate<T> filter) {
     foreach (T n in numbers) 
         if (filter(n))
             yield return n;
@@ -165,7 +164,7 @@ static class Enumerator {
         int sum = 0; 
         foreach (int i in numbers) 
             sum += i; 
-            return sum;
+        return sum;
     }
 }
 ```
@@ -188,7 +187,7 @@ namespace EnumeratorExt {
             int sum = 0; 
             foreach (int i in numbers) 
                 sum += i; 
-                return sum;
+            return sum;
         }
     }
 }
@@ -383,29 +382,193 @@ public interface IEnumerable<out T> {
 
 ### Vereinfachte asynchrone Programmierung
 
+- Problem:
+    - Zur Erhaltung der Responsivität sollten länger andauernde blockierende Methodenaufrufe vermieden werden (Windows 8: >= 50ms)
+    - Die Synchronisation mit Threads ist sehr aufwändig und fehleranfällig.
+- In C# 5.0 können Methoden `async` deklariert werden:
+    - Methode kann die Kontrolle an den Rufer zurückgeben, bevor alle Anweisungen durchgeführt wurden.
+    - Rückgabewert der Methode muss void, `Task` oder `Task<T>` sein.
+- Eine asynchrone Methode kann dem Schlüsselwort await auf die Ergebnisse länger andauernder Berechnungen warten.
+    - Methode, in der await verwendet wird, muss asynchron sein.
+    - await kann auf Methoden angewandt werden, die Task oder Task<T> zurückgeben.
+    - Ist die Ausführung der Methode, auf deren Ergebnis gewartet wurde abgeschlossen, wird die Ausführung in der rufenden Methode fortgesetzt.
+
+- Der Synchronistionskontext regelt, welcher Thread die Kontrolle erhält, wenn eine awaitOperation abgeschlossen wurde.
+- Der Synchronisationskontext von Windows-Forms-, WPF- und Windows-Store-Anwendungen sorgt dafür, dass die gesamte asynchrone Methode im UI-Thread durchgeführt wird -> keine Synchronisation notwendig. 
+    <img src="../pics/3.PNG" alt="async" width="500"/>  
+- Ist kein Synchronisationskontext vorhanden, wird die Kontrolle an den TaskScheduler
+übergeben, der wiederum einen Thread aus seinem Thread-Pool mit der Abarbeitung der
+restlichen Methode betraut.  
+    <img src="../pics/4.PNG" alt="async" width="500"/>
 
 
 ## Neuerungen in C# 6.0
 
 ### Null-Conditional Operator
+- expr.Property bzw. expr[index] -> NullReferenceException, falls expr == null.
+- expr?.Property bzw. expr?[index] -> null, falls expr == null.
+- Beispiel:
+    ```csharp
+    public class Person {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public Person[] Children { get; set; }
+    }
+    ```  
+    ```csharp
+    Person person = new Person { … };
+    // Person person = null;
+    string name = person?.Name;
+    int? age = person?.Age;
+    string childName = person?.Children?[0]?.Name;
+    ```
 
 ### Initialisierer für Auto-Properties
+- Auto-Properties können wie Felder initialisiert werden.
+- Auch „read only“-Properties können auf diese Weise initialisiert werden.
+- Beispiel:
+    ```csharp
+    public class Person {
+        public string Name { get; set; } = "John";
+        public int Age { get; } = 20;
+    }
+    ```
 
 ### Verkürzte Methodendefinition
-
+- Für Methoden- und Property-Definitionen existiert eine verkürzte Schreibweise.
+- Ist nur dann möglich, wenn Methodendefinition aus einer einzigen Anweisung besteht.
+- Bei Methoden mit Rückgabeparameter, muss return weggelassen werden.
+- Beispiel:
+    ```csharp
+    public class Point {
+        private int x, y;
+        public Point(int x, int y) { … }
+        public Point Translate(int dx, int dy) => new Point(x+dx, y+dy);
+        public int X => x; // read-only properties
+        public int Y => y;
+    }
+    ```
 ### Operator nameof
+- Mit nameof können Programmkonstrukte wie Variablen, Klassen- und Methodennamen in eine Zeichenkette konvertiert werden.
+- Vorteil: Schreibfehler können verhindert werden
+- Beispiel:
+    ```csharp
+    public class Person {
+        private string lastName;
+        public string LastName{
+        get { return lastName; }
+        set {
+            name = value;
+            OnNotifyPropertyChanged(nameof(LastName));
+        }
+        }
+    }
+    ```
 
 ### String-Interpolation
-
+- Mit String-Interpolation können formatierte Zeichenketten einfacher erzeugt werden.
+- Vorteil: Durch den Wegfall von Platzhaltern ist die Zeichenketten-generierung weniger fehlerträchtig.
+- Mit Platzhaltern:
+    ```csharp
+    logger.Log(String.Format("{0} + {1} = {2:F2}", a, b, a+b));
+    ```
+- Mit String-Interpolation:
+    ```csharp
+    logger.Log($"{a} + {b} = {a+b:F2}");
+    ```
 
 ## Neuerungen in C# 7.0
 
 ### Tupel
+- Werte enterschiedlichen Datentyps können zu Tupel zusammengefasst werden.
+    - Werte werden auf Wertetyp System.ValueTuple<T1, …, Tn> abgebildet.
+    - NuGet-Paket System.ValueTuple muss hinzugefügt werden.
+- Syntax:
+    ```csharp
+    (int, string) addr1 = (4232, "Hagenberg");
+    Console.WriteLine($"{addr1.Item1} {addr1.Item2}");
+
+    (int zip, string city) addr2 = (4020, "Linz");
+    Console.WriteLine($"{addr2.zip} {addr2.city}");
+    ```
+    ```csharp
+    (int, string) CreateAddress() { return (1010, "Wien"); }
+
+    (int zip, string city) addr3 = CreateAddress();
+    var (zip1, city1) = CreateAddress();
+    (var zip2, var city2) = CreateAddress();
+    (var zip3, _) = CreateAddress();
+    ```
 
 ### Pattern-Matching
+- C# 7.0 definiert folgende Arten von Mustern (patterns):
+    - Konstante Muster: v is null
+    - Typ-Muster: v is DateTime
+    - Variablen-Muster: v is DateTime d
+- Beispiele:
+    ```csharp
+    dynamic v = 42;
+    if (v is int i)
+        Console.WriteLine($"v is an integer with value {i}");
+        switch (person) {
+            case Student s:
+                Console.WriteLine($"Student with matnr {s.MatNr}"); break;
+            case Person p when p.Age >= 18:
+                Console.WriteLine($"Adult person with name {p.Name}"); break;
+            case null:
+                Console.WriteLine("<null>"); break;
+        }
+    }
+    ```
 
 ### Referenzvariablen
 
+- C# unterstützte auch schon bisher Call-by-Reference.
+- C# 7.0 ermöglicht das Speichern von und das Retournieren von Referenzen in Funktionen.
+- Beispiel:
+```csharp
+private static void TestReferences() {
+    ref int FindRef(int index, int[] a) {
+    for (int i = 0; i < a.Length; i++)
+        if (a[i] == index)
+            return ref a[i];
+        throw new IndexOutOfRangeException();
+    }
+
+    int[] array = { 1, 2, 3 };
+    ref int r = ref FindRef(2, array);
+    r = 9; // array = { 1, 9, 3 }
+}
+```
 ### Verbesserungen bei Literalen
 
+- C# 7.0 unterstützt Binär-Literale:
+    ```csharp
+    var b = 0b1010;
+    ```
+- Mit dem Literaltrenner _ können Literale übersichtlich definiert werden:
+    ```csharp
+    var d = 1_000_000_000;
+    var x = 0xFA_F9;
+    var b = 0x1111_1010_1111_1001;
+    ```
+
 ### asyncMain
+- Problem:
+    ```csharp
+    static async Task SomeAsyncFunc() {
+        await Task.Delay(1000);
+    }
+
+    static void Main(string[] args) {
+        var result = SomeAsyncFunc().GetAwaiter().GetResult();
+        …
+    }
+    ```
+- Lösung:
+    ```csharp
+    static async Task Main(string[] args) {
+        var result = await SomeAsyncFunc();
+    }
+    ```
+- C# 7.x (x ≥ 1) muss in Projekteinstellungen von VS von explizit aktiviert werden
