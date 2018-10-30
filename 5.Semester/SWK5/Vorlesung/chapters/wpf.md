@@ -62,12 +62,12 @@ Win32 API hat sich bis heute im Kern nicht geändert, es wurde jedoch mehrere Ab
 
 ## Architektur
 
- <img src="../pics/wpf/net_architektur.png" alt=".NET Architektur" width="500"/>
+ <img src="../pics/7_wpf/net_architektur.png" alt=".NET Architektur" width="500"/>
 
 #### Kommentare
     * wir werden uns auf REST konzentrieren
 
- <img src="../pics/wpf/wpf_architektur.png" alt="WPF Architektur" width="500"/>
+ <img src="../pics/7_wpf/wpf_architektur.png" alt="WPF Architektur" width="500"/>
  
 #### Kommentare
     * 2 Kategorien von Komponenten: 
@@ -122,14 +122,14 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
 
 ## Trennung von Layout und Code
 
-<img src="../pics/wpf/layout_code.png" alt="Layout|Code" width="500"/>
+<img src="../pics/7_wpf/layout_code.png" alt="Layout|Code" width="500"/>
 
 #### Komentare
     * wie immer: sehr, sehr wertvoll, dass man die Arbeit aufteilen kann
     
 ## Das Übersetzungsmodell
 
-<img src="../pics/wpf/uebersetzungsmodell.png" alt="Übersetzungsmodell" width="500"/>
+<img src="../pics/7_wpf/uebersetzungsmodell.png" alt="Übersetzungsmodell" width="500"/>
 
 #### Kommentare
     * es kommt eine dll oder exe heraus, in welcher alles drinnen steht
@@ -155,7 +155,7 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
 
 ### Abbildung XAML -> .NET Konstrukte
 
-<img src="../pics/wpf/abbildung_xaml.png" alt="Abbildung XAML" width="500"/>
+<img src="../pics/7_wpf/abbildung_xaml.png" alt="Abbildung XAML" width="500"/>
 
 #### Kommentar
     * xaml element == c# objekt
@@ -187,9 +187,9 @@ btn.Content = image;
     * komplexe Propertys müssen als ein Property-Element dargestellt werden
 
 ### Kindelemente
-<img src="../pics/wpf/kindelemente.png" alt="" width="500"/>
+<img src="../pics/7_wpf/kindelemente.png" alt="" width="500"/>
 ### Kindelemente - Content Properties
-<img src="../pics/wpf/kindelemente_2.png" alt="" width="500"/>
+<img src="../pics/7_wpf/kindelemente_2.png" alt="" width="500"/>
 
 #### Kommentare
     * gibt Steuerelemente, die haben Properties 
@@ -254,7 +254,7 @@ public MyMarkupExtension: MarkupExtension {
 * Mit XAML können Objekte beliebiger .NET-Klassen erzeugt werden.
 * Die Initialisierung erfolgt über Attribute (-> Properties) bzw. Typkonverter.
 
-<img src="../pics/wpf/einbindung_net_wpf.png" alt="" width="500"/>
+<img src="../pics/7_wpf/einbindung_net_wpf.png" alt="" width="500"/>
 
 
 #### Kommentar
@@ -285,6 +285,11 @@ public class HelloWindow: Window {
 }
 ```
 
+#### Kommentare
+    * im Main - Hauptereignisschleife - muss in einem single thread liegen ->[STAThread]
+    * RoutedEventHandler - kann Buttoneven z.B. auch im Fenster in welchem er enthalten ist handlen
+    * Applikationsobjekt (Singleton)
+
 ### Klassen Application und Window
 
 ### Hellow World mit der WPF
@@ -296,11 +301,11 @@ public class HelloWindow: Window {
 
 ### Basisklassen der WPF
 
-<img src="../pics/wpf/basisklassen.png" alt="basisklassen" width="500"/>
+<img src="../pics/7_wpf/basisklassen.png" alt="basisklassen" width="500"/>
 
 ### DispatcherObject
 
-<img src="../pics/wpf/dispatcherObject.png" alt="dispatcherObject" width="500"/>
+<img src="../pics/7_wpf/dispatcherObject.png" alt="dispatcherObject" width="500"/>
 
 
 ### await/async und die WPF
@@ -318,34 +323,36 @@ public class HelloWindow: Window {
 
 ### Visual (und Visual 3D)
 
-<img src="../pics/wpf/visual.png" alt="visual" width="500"/>
+<img src="../pics/7_wpf/visual.png" alt="visual" width="500"/>
 
 ### Andere Basisklassen der WPF
 
 ### Die wichtigsten Steuerelemente
 
-<img src="../pics/wpf/Steuerelemente.png" alt="steuerelemente" width="500"/>
+<img src="../pics/7_wpf/Steuerelemente.png" alt="steuerelemente" width="500"/>
 
 ### ContentControl
 
 - Steuerelemente dieser Gruppe können ein beliebiges Kindelement enthalten (nicht nur eine Zeichenkette).
 - Beispiele:
 
-    <img src="../pics/wpf/ContentControll.png" alt="ContentControll" width="500"/>
+    <img src="../pics/7_wpf/ContentControll.png" alt="ContentControll" width="500"/>
 
 ### Header ContentControl
 
 - Steuerelement besitzt neben dem Kindelement eine Überschrift.
 - Beispiele:
 
-    <img src="../pics/wpf/HeaderContentControll.png" alt="HeaderContentControll" width="500"/>
+    <img src="../pics/7_wpf/HeaderContentControll.png" alt="HeaderContentControll" width="500"/>
 
 ### Steuerelemente zur Darstellung und Bearbeitung von Text
 - TextBlock: Darstellung von Text in verschiedenen Fonts und mit
 diversen Hervorhebungsarten.
 
-<img src="../pics/wpf/text.png" alt="text" width="500"/>
+<img src="../pics/7_wpf/text.png" alt="text" width="500"/>
 
 ### Steuerelemente mit mehreren Kindelementen (ItemsControl)
 
-<img src="../pics/wpf/Steuerelemente_2.png" alt="steuerelemente_2" width="500"/>
+<img src="../pics/7_wpf/Steuerelemente_2.png" alt="steuerelemente_2" width="500"/>
+
+### Liste
