@@ -29,8 +29,8 @@ high-performance back end such as J2EE
     - A component model that enables third-party developers to supply additional components
 
 - Demo: Login with welcome.jsp  
-    <img src="..pics/JavaServerFaces/loginwithwelcome.png" alt="loginwithwelcome" width="450"/>  
-    <img src="..pics/JavaServerFaces/loginwithwelcome2.png" alt="loginwithwelcome2" width="450"/>
+    <img src="../pics/JavaServerFaces/loginwithwelcome.png" alt="loginwithwelcome" width="450"/>  
+    <img src="../pics/JavaServerFaces/loginwithwelcome2.png" alt="loginwithwelcome2" width="450"/>
 
 - Index.jsp
     ```html
@@ -121,7 +121,7 @@ high-performance back end such as J2EE
     </faces-config>
     ```
 - Web.xml  
-    <img src="..pics/JavaServerFaces/webxml.png" alt="webxml" width="450"/>
+    <img src="../pics/JavaServerFaces/webxml.png" alt="webxml" width="450"/>
 
 - The main components of JavaServer Faces technology are
 as follows:
@@ -140,7 +140,7 @@ as follows:
     - An application configuration resource file for configuring application resources
 
 ## Life Cycle  
-<img src="..pics/JavaServerFaces/life-cycle.png" alt="life-cycle" width="450"/>  
+<img src="../pics/JavaServerFaces/life-cycle.png" alt="life-cycle" width="450"/>  
 
 - A faces request occurs
     - when a JSF form is submitted
@@ -152,7 +152,7 @@ as follows:
         - Component tree will be put into the FacesContext
 
 - Component tree  
-    <img src="..pics/JavaServerFaces/componenttree.png" alt="componenttree" width="450"/>  
+    <img src="../pics/JavaServerFaces/componenttree.png" alt="componenttree" width="450"/>  
     - Apply Request Values
         - Copies request parameters into component submitted values
         - Values are transformed from the presentation-view to the model-view
@@ -174,7 +174,7 @@ as follows:
     - Render Response
         - Before rendering the response, the state of View is stored in the cache by calling the method UIViewRoot.saveState() method.
     - Generate presentation (view) with the defined encoding  
-  <img src="..pics/JavaServerFaces/life-cycle2.png" alt="life-cycle2.png" width="450"/>  
+  <img src="../pics/JavaServerFaces/life-cycle2.png" alt="life-cycle2.png" width="450"/>  
 
 ## Managed Beans
 - Acording to the JavaBeans specification, a JavaBean is „a
@@ -280,7 +280,7 @@ builder tool"
         </navigation-rule>
         ```
     - This may lead to a transition diagram like  
-        <img src="..pics/JavaServerFaces/navigationdiagramm.png" alt="navigationdiagramm" width="450"/>  
+        <img src="../pics/JavaServerFaces/navigationdiagramm.png" alt="navigationdiagramm" width="450"/>  
 
 - Wildcards can be used in the from-view-id tag, to apply a rule to a set of pages
     ```xml
@@ -383,8 +383,8 @@ builder tool"
     UIComponent component = event.getComponent().findComponent("name")
     ```
 - Some Examples  
-  <img src="..pics/JavaServerFaces/jsftags.png" alt="jsftags" width="450"/>    
-  - SelectManyCheckbox <img src="..pics/JavaServerFaces/selectcheckbox.png" alt="selectcheckbox" width="300"/>  
+  <img src="../pics/JavaServerFaces/jsftags.png" alt="jsftags" width="450"/>    
+  - SelectManyCheckbox <img src="../pics/JavaServerFaces/selectcheckbox.png" alt="selectcheckbox" width="300"/>  
     ```html
     <h:selectManyCheckbox value="#{form.colors}">
         <f:selectItem itemValue="Red"/>
