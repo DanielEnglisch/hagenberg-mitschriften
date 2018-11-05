@@ -1,6 +1,7 @@
 # JavaServer Faces
 
 ## Overview
+
 - Introduction
 - Life Cycle
 - Managed Beans
@@ -12,6 +13,7 @@
 - JavaServer Faces 2.x
 
 ## Introduction
+
 - Popular techniques for developing web applications
     - „Rapid development" style, using a visual development
 environment such as Microsoft ASP.NET
@@ -24,11 +26,11 @@ high-performance back end such as J2EE
     - Easy user-interface programming
 - Promise of JSF is to bring rapid UI development to serverside Java
 - JSF has these parts
-    - A set of prefabricated UI components
-    - An event-driven programming model
-    - A component model that enables third-party developers to supply additional components
-
+    - A set of `prefabricated` UI components
+    - An `event-driven` programming model
+    - A `component model` that enables third-party developers to supply additional components
 - Demo: Login with welcome.jsp  
+  
     <img src="../pics/JavaServerFaces/loginwithwelcome.png" alt="loginwithwelcome" width="450"/>  
     <img src="../pics/JavaServerFaces/loginwithwelcome2.png" alt="loginwithwelcome2" width="450"/>
 
@@ -125,19 +127,19 @@ high-performance back end such as J2EE
 
 - The main components of JavaServer Faces technology are
 as follows:
-    - An API for representing UI components and managing their state; handling events, server-side validation, and data conversion; defining page navigation; supporting internationalization and accessibility; and providing extensibility for all these features
-    - Two JavaServer Pages (JSP) custom tag libraries for expressing UI components within a JSP page and for wiring components to server-side objects
+    - An API for representing UI components and managing their state; `handling events, server-side validation, and data conversion; defining page navigation; supporting internationalization and accessibility; and providing extensibility for all these features`
+    - Two JavaServer Pages (JSP) `custom tag libraries` for expressing UI components within a JSP page and for wiring components to server-side objects
 - With minimal effort it is possible to
-    - Wire client-generated events to server-side application code
-    - Bind UI components on a page to server-side data
-    - Construct a UI with reusable and extensible components
-    - Save and restore UI state beyond the life of server requests
+    - `Wire client-generated events to server-side application code`
+    - `Bind UI components` on a page to server-side data
+    - Construct a UI with `reusable and extensible components`
+    - `Save and restore UI state beyond the life of server requests`
 - A JavaServer Faces application also has
-    - A custom tag library for rendering UI components on a page
-    - UI components represented as stateful objects on the server
-    - Backing beans, which define properties and functions for UI components
-    - Validators, converters, event listeners, and event handlers
-    - An application configuration resource file for configuring application resources
+    - A `custom tag library` for rendering UI components on a page
+    - `UI components` represented as stateful objects on the server
+    - `Backing beans`, which define properties and functions for UI components
+    - `Validators, converters, event listeners`, and ``event handlers`
+    - An `application configuration resource file` for configuring application resources
 
 ## Life Cycle  
 <img src="../pics/JavaServerFaces/life-cycle.png" alt="life-cycle" width="450"/>  
@@ -148,13 +150,13 @@ as follows:
 - All faces requests are handled by a FacesServlet (the controller servlet)
 - The JSF life cycle consits of the following phases
     - Restore View
-        - Recreates the server-side component tree
+        - Recreates the server-side `component tree`
         - Component tree will be put into the FacesContext
 
 - Component tree  
     <img src="../pics/JavaServerFaces/componenttree.png" alt="componenttree" width="450"/>  
     - Apply Request Values
-        - Copies request parameters into component submitted values
+        - Copies `request parameters` into component `submitted values`
         - Values are transformed from the presentation-view to the model-view
         - Lifecylce can be interrupted, when a event listener calls responseComplete()
         - In cases, where exceptions occur, the Render Response phase will be entered and the result is displayed
@@ -163,23 +165,23 @@ as follows:
         - Error messages and events are put into the FacesContext
         - In cases, where exceptions occur, the Render Response phase will be entered and the result is displayed
     - Update Model Values
-        - Copies (converted and validated) values to the corresponding model object (= backing bean)
+        - Copies (converted and validated) values to the corresponding `model object (= backing bean)`
         - For example, it is typically denoted in JSF with reference expression like  `<h:inputText value=„#{user.name}"/>`
             * User is the model object
         - Error messages are put into the FacesContext
     - Invoke Application
-        - Invokes action listeners and actions (in that order)
+        - Invokes `action listeners` and `actions` (in that order)
         - For example, first listener and then action:
             * `<h:commandButton action=„#{bean.action}" actionListener=„#{bean.listener}"/>`
     - Render Response
-        - Before rendering the response, the state of View is stored in the cache by calling the method UIViewRoot.saveState() method.
+        - Before rendering the response, the state of View is stored in the cache by calling the method `UIViewRoot.saveState()` method.
     - Generate presentation (view) with the defined encoding  
   <img src="../pics/JavaServerFaces/life-cycle2.png" alt="life-cycle2.png" width="450"/>  
 
 ## Managed Beans
-- Acording to the JavaBeans specification, a JavaBean is „a
+- Acording to the JavaBeans specification, a JavaBean is **„a
 reusable software component that can be manipulated in a
-builder tool"
+builder tool"**
     - Beans must have properties
 - A property is any attributed of a bean class that has
     - Name
@@ -192,7 +194,7 @@ builder tool"
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     ```
-- The backing beans are responsible for
+- The `backing beans` are responsible for
     - Providing application-specific behaviour
     - Storing data for a configurable amount of time (request, session, application scope)
 - Many JSF user interface components have an attribute value that lets you specify
@@ -231,7 +233,7 @@ builder tool"
 
 - Static Navigation
     - In a simple web application, page navigation is static
-    -> Clicking a particular button always selects a fixed JSF page
+    -> Clicking a particular button `always selects a fixed JSF page`
     - For example
         ```html
         <h:commandButton label="Login" action="login"/>
@@ -320,9 +322,9 @@ builder tool"
 
     | Tag | Description |
     |---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | view |  Creates the top-level view. A view is container   for all JavaServer Faces core and custom   component actions used on a page. |
-    | subview | Creats a subview of a view. A subview Container action for allJavaServer Faces core and custom component actions used on anested page via "jsp:include" or any custom action that dynamicallyincludes another page from the same web application, such as JSTL's"c:import". |
-    | facet | Adds a facet to a componentFacets  are similar to children, but they have names . It is up to the component how to process them. For example, the  gridPanel  from the standard JSF library has two facet elements for  header  and  footer . It does not matter where the facet is located in the JSP code, the renderer always puts the header at the top and footer at the bottom. Note that a component can contain multiple facets and that each facet can contain only one child component. |
+    | view |  Creates the top-level view. A `view is container`   for all JavaServer Faces core and custom   component actions used on a page. |
+    | subview | Creats a subview of a view. A subview `Container` action for allJavaServer Faces core and custom component actions used on anested page via "jsp:include" or any custom action that dynamicallyincludes another page from the same web application, such as JSTL's"c:import". |
+    | facet | Adds a facet to a componentFacets  `are similar to children, but they have names` . It is up to the component how to process them. For example, the  `gridPanel`  from the standard JSF library has two facet elements for `header`  and  `footer`. It does not matter where the facet is located in the JSP code, the renderer always puts the header at the top and footer at the bottom. Note that a component can contain multiple facets and that each facet can contain only one child component. |
     | attribute | Adds an attribute (key/value) to a component |
     | Param | Add a child UIParameter component to the UIComponentassociated with the closed parent UIComponent custom action. |
     | actionListener | Register an ActionListener instance on the UIComponent |
