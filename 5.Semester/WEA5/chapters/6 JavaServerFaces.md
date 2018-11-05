@@ -508,9 +508,64 @@ builder tool"**
 
 <img src="../pics/JavaServerFaces/eventhandling_8.png" alt="databae" width="550"/>
 
-<img src="../pics/JavaServerFaces/eventhandling_9.png" alt="databae" width="550"/>
+- testValueChangeListener.jsp
+    ```xml
+    <h:form>
+        <h:selectOneMenu value="#{addressBean.country}" valueChangeListener="#{countryValueChangeListener.logNewCountry}">
+            <c:selectItems value="#{addressBean.countries}"/>
+            <c:selectItems id="item6" itemLabel="Japan" itemValue="6"/>
+            <c:selectItems id="item7" itemLabel="US" itemValue="7"/>
+            <c:selectItems id="item8" itemLabel="Australia" itemValue="8"/>
+        </h:selectOneMenu>
+        <p>
+            <h:commandButton value="Select this coutnry" action="goto"/>
+        </p>
+        The choosen coutnry is:
+        <h:outputText value="#{addressBean.country}" />
+        <p>
+            The changed value observerd by the <code>valueChangeListener</code> can be seen in the <code>ConsoleWindow</code>.
+        </p>
+    </h:form>
+    ```
 
-<img src="../pics/JavaServerFaces/eventhandling_10.png" alt="databae" width="550"/>
+- Address.java
+    ```java
+    package wea5.beans;
+    import javax.faces.model.SelectItem;
+
+    public class Address {
+        private String selected = "N/A";
+        private SelectItem[] countries = {
+            new SelectItem("1", "Austria"),
+            new SelectItem("2", "UK"),
+            new SelectItem("3", "Sweden"),
+            new SelectItem("4", "Canada"),
+            new SelectItem("5", "Italy"),
+        }
+    }
+    ```
+
+ - CountryValueChangerListener.java
+    ```java
+    package wea5.listener;
+    import javax.faces.event.AbortProcessingException;
+
+    public class CountryValueChangeListener() {
+        public CountryValueChangeListener() {
+        }
+
+        public void logNewCountry(ValueChangeEvent event) {
+            Object oldValue = event.getOldValue();
+            Object newValue = event.getNewValue();
+
+            if(oldValue != newValue) {
+                // Get the country name and populate the value
+                String countryName = (String)newValue;
+                System.out.println("The new value (country) is " + countryName);
+            }
+        }
+    }
+    ```
 
 <img src="../pics/JavaServerFaces/eventhandling_11.png" alt="databae" width="550"/>
 
