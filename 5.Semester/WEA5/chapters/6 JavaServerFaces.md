@@ -420,8 +420,8 @@ builder tool"**
     ```
 ## Data Binding
 
-* UI componentsneeda waytoaccessthemodel data
-* ExamplefromtheJSF Bookstore
+* UI components need a way to access the model data
+* Example from the JSF Bookstore
 ```xml
 <h:dataTable id="items" value="#{articleDetailsDataTable.articles}" var="item" border="3" bgcolor="#C6BFF7">
 	<h:column id="column1">
@@ -467,7 +467,7 @@ builder tool"**
 
 <img src="../pics/JavaServerFaces/eventhandling_1.png" alt="databae" width="550"/>
 
-* Event listenerscaneffectthelifecyclein 3 ways 
+* Event listener scan effect the life cycle in 3 ways 
     * Let the lifecycle proceed normally
     * Call `FacesContext.renderResponse` to skip the rest of the life cycle up to RenderResponse
     * Call `FacesContext.responseComplete``to skip the rest of the life cycle entirely
