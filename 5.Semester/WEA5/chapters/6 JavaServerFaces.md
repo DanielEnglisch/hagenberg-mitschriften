@@ -31,8 +31,8 @@ high-performance back end such as J2EE
     - A `component model` that enables third-party developers to supply additional components
 - Demo: Login with welcome.jsp  
   
-    <img src="../pics/JavaServerFaces/loginwithwelcome.png" alt="loginwithwelcome" width="450"/>  
-    <img src="../pics/JavaServerFaces/loginwithwelcome2.png" alt="loginwithwelcome2" width="450"/>
+    <img src="../pics/JavaServerFaces/loginwithwelcome.png" alt="loginwithwelcome" width="550"/>  
+    <img src="../pics/JavaServerFaces/loginwithwelcome2.png" alt="loginwithwelcome2" width="550"/>
 
 - Index.jsp
     ```html
@@ -123,7 +123,7 @@ high-performance back end such as J2EE
     </faces-config>
     ```
 - Web.xml  
-    <img src="../pics/JavaServerFaces/webxml.png" alt="webxml" width="450"/>
+    <img src="../pics/JavaServerFaces/webxml.png" alt="webxml" width="650"/>
 
 - The main components of JavaServer Faces technology are
 as follows:
@@ -142,7 +142,7 @@ as follows:
     - An `application configuration resource file` for configuring application resources
 
 ## Life Cycle  
-<img src="../pics/JavaServerFaces/life-cycle.png" alt="life-cycle" width="450"/>  
+<img src="../pics/JavaServerFaces/life-cycle.png" alt="life-cycle" width="550"/>  
 
 - A faces request occurs
     - when a JSF form is submitted
@@ -176,7 +176,7 @@ as follows:
     - Render Response
         - Before rendering the response, the state of View is stored in the cache by calling the method `UIViewRoot.saveState()` method.
     - Generate presentation (view) with the defined encoding  
-  <img src="../pics/JavaServerFaces/life-cycle2.png" alt="life-cycle2.png" width="450"/>  
+  <img src="../pics/JavaServerFaces/life-cycle2.png" alt="life-cycle2.png" width="550"/>  
 
 ## Managed Beans
 - Acording to the JavaBeans specification, a JavaBean is **„a
@@ -282,7 +282,7 @@ builder tool"**
         </navigation-rule>
         ```
     - This may lead to a transition diagram like  
-        <img src="../pics/JavaServerFaces/navigationdiagramm.png" alt="navigationdiagramm" width="450"/>  
+        <img src="../pics/JavaServerFaces/navigationdiagramm.png" alt="navigationdiagramm" width="550"/>  
 
 - Wildcards can be used in the from-view-id tag, to apply a rule to a set of pages
     ```xml
@@ -407,7 +407,7 @@ builder tool"**
     private SelectItem[] colors = {
         new SelectItem("1", "Red"),
         new SelectItem("2", "Blue"),
-        new SelectItem("3", , "Yellow"),
+        new SelectItem("3","Yellow"),
         new SelectItem("4", "Green"),
         new SelectItem("5", "Orange")
     };
