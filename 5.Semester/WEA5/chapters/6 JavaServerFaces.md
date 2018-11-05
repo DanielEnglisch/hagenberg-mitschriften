@@ -420,7 +420,124 @@ builder tool"**
     ```
 ## Data Binding
 
+* UI componentsneeda waytoaccessthemodel data
+* ExamplefromtheJSF Bookstore
+```xml
+<h:dataTable id="items" value="#{articleDetailsDataTable.articles}" var="item" border="3" bgcolor="#C6BFF7">
+	<h:column id="column1">
+		<c:facet name="header">
+			<h:outputText value="Author“ id="authorHeader"></h:outputText>
+		</c:facet>
+		<h:outputText id="authorValue" value="#{item.author}"></h:outputText>
+	</h:column>
+</h:dataTable>
+```
+* The class `DataModel` is an abstraction around arbitrary data binding technologies  that can be used `to adapt a variety of data sources` for use by JavaServerFaces components that `support per-row processing` for their child components
+* The data collection underlying a DataModelinstance is modeled as a `collection of row objects` that can be accessed by a `zero-relative cursor` (row index). 
+* The APIs  provide mechanisms to position to a specified zerorelative row index, and to retrieve an object that represents the data that corresponds to the current row index.
+
+<img src="../pics/JavaServerFaces/databinding_1.png" alt="databae" width="550"/>
+
+* A concrete DataModelinstance can be accessed through the `wrappedData` property
+
+<img src="../pics/JavaServerFaces/databinding_2.png" alt="databae" width="550"/>
+
+<img src="../pics/JavaServerFaces/databinding_3.png" alt="databae" width="550"/>
+
+<img src="../pics/JavaServerFaces/databinding_4.png" alt="databae" width="550"/>
+
+* Concrete implementations of a DataModel 
+    * ArrayDataModel
+        * Wrap an array of Java objects. 
+    * ListDataModel 
+        * Wrap a java.util.Listof Java objects. 
+    * ResultDataModel 
+        * Wrap an object of type javax.servlet.jsp.jstl.sql.Result (the query results from JSTL’s SQL tag library)
+    * ResultSetDataModel
+        * Wrap an object of type java.sql.ResultSet 
+    * ScalarDataModel 
+        * Wrap a single Java object in what appears to be a one-row data set
+
 ## Event Handling
+
+* JSF supports three kinds of event 
+    * Value change event
+    * Action events 
+    * Phase events 
+
+<img src="../pics/JavaServerFaces/eventhandling_1.png" alt="databae" width="550"/>
+
+* Event listenerscaneffectthelifecyclein 3 ways 
+    * Let the lifecycle proceed normally
+    * Call `FacesContext.renderResponse` to skip the rest of the life cycle up to RenderResponse
+    * Call `FacesContext.responseComplete``to skip the rest of the life cycle entirely
+
+<img src="../pics/JavaServerFaces/eventhandling_2.png" alt="databae" width="550"/>
+
+<img src="../pics/JavaServerFaces/eventhandling_3.png" alt="databae" width="550"/>
+
+<img src="../pics/JavaServerFaces/eventhandling_4.png" alt="databae" width="550"/>
+
+<img src="../pics/JavaServerFaces/eventhandling_5.png" alt="databae" width="550"/>
+
+* Value change events 
+    * Components in a web app often depend on each other 
+    * You can keep dependent components in sync with value change events 
+    * Value change events are fired by input components after their new value has been validated and the `enclosing form is submitted`
+    * For example
+    * 
+<img src="../pics/JavaServerFaces/eventhandling_6.png" alt="databae" width="550"/>
+
+```xml
+<h:selectOneMenu value="#{form.country}"onchange="submit()“ valueChangeListener="#{form.countryChanged}">
+	<f:selectItems value="#{form.countryNames}"/>
+</h:selectOneMenu>
+
+```
+
+    * Alternative way of coding it
+
+```xml
+<h:selectOneMenu value="#{form.country}"onchange="submit()“ >
+	<f:valueChangeListener ="#{form.countryChanged}“/>
+	<f:selectItems value="#{form.countryNames}"/>
+</h:selectOneMenu>
+```
+
+<img src="../pics/JavaServerFaces/eventhandling_7.png" alt="databae" width="550"/>
+
+<img src="../pics/JavaServerFaces/eventhandling_8.png" alt="databae" width="550"/>
+
+<img src="../pics/JavaServerFaces/eventhandling_9.png" alt="databae" width="550"/>
+
+<img src="../pics/JavaServerFaces/eventhandling_10.png" alt="databae" width="550"/>
+
+<img src="../pics/JavaServerFaces/eventhandling_11.png" alt="databae" width="550"/>
+
+* Phase events 
+    * JSF implementation fires events (phase events), before and after each life-cycle phase 
+    * Those events are handled by the `phase listeners`
+    * Phase listeners are useful for debugging and for highly specialized behavior
+    * Phase listeners are specified in the configuration file 
+        * For example
+        ```xml
+        <lifecycle>
+            <phase-listener>
+                wea5.listener.CustomPhaseListener
+            </phase-listener>
+        </lifecycle>
+        ```
+    * A phase listener has to implement the `PhaseListener` interface, which defines three methods 
+        * `PhaseId getPhaseId()`
+        * `Void afterPhase(Phase event)`
+        * `Void beforePhase(Phase event)`
+
+<img src="../pics/JavaServerFaces/eventhandling_12.png" alt="databae" width="550"/>
+
+<img src="../pics/JavaServerFaces/eventhandling_13.png" alt="databae" width="550"/>
+
+<img src="../pics/JavaServerFaces/eventhandling_14.png" alt="databae" width="550"/>
+
 
 ## Custom Components
 
