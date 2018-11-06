@@ -1,1 +1,0 @@
-public class DaysOfTheWeek : IEnumerable<string> { string[] days = { "Sun", "Mon", "Tue", "Wed", "Thr",  "Fri", "Sat"}; public IEnumerator<string> GetEnumerator() { for (int i=0; i<days.Length; i++) yield return days[i]; } public IEnumerable<string> GetWorkingDays() { for (int i=1; i<days.Length-1; i++) yield return days[i]; } }
