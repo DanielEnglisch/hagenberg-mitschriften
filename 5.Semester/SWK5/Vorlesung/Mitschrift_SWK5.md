@@ -19,4 +19,6 @@ Vorlesungsklausur ohne Unterlagen
 [Erweiterungen von C#](chapters/extensions.md)  
 [Generics](chapters/generics.md)  
 [Delegates und Events](chapters/delegates.md)  
-[BaseClassLibrary](chapters/baseclasslibrary.md)
+[BaseClassLibrary](chapters/baseclasslibrary.md)  
+[WPF](chapters/wpf.md)  
+[UWP](chapters/uwp.md)  
