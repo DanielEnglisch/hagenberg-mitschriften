@@ -1,5 +1,0 @@
-FROM alpine
-LABEL maintainer='Andreas Roither <email@email.at>'
-
-RUN apk update && apk add curl
-RUN rm -r /var/cache/apk/*

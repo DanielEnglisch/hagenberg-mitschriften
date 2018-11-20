@@ -47,7 +47,7 @@ In this task we start a container using the `command docker container run â€¦`â€
 
 This is starting a container, executing a simple bash command, and removing the container after it is stopped.
 
-```bash
+```docker
 docker container run --rm --name hello alpine sh -c "echo Hello"
 ```
 
@@ -182,7 +182,7 @@ We add a definition for a service named postgresdb to this service configuration
 The Dockerfile for the database adds a shell script for creating the database. This shell script is run automatically when the database container starts up.
 
 `Dockerfile`:
-```bash
+```docker
 FROM postgres:9.6-alpine
 LABEL maintainer='Martin Ahrer <this@martinahrer.at>'
 
@@ -242,6 +242,7 @@ So we add the following named volumes
 As we have repeated and hardcoded some configuration values into the service definition we move that values into a separate configuration file for configuration values. We add a .env file to the project directory and put all environment variables with their values into this file. Also we remove all value assignments with hardcoded configuration values from the service definition files.
 - **Note**  
 	`docker-compose` will read environment variables from this `.env` or the local environment with the latter with higher precedence.
+
 ## Unit 7
 
 During this section we will be working with the `asciidoctor/docker-asciidoctor` image. Asciidoctor is a popular Ruby based toolset for producing documentation based on ASCII documents.

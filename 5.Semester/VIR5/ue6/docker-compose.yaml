@@ -1,0 +1,29 @@
+version: '2.2'
+
+services:
+  postgresdb:
+    build:
+      context: ./postgresdb
+    environment:
+      - SPRING_DATASOURCE_USERNAME=spring
+      - SPRING_DATASOURCE_PASSWORD=spring
+    volumes:
+      - postgresdb:/var/lib/postgresql
+      # This needs explicit mapping due to link...
+      - postgresdb_data:/var/lib/postgresql/data
+  app:
+    build:
+      context: ./app
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresdb/app
+      - SPRING_DATASOURCE_USERNAME=spring
+      - SPRING_DATASOURCE_PASSWORD=spring
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "80:8080"
+    depends_on:
+      - postgresdb
+
+volumes:
+  postgresdb:
+  postgresdb_data:
