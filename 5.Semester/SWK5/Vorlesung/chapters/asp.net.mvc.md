@@ -286,9 +286,6 @@ public static void RegisterRoutes(RouteCollection routes) {
             …
         }
         ```
-        
-#### Kommentar
-    * 
 
 ## Controller: Response-Objekt
 - Das Ergebnis einer Controller-Methode ist eine HTTP-Antwort.
@@ -326,6 +323,10 @@ public static void RegisterRoutes(RouteCollection routes) {
     - Views/*Shared/ViewName.{aspx,ascx}*
     - Views/*ControllerName/ViewName.cshtml*
     - Views/*Shared/ViewName.cshtml*
+
+#### Kommentar
+    * Im einfachsten fall = ViewResult
+    * Reihenfolge so wie sie verwendet werden würde
     
 ## Controller: ActionResult
 BILD HERE
@@ -375,9 +376,15 @@ BILD HERE
     ```
     http://host/Cart/List
     ```
+    
+#### Kommentar
+    * Um Url zu aktualisiern (nicht mehrfache ungewünschte aktion bei Refresh)
 
 ## Views: Konzept
 BILD HERE
+
+#### Kommentar
+    * ViewResult von Controller
 
 ## Views und View-Engines
 - ASP.NET MVC unterstützt zwei View-Engines:
