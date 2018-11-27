@@ -1,3 +1,5 @@
+# SWK Vorlesung 27.11.2018
+
 # ASP.NET MVC
 
 ## Überblick
@@ -36,6 +38,8 @@
 
 ## IIS 7 und ASP.NET: Systemarchitektur
 BILD HERE
+
+<img src="../pics/9_aspnet/iis7.png"/>
 
 #### Kommentar
     * IIS = Internet Information Server (alt)
@@ -82,13 +86,15 @@ BILD HERE
 - Controller stellt Verbindung zu Geschäftslogik her.
 - Controller ist unabhängig von der Ansicht und kann daher einfach getestet werden.
 
-BILD HERE
+<img src="../pics/9_aspnet/grund1.png"/>
+
 
 #### Kommentar
     * Controller gibts für diverse Aufgaben
 
-## Komponenten von ASP.NETMVC
-BILD HERE
+## Komponenten von ASP.NET MVC
+
+<img src="../pics/9_aspnet/komponentaspmvc.png"/>
 
 #### Kommentar
     * Routing System leitet request zu Controller oder liefert statische Webseite
@@ -148,7 +154,8 @@ BILD HERE
     * views in cshtml files
 
 ## Das Routing-System
-BILD HERE
+
+<img src="../pics/9_aspnet/routing.png"/>
 
 #### Kommentar
     * RouteHandler = factory für MVCHandler
@@ -329,7 +336,9 @@ public static void RegisterRoutes(RouteCollection routes) {
     * Reihenfolge so wie sie verwendet werden würde
     
 ## Controller: ActionResult
-BILD HERE
+
+<img src="../pics/9_aspnet/actionresult.png"/>
+
 
 - Ergebnis einer Controller-Methode ist ein strukturiertes Objekt, das zum Testen verwendet werden kann.  
 
@@ -381,7 +390,9 @@ BILD HERE
     * Um Url zu aktualisiern (nicht mehrfache ungewünschte aktion bei Refresh)
 
 ## Views: Konzept
-BILD HERE
+
+<img src="../pics/9_aspnet/viewconcept.png"/>
+
 
 #### Kommentar
     * ViewResult von Controller
@@ -391,7 +402,7 @@ BILD HERE
 ## Views und View-Engines
 - ASP.NET MVC unterstützt zwei View-Engines:
 
-BILD HERE
+<img src="../pics/9_aspnet/viewengines.png"/>
 
 - Andere View-Engines können hinzugefügt werden: Spark, NHaml, NVelocity, …
 
@@ -401,17 +412,17 @@ BILD HERE
 ## Views: Das Präsentationsmodell
 - Der Controller hat verschiedene Möglichkeiten, Daten an Ansichten zu übergeben:
 
-BILD HERE
+<img src="../pics/9_aspnet/presentationmodel.png"/>
 
 #### Kommentar
-    * letzt Variante bevorzugen (Typsicherheit)
+    * letzte Variante bevorzugen (Typsicherheit)
 
 ## View: HTML-Hilfsmethoden
 
 - HTML-Hilfsmethoden erleichtern die Generierung des HTML-Codes.
-- Für die meisten Formularelemente existieren Hilfsmethoden, z. B
+- Für die meisten Formularelemente existieren Hilfsmethoden, z. B  
 
-BILD HERE
+    <img src="../pics/9_aspnet/htmlhelper.png"/>
 
 - Der angezeigte Wert im Formularelement wird folgendermaßen ermittelt:
     1. ModelState["Email"].Value.AttemptedValue, falls Validierungsfehler vorliegt.
@@ -425,6 +436,9 @@ BILD HERE
     ```csharp
     Html.TextBoxFor(model => model.Email)
     ```
+
+#### Kommentar
+    * Modelstate enthält fehlerinfomationen
 
 ## View: Selbstdefinierte HTML-Hilfsmethoden
 - Möglichkeit 1: Implementierung von Erweiterungsmethoden für die Klasse *HtmlHelper*.
@@ -445,6 +459,9 @@ BILD HERE
     @CreateList(ViewBag.PeopleNames)
     ```
     - Helper können in das Verzeichnis App_Code ausgelagert werden und stehen so mehreren Views zur Verfügung.
+
+#### Kommentare
+    * 2. Möglichkeiten um Funktionalitäten in Hilfsmethoden 
 
 ## View: Beispiel für HTML-Hilfsmethoden
 ```htmlmixed
@@ -507,7 +524,8 @@ Wird zu =>
 
 ## Dateneingabe: Modellbindung
 - Formularfelder können auf .NET-Objekt abgebildet werden:  
-BILD HERE
+
+<img src="../pics/9_aspnet/modelbinding.png"/>
 
 - Formularfelder werden auf gleichnamige Eigenschaften abgebildet:  
 
@@ -553,7 +571,7 @@ BILD HERE
     - Html.ValidationMessage("field-name"):
     - Html.ValidationSummary():
 
-BILD HERE
+<img src="../pics/9_aspnet/displayvalidiation.png"/>
 
 ## Validierung: Client-seitige Validierung
 -  Mit Attributen können Validierungsregeln definiert werden, die bei der client- und serverseitigen Validierung berücksichtigt werden:  
@@ -583,7 +601,7 @@ BILD HERE
 
 ## Validierung: Beispiel
 
-BILD HERE
+<img src="../pics/9_aspnet/validationexample.png"/>
 
 ## Testen von ASP.NET-MVC-Anwendungen
 
@@ -602,3 +620,4 @@ BILD HERE
         Assert.AreEqual("USD", selItem.Text);
     }
     ```
+    
