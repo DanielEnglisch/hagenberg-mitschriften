@@ -385,6 +385,8 @@ BILD HERE
 
 #### Kommentar
     * ViewResult von Controller
+    * ViewEngine nimmt ViewResult und erzeugt die View
+    * View erzeugt html
 
 ## Views und View-Engines
 - ASP.NET MVC unterstützt zwei View-Engines:
@@ -393,10 +395,16 @@ BILD HERE
 
 - Andere View-Engines können hinzugefügt werden: Spark, NHaml, NVelocity, …
 
+#### Kommentar
+    * RazorViewEngine erkennt unterscheided zwischen c# und html selber
+
 ## Views: Das Präsentationsmodell
 - Der Controller hat verschiedene Möglichkeiten, Daten an Ansichten zu übergeben:
 
 BILD HERE
+
+#### Kommentar
+    * letzt Variante bevorzugen (Typsicherheit)
 
 ## View: HTML-Hilfsmethoden
 
