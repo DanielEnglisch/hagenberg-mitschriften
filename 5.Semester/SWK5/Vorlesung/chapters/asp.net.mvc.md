@@ -117,7 +117,7 @@ BILD HERE
     - Der Controller legt auch fest, welches View-Template (Index.cshtml) zum Generieren der HTTP-Antwort verwendet werden soll.
 
 - Implementierung der View (Views/Currencies/Index.cshtml):
-```htmlmixed
+```html
 @model IEnumerable
 <CurrencyData>
 <html>
@@ -454,17 +454,18 @@ public static void RegisterRoutes(RouteCollection routes) {
     }
     ```
 
-    ```htmlmixed
+    ```html
     <p>Person List:</p>
     @CreateList(ViewBag.PeopleNames)
     ```
     - Helper können in das Verzeichnis App_Code ausgelagert werden und stehen so mehreren Views zur Verfügung.
 
 #### Kommentare
-    * 2. Möglichkeiten um Funktionalitäten in Hilfsmethoden 
+    * 2 Möglichkeiten um Funktionalitäten in Hilfsmethoden auszulagern
+    * Create List -> Inline-Methode
 
 ## View: Beispiel für HTML-Hilfsmethoden
-```htmlmixed
+```html
 @using(Html.BeginForm()) {
 @Html.HiddenFor(model => model.Id)
 <div class="editor-label">
@@ -491,6 +492,9 @@ Wird zu =>
    </div>
 </form>
 ```
+
+#### Kommentar
+    * es wird kein einziger String verwendet (nur Hilfsmethoden)
 
 ## Dateneingabe
 
@@ -521,6 +525,10 @@ Wird zu =>
         else return View();
     }
     ```
+    
+#### Kommentare
+    * Get Formular befüllen mit BL Daten
+    * Post Formular inhalt mit Nutzer eingaben holen
 
 ## Dateneingabe: Modellbindung
 - Formularfelder können auf .NET-Objekt abgebildet werden:  
@@ -544,6 +552,11 @@ Wird zu =>
     ```
     - Feld mit dem Namen *pers.FirstName* wird auf *pm.FirstName* abgebildet
 
+#### Kommentare
+    * Redirekt, damit die Daten über die BL in die DB kommen
+    * Name des Formulatfelds muss mit dem Property zusammenpassen
+    
+
 ## Validierung: Validierungslogik
 - Validierungsfehler werden im Objekt ModelState gespeichert.
     - Eingaben werden vom Framework im Zuge der Modellbindung automatisch auf Korrektheit überprüft.
@@ -562,6 +575,12 @@ Wird zu =>
     }
     ```
 
+#### Kommentare
+    * Client- und Serverseitig durchführen
+    * gibt auch Validierungen, die nur über die BL gemacht werden können (exisitert die email)
+    * sonst kann man auch mit Annontation wie RegEx arbeiten(?)
+    
+
 ## Validierung: Anzeige der Validierungsergebnisse
 
 - HTML-Hilfsmethoden berücksichtigen den Zustand von ModelState und generieren entsprechenden HTML-Code.
@@ -572,6 +591,9 @@ Wird zu =>
     - Html.ValidationSummary():
 
 <img src="../pics/9_aspnet/displayvalidiation.png"/>
+
+#### Kommentare
+    * entweder für ein Feld oder füre alle Felder
 
 ## Validierung: Client-seitige Validierung
 -  Mit Attributen können Validierungsregeln definiert werden, die bei der client- und serverseitigen Validierung berücksichtigt werden:  
@@ -598,6 +620,12 @@ Wird zu =>
 - Konzepte der Validierungslogik
     - Validierungscode ist nicht direkt mit HTML-Elementen verbunden.
     - Falls JavaScript deaktiviert ist, wird serverseitige Validierung durchgeführt (Barrierefreiheit).
+
+#### Kommentar
+    * JQuery Validate (muss man extra einfügen) führt Validierung durch
+        * ob alle Elemente angezeigt werden können 
+        * wenn Regeln vorhanden, prüft diese
+    
 
 ## Validierung: Beispiel
 
