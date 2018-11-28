@@ -95,7 +95,6 @@
 #### Kommentare
     * Reverse-Proxy leitet den Traffic an den Kestrel weiter
     * Reverse Proxy: weil reversed (Request kommt von außen)
-    *
 
 ## Implementierung einer Web-Anwendung
 
@@ -149,22 +148,22 @@
 - Der *Host* ist für Konfiguration und das Starten der Web-Anwendung bzw. des Servers verantwortlich.
 - Der *Server* verarbeitet die HTTP-Anfragen.
 
-```csharp
-public static void Main(string[] args) {
-  var host =
-    new WebHostBuilder()
-      .UseKestrel()
-      .UseContentRoot(
-        Directory.GetCurrentDirectory())
-      .UseIISIntegration()
-      .UseStartup<Startup>()
-      .Build();
-    host.Run();
-  
-  // UseKestrel, USerContentRoot, UseIISIntegration, .UseStartup<Startup>()
-  // = -> WebHost.CreateDefaultBuilder(args)
-}
-```
+    ```csharp
+    public static void Main(string[] args) {
+      var host =
+        new WebHostBuilder()
+          .UseKestrel()
+          .UseContentRoot(
+            Directory.GetCurrentDirectory())
+          .UseIISIntegration()
+          .UseStartup<Startup>()
+          .Build();
+        host.Run();
+
+      // UseKestrel, USerContentRoot, UseIISIntegration, .UseStartup<Startup>()
+      // = -> WebHost.CreateDefaultBuilder(args)
+    }
+    ```
 
 - UseKestrel: Kestrel wird als Web-Server verwendet.
 - UseIISIntegration: IIS wird als Reverse Proxy verwendet.
@@ -362,7 +361,7 @@ public class Startup {
 
 - Problem bei HTML-Hilfsmethoden:
 
-  ```csharp
+  ```cshtml
   @Html.EditorFor(model => model.Name, 
       new { htmlAttributes = new { @class ? "form-control"} })
   ```
@@ -374,7 +373,7 @@ public class Startup {
 - HTML-Helper
     - Verwendung:
 
-    ```csharp
+    ```cshtml
     @addTagHelper *, Microsoft.AspNet.Mvc.TagHelpers
     <input asp-for="Name" clas="form-control" />
     ```
@@ -388,7 +387,7 @@ public class Startup {
 ### Beispiele:
 - Sichere Generierunng von URLs, Zugriff auf das Modell
 
-  ```htmlembedded
+  ```html
   <a asp-action="Index" asp-controller="Home">Back to Home page</a>
   <form asp-action="Add" asp-controller="Person">
       <label asp-for="Name"></label>
@@ -399,7 +398,7 @@ public class Startup {
 
 - Bedingte Generierung von HTML-Code
 
-  ```htmlembedded
+  ```html
   <environment names="Development">
       <link rel="stylesheet" href="~/css/bootstrap.css" />
   </environment>
@@ -423,7 +422,7 @@ public class Startup {
 
 - Beispiel (View):
 
-  ```htmlembedded
+  ```cshtml
   @page "{id:int}"
   @model EditPersonModel
   ...
