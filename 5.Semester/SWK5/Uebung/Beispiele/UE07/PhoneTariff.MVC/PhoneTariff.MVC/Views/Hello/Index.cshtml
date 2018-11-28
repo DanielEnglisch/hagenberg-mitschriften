@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h2>MVC</h2>
+    <span>@ViewData["Message"]</span>
+
+    <div>
+        @for (int i = 0; i < 5; ++i)
+        {
+            <span>@ViewBag.Date</span>
+        }
+
+        @{ 
+            int x = 15;
+
+        }
+    </div>
+</div>
+

@@ -1,0 +1,142 @@
+﻿@using PhoneTariff.MVC.Utils;
+@using PhoneTariff.MVC.Models;
+@using System.Linq.Expressions;
+
+@model TariffCalculatorModel
+
+@{
+    ViewBag.Title = "Phone Tariff Calculator";
+    Layout = "~/Views/Shared/_TariffCalculatorLayout.cshtml";
+}
+
+@section LocalCss {
+    <style type="text/css">
+        .label-large {
+            font-size: 18px;
+            padding: 5px 30px;
+        }
+    </style>
+}
+
+
+@helper RenderzoneBox(string zoneName,
+    Expression<Func<TariffCalculatorModel, int>> duration,
+    Expression<Func<TariffCalculatorModel, int>> peakPercent,
+    int selectedValue)
+{
+var textBoxName = Html.IdFor(duration).ToString();
+var comboBoxName = Html.IdFor(peakPercent).ToString();
+
+var textBoxValid = Html.ViewData.ModelState.IsValidField(textBoxName);
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">@zoneName</h3>
+        </div>
+
+        <div class="panel-body row">
+            <div class="form-group col-sm-6 @(textBoxValid ? "" : "has-error")">
+
+                <label for="Model.TextBoxName">Duration in min:</label>
+                @Html.TextBoxFor(duration,
+                                new { @class = "form-control" })
+
+                <label class="help-block">@Html.ValidationMessageFor(duration)</label>
+
+
+            </div>
+            <div class="form-group col-sm-6">
+
+                <label for="Model.ComboBoxName">National Percent peak time:</label>
+                @Html.DropDownListFor(
+                    peakPercent,
+                    ViewHelper.GetPercentList(10, selectedValue),
+                    new { @class = "form-control" })
+
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @*
+            @Html.Partial("_ZoneBox",
+                new ZoneModel()
+                {
+                    ZoneName = "Local Zone",
+                    TextBoxName = "LocalDuration",
+                    ComboBoxName = "LocalPeakPercent",
+                    Duration = Model.LocalDuration,
+                    PeakPercent = Model.LocalPeakPercent
+                })
+
+            @Html.Partial("_ZoneBox",
+            new ZoneModel()
+            {
+                ZoneName = "National Zone",
+                TextBoxName = "NationalDuration",
+                ComboBoxName = "NationalPeakPercent",
+                Duration = Model.NationalDuration,
+                PeakPercent = Model.NationalPeakPercent
+            })
+
+            @RenderzoneBox("Local Zone", "LocalDuration", "LocalPeakPercent", Model.LocalDuration, Model.LocalPeakPercent)
+        @RenderzoneBox("NAtional Zone", "NationalDuration", "NationalPeakPercent", Model.NationalDuration, Model.NationalPeakPercent)
+    *@
+
+    @RenderzoneBox("Local Zone", model => model.LocalDuration, model => model.LocalPeakPercent, Model.LocalPeakPercent)
+    @RenderzoneBox("National Zone", model => model.NationalDuration, model => model.NationalPeakPercent, Model.NationalPeakPercent)
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h3 class="panel-title">Total Costs</h3>
+                </div>
+                <div class="col-xs-3">
+
+                    <label for="TotalCosts"
+                           class="label label-success label-large pull-right">
+                        @Html.FormatValue(Model.TotalCost, "{0:F2}")
+                    </label>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="form-group">
+
+                <label for="SelectedTariff">Select Provider/Tariff</label>
+                @Html.DropDownList("Selectedtariff", Model.TariffList, new { @class = "form-control" })
+
+            </div>
+            <div class="form-group">
+                <input id="calcButton" type="submit" value="Calculate"
+                       class="form-control btn btn-success" />
+                <div id="calcButton2" class="form-control btn btn-success">Calculate with JavaScript</div>
+            </div>
+        </div>
+    </div>
+}
+
+@section LocalScripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#calcButton").click(function () {
+                // TODO: get values from input elements with jquery
+                var model = {
+                    localDuration: 100,
+                    localPeakPercent: 20,
+                    selectedTariff: "Amiga"
+                }
+
+                $.post("@Url.Action("CalculateAsync")", model, function (data) {
+                    $("#TotalCosts").text(data);
+                });
+            });
+        }
+    </script>
+}

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Bundle Bootstrap Css und unser Css -->
+    <!-- Also zusammen gefügt und minifiziert -> also nur ein request für den browser -->
+    @Styles.Render("~/Content/css")
+
+    @RenderSection("LocalCss", required: false)
+</head>
+<body>
+    <div class="container body-content">
+        <div class="jumbotron">
+            <h2>@ViewBag.Title</h2>
+        </div>
+
+        @RenderBody()
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - SWK5</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @RenderSection("LocalScripts", required: false)
+</body>
+</html>

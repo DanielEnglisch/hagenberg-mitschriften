@@ -1,0 +1,14 @@
+﻿@model PhoneTariff.MVC.Models.HelloModel
+
+@{
+    ViewBag.Title = "TypedIndex";
+}
+
+<h2>@Model.Message</h2>
+
+<div>
+    @for (int i = 0; i < 5; ++i)
+    {
+        <span>@Model.Date</span>
+    }
+</div>
