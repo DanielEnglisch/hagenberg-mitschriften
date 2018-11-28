@@ -47,7 +47,7 @@
 ## .NET Plattform
 
 
-<img src="../pics/10_aspnetcore/netplattform.png" />
+<img src="../pics/10_aspnetcore/netplattform.png" width="400" />
 
 #### Kommentare
     * ASP.NET Core auch mit Full Framework möglich
@@ -57,11 +57,11 @@
 
 - ASP.NET Core MVC ist ein Framework für die Entwicklung von WebAnwendungen und REST-Services.
 
-<img src="../pics/10_aspnetcore/netcore.png" />
+<img src="../pics/10_aspnetcore/netcore.png" width="400" />
 
 ## Deployment von Web-Anwendungen
 
-<img src="../pics/10_aspnetcore/webdeployment.png" />
+<img src="../pics/10_aspnetcore/webdeployment.png" width="400" />
 
 #### Kommentar
     * (links)Alle Web Anwednungen verwenden selbes Framework
@@ -82,7 +82,7 @@
     - Wird in *Startup*-Klasse konfiguriert.
 - **Application**: Web-, SignalR-Anwendung, REST-Service, ….
 
-<img src="../pics/10_aspnetcore/architecture.png" />
+<img src="../pics/10_aspnetcore/architecture.png" width="200" />
 
 #### Kommentar
     * MVC, DB Zugriff, Authentifizierung ist zB Middleware
@@ -90,7 +90,7 @@
 
 ## Einbinden von Web-Servern
 
-<img src="../pics/10_aspnetcore/webserver.png" />
+<img src="../pics/10_aspnetcore/webserver.png" width="400" />
 
 #### Kommentare
     * Reverse-Proxy leitet den Traffic an den Kestrel weiter
@@ -111,7 +111,7 @@
     - *Startup.cs*: Konfiguration der Anwendungskomponenten und der Middleware 
     - *Programm.cs*: Konfiguration des Hosts
 
-<img src="../pics/10_aspnetcore/webimlexpl.png" />
+<img src="../pics/10_aspnetcore/webimlexpl.png" width="200" />
 
 #### Kommentare
     * wwwroooot -> Dinge die nach draußen gehen hier rein (statischer Content)
@@ -234,7 +234,7 @@
 * Middleware-Komponenten verarbeiten Requests und können Resultate zur Response hinzufügen.
 * Middlware-Komponenten werden in der Konfiguration zu einer Kette zusammengefügt.
 
-<img src="../pics/10_aspnetcore/middlewareconcept.png" />
+<img src="../pics/10_aspnetcore/middlewareconcept.png" width="400" />
 
 
 ## Implementierung von Middleware-Komponenten
@@ -347,14 +347,14 @@ public class Startup {
 
 * Visual Studio überprüft die Kompatiblität mit allen Frameworks.
 
-  <img src="../pics/10_aspnetcore/multiplefwsupport1.png" />
+  <img src="../pics/10_aspnetcore/multiplefwsupport1.png" width="400" />
 
 * .NET Core ist ein Teil des .NET Frameworks -> für gewisse Funktionen muss Ersatz gesucht werden.
 
 * Zu verwendendes Framework kann beim Starten der Anwendung angebeten werden:
     * `dotnet run --framework net472`
 
-  <img src="../pics/10_aspnetcore/multiplefwsupport2.png" />
+  <img src="../pics/10_aspnetcore/multiplefwsupport2.png" width="400" />
 
 
 ### Tag-Helper
@@ -381,7 +381,7 @@ public class Startup {
     - Typsicherheit bleibt erhalten
     - Es können auch benutzerdefinierte Tag-Helper implementiert werden  
 
-  <img src="../pics/10_aspnetcore/taghelper.png" />
+  <img src="../pics/10_aspnetcore/taghelper.png" width="400" />
 
 
 ### Beispiele:
@@ -457,7 +457,7 @@ public class Startup {
 
 ## Architektur von "Single-Page" Webanwendungen
 
-<img src="../pics/10_aspnetcore/spaarchitecture.png" />
+<img src="../pics/10_aspnetcore/spaarchitecture.png" width="400" />
 
 ## Entwicklung von "Single-Page" Webanwendungen
 
@@ -480,4 +480,4 @@ public class Startup {
 - Deployment (dotnet publish)
     - **ng build --prod**
 
-<img src="../pics/10_aspnetcore/devspa.png" />
+<img src="../pics/10_aspnetcore/devspa.png"  width="200" />
