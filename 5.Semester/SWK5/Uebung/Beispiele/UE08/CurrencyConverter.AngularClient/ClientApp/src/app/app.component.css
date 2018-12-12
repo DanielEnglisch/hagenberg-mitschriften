@@ -1,0 +1,19 @@
+.top-container {
+  margin-left: 30px;
+}
+
+.currency-selector {
+  margin-top: 25px;
+}
+
+.currency-data {
+  margin-top: 25px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 2px;
+}

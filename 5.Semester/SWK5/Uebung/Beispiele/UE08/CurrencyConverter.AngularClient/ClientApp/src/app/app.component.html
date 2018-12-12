@@ -1,0 +1,42 @@
+<div class="top-container">
+  <h1>Currency Converter</h1>
+
+  <div class="currency-selector">
+    <span>Select currency:</span>
+    <span>
+      <select (change)="changeCurrency($event.target.value)">
+        <option disabled selected>--- select a currency ---</option>
+        <option *ngFor="let currency of currencies" [value]="currency.Symbol">{{currency.Name}}</option>
+      </select>
+    </span>
+  </div>
+
+  <div class="currency-data" [hidden]="!selectedCurrency">
+    <table>
+      <tr>
+        <th>Symbol</th>
+        <td>{{selectedCurrency?.Symbol}}</td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <td>{{selectedCurrency?.Name}}</td>
+      </tr>
+      <tr>
+        <th>Country</th>
+        <td>{{selectedCurrency?.Country}}</td>
+      </tr>
+      <tr>
+        <th>Euro Rate</th>
+        <td>{{selectedCurrency?.EuroRate}}</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div>
+    <span id="labelError"
+          style="color: red;">
+    </span>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyConverter.AngularClient", "CurrencyConverter.AngularClient.csproj", "{694C28C2-A437-45B2-B922-99466ED1C740}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{694C28C2-A437-45B2-B922-99466ED1C740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{694C28C2-A437-45B2-B922-99466ED1C740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{694C28C2-A437-45B2-B922-99466ED1C740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{694C28C2-A437-45B2-B922-99466ED1C740}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18730F7D-88E3-42AD-9241-CF86296F8E2D}
+	EndGlobalSection
+EndGlobal
