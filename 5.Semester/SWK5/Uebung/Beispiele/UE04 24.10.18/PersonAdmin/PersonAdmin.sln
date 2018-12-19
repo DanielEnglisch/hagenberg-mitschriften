@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonAdmin.Client", "PersonAdmin.client\PersonAdmin.Client.csproj", "{77EB5C84-0040-43D3-933F-8F2A24AB2E9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonAdmin.Dal.Interface", "PersonAdmin.DalInterface\PersonAdmin.Dal.Interface.csproj", "{286A3E29-69A4-49A9-AC1E-612C051E4693}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonAdmin.Domain", "PersonAdmin.Domain\PersonAdmin.Domain.csproj", "{796A86D4-7514-4159-9631-1C0B98D8CD91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonAdmin.Dal.Simple", "PersonAdmin.Dal.Simple\PersonAdmin.Dal.Simple.csproj", "{9DE224DF-940E-4BB9-85E0-4D50C7D72E05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonAdmin.Dal.Ado", "PersonAdmin.Dal.Ado\PersonAdmin.Dal.Ado.csproj", "{12B17894-823A-4E06-8B0C-F1E010CFB155}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Dal.Ado", "Common.Dal.Ado\Common.Dal.Ado.csproj", "{303424C8-8912-4210-9E83-A20B6AC65C18}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77EB5C84-0040-43D3-933F-8F2A24AB2E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77EB5C84-0040-43D3-933F-8F2A24AB2E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77EB5C84-0040-43D3-933F-8F2A24AB2E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77EB5C84-0040-43D3-933F-8F2A24AB2E9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{286A3E29-69A4-49A9-AC1E-612C051E4693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{286A3E29-69A4-49A9-AC1E-612C051E4693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{286A3E29-69A4-49A9-AC1E-612C051E4693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{286A3E29-69A4-49A9-AC1E-612C051E4693}.Release|Any CPU.Build.0 = Release|Any CPU
+		{796A86D4-7514-4159-9631-1C0B98D8CD91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{796A86D4-7514-4159-9631-1C0B98D8CD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{796A86D4-7514-4159-9631-1C0B98D8CD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{796A86D4-7514-4159-9631-1C0B98D8CD91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE224DF-940E-4BB9-85E0-4D50C7D72E05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE224DF-940E-4BB9-85E0-4D50C7D72E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE224DF-940E-4BB9-85E0-4D50C7D72E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE224DF-940E-4BB9-85E0-4D50C7D72E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12B17894-823A-4E06-8B0C-F1E010CFB155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12B17894-823A-4E06-8B0C-F1E010CFB155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12B17894-823A-4E06-8B0C-F1E010CFB155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12B17894-823A-4E06-8B0C-F1E010CFB155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{303424C8-8912-4210-9E83-A20B6AC65C18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{303424C8-8912-4210-9E83-A20B6AC65C18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{303424C8-8912-4210-9E83-A20B6AC65C18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{303424C8-8912-4210-9E83-A20B6AC65C18}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BB21B2F-F9E1-41ED-A0FF-56B1A3B050B9}
+	EndGlobalSection
+EndGlobal

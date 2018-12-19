@@ -1,0 +1,102 @@
+﻿<!--<Window x:Class="CurrencyCalculator.Wpf.Xaml.CurrencyCalculatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CurrencyCalculator.Wpf.Xaml"
+        mc:Ignorable="d"
+        Title="WPF Currency Calculator (Xaml)"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize">
+    <StackPanel Orientation="Horizontal" Margin="10">
+        <TextBox Name="txtLeftValue" Width="80" TextChanged="OnTextChanged"></TextBox>
+        <ComboBox Name="cmbLeftCurrency" Margin="5,0" SelectionChanged="OnSelectionChanged"></ComboBox>
+        <TextBox Name="txtRightValue" Width="80" TextChanged="OnTextChanged"></TextBox>
+        <ComboBox Name="cmbRightCurrency" Margin="5,0,0,0" SelectionChanged="OnSelectionChanged"></ComboBox>
+    </StackPanel>
+</Window>-->
+
+<Window x:Class="CurrencyCalculator.Wpf.Xaml.CurrencyCalculatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CurrencyCalculator.Wpf.Xaml"
+        mc:Ignorable="d"
+        Title="WPF Currency Calculator (Xaml)"
+        Width="400" Height="250"
+        ResizeMode="CanResize">
+    <Window.Resources>
+        <local:FormatConverter x:Key="FormatConverter"></local:FormatConverter>
+        <DataTemplate x:Key="CurrencyTemplate">
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Image Width="25"
+                        Height="15"
+                        Source="{Binding Path=Symbol,
+                                            Converter={StaticResource FormatConverter},
+                                            ConverterParameter=Images/{0}.gif}">
+                </Image>
+                <TextBlock Text="{Binding Path=Symbol}" VerticalAlignment="Center" Margin="5,0,0,0"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.Margin>
+            <Thickness Left="10" Top="10" Right="10" Bottom="10"></Thickness>
+        </Grid.Margin>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="80"></ColumnDefinition>
+            <!-- * teilt sich platz auf, wenn * insgesamt 100 dann prozent werte -->
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Column="0" Name="txtLeftValue" Width="80" TextChanged="OnTextChanged"></TextBox>
+        <ComboBox Grid.Column="1"
+                  Name="cmbLeftCurrency"
+                  Margin="5,0"
+                  SelectionChanged="OnSelectionChanged"
+                  ItemTemplate="{StaticResource CurrencyTemplate}">
+        </ComboBox>
+
+        <TextBox Grid.Column="2" Name="txtRightValue" Width="80" TextChanged="OnTextChanged"></TextBox>
+        <ComboBox Grid.Column="3" Name="cmbRightCurrency" Margin="5,0,0,0" SelectionChanged="OnSelectionChanged"
+                  ItemTemplate="{StaticResource CurrencyTemplate}">
+        </ComboBox>
+
+        <Expander Header="Rate Statistics" Grid.Row="2" Grid.ColumnSpan="5">
+            <Border Padding="7" BorderThickness="1"
+                    BorderBrush="Gray" CornerRadius="1">
+                <!-- Alles innerhalb einer Viewbox wird so skaliert das es den platz best möglich ausnutzt -->
+                <Viewbox Stretch="Uniform">
+                    <ItemsControl Name="chart">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel VerticalAlignment="Bottom" Margin="5,0,5,0">
+                                    <TextBlock Text="{Binding Path=AverageRate, StringFormat=F2}"
+                                           TextAlignment="Center"></TextBlock>
+                                    <Rectangle Width="25" Height="{Binding Path=PercentRate}"
+                                           Fill="LightCoral"></Rectangle>
+                                    <TextBlock Text="{Binding Path=Date, StringFormat=MMM}"
+                                           TextAlignment="Center"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Rows="1"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </Viewbox>
+            </Border>
+        </Expander>
+    </Grid>
+</Window>

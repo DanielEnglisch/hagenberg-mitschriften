@@ -1,0 +1,18 @@
+<project basedir="." name="JavaConverterClient">
+
+	<property environment="env" />
+	<property name="swagger.url" value="http://localhost:8000/swagger/v1/swagger.json" />
+	<property name="generated.dir" value="${basedir}/generated" />
+	<property name="java.rest.home" value="${env.JAVA_REST_HOME}" />
+
+	<target name="swagger-codegen" description="generate swagger proxy">
+		<java classname="io.swagger.codegen.v3.cli.SwaggerCodegen" fork="true">
+			<classpath>
+				<pathelement location="${java.rest.home}/swagger-codegen-cli-3.0.3.jar" />
+			</classpath>
+			
+			<arg line="generate --lang java --output ${generated.dir} --input-spec ${swagger.url} --additional-properties dateLibrary=java8,library=jersey2" />
+		</java>
+	</target>
+
+</project>

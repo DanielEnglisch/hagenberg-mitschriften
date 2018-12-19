@@ -1,0 +1,24 @@
+package swk5;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+
+public class JavaConverterClient {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		testJaxRs();
+	}
+
+	private static void testJaxRs() {
+		Client client = ClientBuilder.newClient();
+		
+		WebTarget target = client.target("http://localhost:56114").path("api/currencies");
+		CurrencyData data = target.path("USD").request(MediaType.APPLICATION_JSON).get(CurrencyData.class);
+		
+		System.out.println("%s: %.4f", data.getName(), data.getEuroRate());
+	}
+
+}
