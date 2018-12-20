@@ -31,13 +31,13 @@ Eine Vorgehensweise bei der sichergestellt wird das jede Änderung am System rel
 Bei einem MicroService wird eine einzelne Applikation entwickelt mit einer kleinen Anzahl von services. Jeder service läuft in einem eigenen Prozess und kommuniziert mithilfe von lightweight mechanismen. Diese services können unabhängig voneinander deployed werden (meist automatisch).
 
 - `Was ist DevOps?`  
-DevOps ist eine software developement methode die kommunikation, kollaboration, integration, automation und kooperations messung zwischen software developers und anderen it professionals.
-Das Ziel dieser Methode ist es einer organization rapide software entwicklung zu ermöglichen.
+DevOps ist eine software developement methode die kommunikation, kollaboration, integration, automation und kooperations messung zwischen software developers und anderen it professionals ermöglicht.
+Das Ziel dieser Methode ist es einer Organisation rapide software entwicklung zu ermöglichen.
 
 #### Docker Allgemein: erklären welche Bereiche relevant sind wo kann man docker einsetzen
 
 - `Was ist Docker bzw. was macht Docker?`  
-Docker ist eine container technology die sogennante `operating-system-level virtualization` kurz "containerization" betreibt. Mithilfe dieser Container können beliebige Applikationen enthalten.
+Docker ist eine container Technologie die sogennante `operating-system-level virtualization` kurz "containerization" betreibt. Dieser Container können beliebige Applikationen enthalten.
 
 - `Was sind Docker Container?`
   - Docker container wrappen eine software in ein komplettes filesystem das alles hat was benötigt wird um diese software zu starten (Code, runtime, system tools, system libraries). -> Garantie das die Software immer gleich läuft egal in welcher Umgebung.
@@ -46,8 +46,8 @@ Docker ist eine container technology die sogennante `operating-system-level virt
   - Container benutzen ein `layered filesystem` und sharen gleiche files und benutzen so weniger speicher
 
 - `Wie kann man Docker einsetzen?`  
-Docker kann eingesetzt werden um continuous integration und continuois deployment zu ermöglichen. Zusätzlich erlaubt es Docker den devlopement lifecycle zu stream linen und mit standardisierten Umgebungen zu arbeiten.
-Dadurch das Container einfach ausgetauscht werden können und auch unabhängig von einander agieren können wird so die Entwicklung um ein vielfaches verschnellert.
+Docker kann eingesetzt werden um continuous integration und continuois deployment zu ermöglichen. Zusätzlich erlaubt es Docker den devlopement lifecycle zu streamlinen und mit standardisierten Umgebungen zu arbeiten.
+Dadurch das Container einfach ausgetauscht werden können und auch unabhängig von einander agieren können, wird so die Entwicklung um ein vielfaches verschnellert.
 
   Use docker to push applications into a test environment to execute automatic/manual tests. After everything is fixed the image can be pushed to the production environment.
 
@@ -109,7 +109,7 @@ ENV oder ARG, können in Instruktionen mit $ oder ${} verwendet werden.
 #### Docker Compose
 
 - `Wie können mehrere Container definiert und gestartet werden?`  
-Mit Docker Compose ist ein Tool mit dem dies erreicht werden kann. In einem Compose file wird jeder Service konfiguriert. Anschließend kann mit `docker-compose build` und `docker-compose up -d`.
+Mit Docker Compose. In einem Compose file wird jeder Service konfiguriert. Anschließend kann mit `docker-compose build` und `docker-compose up -d`.
 
 #### Docker Networking
 
