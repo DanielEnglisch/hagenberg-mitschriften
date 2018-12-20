@@ -37,7 +37,7 @@ Das Ziel dieser Methode ist es einer Organisation rapide software entwicklung zu
 #### Docker Allgemein: erklären welche Bereiche relevant sind wo kann man docker einsetzen
 
 - `Was ist Docker bzw. was macht Docker?`  
-Docker ist eine container Technologie die sogennante `operating-system-level virtualization` kurz "containerization" betreibt. Dieser Container können beliebige Applikationen enthalten.
+Docker ist eine container Technologie die sogennante `operating-system-level virtualization` kurz "containerization" betreibt. Diese Container können beliebige Applikationen enthalten.
 
 - `Was sind Docker Container?`
   - Docker container wrappen eine software in ein komplettes filesystem das alles hat was benötigt wird um diese software zu starten (Code, runtime, system tools, system libraries). -> Garantie das die Software immer gleich läuft egal in welcher Umgebung.
