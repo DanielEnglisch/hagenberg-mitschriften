@@ -179,8 +179,7 @@ Das Assembly Manifest
 - Nachteile
   - Version, gegen die kompiliert wurde (oder höhere), muss auf Zielsystem installiert sein.
   - Verhalten einer CoreFX-Komponente könnte sich ändern.  
-  
-  <img src="../pics/1_assembly/6.png" alt="deployment" width="250"/>
+<img src="../pics/1_assembly/6.png" alt="deployment" width="250"/>
 
 ## .NET-Core: Self-contained Deployment
 - Anwendung wird mit allen zum Betrieb notwendigen Komponenten ausgeliefert:
