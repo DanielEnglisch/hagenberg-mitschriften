@@ -14,9 +14,9 @@
 
 # Assemblys
 
-Zusammenfassung von IL-Code, Metadaten und Resourcen in Assembly Datein (.dll). Resources können eingebettet oder referneziert werden. Code und Metadaten können auf mehrere Module verteilt werden. Enthält Manifest, das den Inhalt des Assemblys beschreibt.
+Zusammenfassung von IL-Code, Metadaten und Resourcen in Assembly Dateien (.dll). Resources können eingebettet oder referenziert werden. Code und Metadaten können auf mehrere Module verteilt werden. Enthält Manifest, das den Inhalt des Assemblys beschreibt.
 
-## Aufbau con Assemblys
+## Aufbau von Assemblys
 
 Besteht aus mehreren Modulen, damit selektiv benötigte Daten geladen werden können.
 
@@ -38,7 +38,7 @@ Bestehen aus Definitionstabellen:
 
 Und aus Referenzmodellen:
 
-* **AssemblyRef**: Verweis auf referenzierte Assamblies
+* **AssemblyRef**: Verweis auf referenzierte Assemblies
 * **ModuleRef**
 * **TypeRef**
 
@@ -46,7 +46,7 @@ Und aus Referenzmodellen:
 
 ### Private Assemblys
 
-Werden nur von der einen Anwendung verwendet und werden nicht über der Regitry anderen Anwendungen zur Verfügung gestellt. Werden durch kopieren installiert (.dll liegt im Verzeichnis der .exe). Kann in Unterverzeichnissen liegen oder deren Pfad durch eine .exe.config Datei festgelegt werden.
+Werden nur von einer Anwendung verwendet und werden nicht über der Registry anderen Anwendungen zur Verfügung gestellt. Werden durch kopieren installiert (.dll liegt im Verzeichnis der .exe). Kann in Unterverzeichnissen liegen bzw deren Pfad durch eine .exe.config Datei festgelegt werden.
 
 ### Shared Assemblys
 
@@ -61,14 +61,14 @@ Zur feststellung von veränderten .dll Dateien. Ist seit .NET 4.0 standardmäßi
 
 ## Resourcen
 
-Um Resourcen plattformunabhängig verwendet zu können werden sie in Binätform gespeichert und in den Manifsten referenziert. Verwenden einer generischen .resource Endung. Für sprachdateien können pro Sprache eigene Resourcen Assemblys verwendet werden.
+Um Resourcen plattformunabhängig verwenden zu können werden sie in Binärform gespeichert und in den Manifesten referenziert. Verwenden einer generischen .resource Endung. Für sprachdateien können pro Sprache eigene Resource Assemblys verwendet werden.
 
 ## Das Assembly Manifest
 
 Enthält:
 
-* Referenzierte Assamblys
-* Public Key, Versionnummer
+* Referenzierte Assemblys
+* Public Key, Versionsnummer
 * Liste der enthaltenen Module
 * Exportierte Typen
 * Assembly Art (Library oder .exe)
@@ -80,7 +80,7 @@ GAC_MSIL: Architekturunabhängiger Code.
 
 ## .NET-Core: Framework-depenedent Deployment
 
-Verdung einer geteilten Installation von .NET. Vermeidung von Verdoppelung aber dafür können spezielle Anforderungen nicht umgesetzt werden, da man mit der installierten Variante auskommen muss.
+Verwendung einer geteilten Installation von .NET. Vermeidung von Verdoppelung aber dafür können spezielle Anforderungen nicht umgesetzt werden, da man mit der installierten Variante auskommen muss.
 
 ## .NET-Core: Self-contained Deployment
 
