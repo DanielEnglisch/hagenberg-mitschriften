@@ -114,7 +114,6 @@ Laufzeitumgebungen unterstützt werden.
 - CLR versteht eine Zwischensprache , in die alle .NET-Programme übersetzt werden -> IL.
 - Die Typen der Programme müssen sich an gewisse Spielregeln halten -> CTS.
 - Zwischensprache und Informationen über Programme werden in Assemblys verpackt.
-
 - CLR ist eine virtuelle Maschine = mit Software realisierter Prozessor.
 - Vorteile:
   - `Plattformunabhängigkeit`: CLR kann auf andere reale Maschinen portiert werden.
