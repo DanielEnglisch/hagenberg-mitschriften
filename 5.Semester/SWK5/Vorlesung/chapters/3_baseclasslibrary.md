@@ -1,3 +1,8 @@
+- [Class Base Library](#class-base-library)
+	- [Enumeratoren (Iteratoren)](#enumeratoren-iteratoren)
+	- [Automatisch generierte Iteratoren](#automatisch-generierte-iteratoren)
+	- [Streams](#streams)
+
 # Class Base Library
 
 ## Enumeratoren (Iteratoren)

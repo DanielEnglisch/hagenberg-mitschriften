@@ -1,3 +1,19 @@
+- [.NET: Interoperabilität](#net-interoperabilit%C3%A4t)
+  - [Migration auf .NET](#migration-auf-net)
+  - [Managed/Unmanged Code/Types](#managedunmanged-codetypes)
+  - [COM – Common Object Model](#com-%E2%80%93-common-object-model)
+  - [Interoperabilität mit COM](#interoperabilit%C3%A4t-mit-com)
+  - [.NET -> COM](#net---com)
+  - [COM -> .NET](#com---net)
+  - [Visual Studio Tools for Office (VSTO)](#visual-studio-tools-for-office-vsto)
+  - [VSTO: Beispiel](#vsto-beispiel)
+  - [Platform Invoke (PInvoke)](#platform-invoke-pinvoke)
+  - [PInvoke: Details](#pinvoke-details)
+  - [IJW: "It Just Works"](#ijw-%22it-just-works%22)
+  - [MC++: C++ with Managed Extensions (C++/CLI)](#mc-c-with-managed-extensions-ccli)
+  - [Verbindung Managed/Unmanaged Code](#verbindung-managedunmanaged-code)
+  - [Verwendung von Managed Types in Unmanged Clients](#verwendung-von-managed-types-in-unmanged-clients)
+  - [Verwendung von Managed Types in Unmanged Clients](#verwendung-von-managed-types-in-unmanged-clients-1)
 
 # .NET: Interoperabilität
 

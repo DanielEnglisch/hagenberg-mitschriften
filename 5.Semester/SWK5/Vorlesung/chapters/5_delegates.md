@@ -1,3 +1,20 @@
+- [Delegates und Events](#delegates-und-events)
+  - [Motivation](#motivation)
+  - [Das Observer-Muster](#das-observer-muster)
+  - [Observer Pattern: Realisierung in Java](#observer-pattern-realisierung-in-java)
+  - [Definition von Delegates](#definition-von-delegates)
+  - [Verwenden von Delegates](#verwenden-von-delegates)
+  - [Multicast-Delegates](#multicast-delegates)
+  - [Repräsentation von Delegate-Objekten](#repr%C3%A4sentation-von-delegate-objekten)
+  - [Events](#events)
+  - [Abfrage auf null](#abfrage-auf-null)
+  - [Observer Pattern: Realisierung in C# mit Delegates](#observer-pattern-realisierung-in-c-mit-delegates)
+  - [Anonyme Methoden und Lambda-Asdrücke](#anonyme-methoden-und-lambda-asdr%C3%BCcke)
+  - [Lambda-Ausdrücke](#lambda-ausdr%C3%BCcke)
+  - [Asynchrone Ausführung](#asynchrone-ausf%C3%BChrung)
+  - [Asynchroner Aufruf mit Polling](#asynchroner-aufruf-mit-polling)
+  - [Asynchroner Aufruf mit Callback](#asynchroner-aufruf-mit-callback)
+
 # Delegates und Events
 
 ## Motivation
