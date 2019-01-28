@@ -1,172 +1,460 @@
 - [.NET Fortgeschrittene Konzepte von C\](#net-fortgeschrittene-konzepte-von-c)
-  - [Abgrenzung C# - Java/C++](#abgrenzung-c---javac)
-  - [Neue Operatoren](#neue-operatoren)
+  - [Abgrenzung C# – Java/C++](#abgrenzung-c-%E2%80%93-javac)
+  - [Bezeichner und Namenskonventionen](#bezeichner-und-namenskonventionen)
+  - [Deklarationen](#deklarationen)
+  - [Anweisungen](#anweisungen)
+  - [Operatoren](#operatoren)
+  - [Präprozessor](#pr%C3%A4prozessor)
   - [Typen](#typen)
-    - [Einfache Typen](#einfache-typen)
-    - [Strukturen](#strukturen)
-    - [Nullable Types](#nullable-types)
+  - [Werte- und Referenztypen](#werte--und-referenztypen)
+  - [Einfache Typen](#einfache-typen)
+  - [Boxing und Unboxing](#boxing-und-unboxing)
+  - [Nullable Types](#nullable-types)
   - [Klassen](#klassen)
-  - [Sichtbarkeit](#sichtbarkeit)
-  - [Destructor](#destructor)
-  - [Verwenden von IDisposable](#verwenden-von-idisposable)
+  - [Sichtbarkeitsattribute](#sichtbarkeitsattribute)
+- [Konstruktoren](#konstruktoren)
+  - [Destruktor](#destruktor)
+  - [Verwendung von IDisposable](#verwendung-von-idisposable)
   - [Felder und Konstanten](#felder-und-konstanten)
+  - [Methoden](#methoden)
   - [Arten von Parametern](#arten-von-parametern)
   - [Variable Anzahl von Parametern](#variable-anzahl-von-parametern)
   - [Properties](#properties)
+  - [Indexers](#indexers)
+  - [Überladen von Operatoren](#%C3%BCberladen-von-operatoren)
   - [Vererbung](#vererbung)
-    - [Überschrieben von Methoden](#%C3%BCberschrieben-von-methoden)
-      - [Überschrieben von Methoden mit new](#%C3%BCberschrieben-von-methoden-mit-new)
-  - [TODO: ADD REST](#todo-add-rest)
+  - [Überschreiben von Methoden: override](#%C3%BCberschreiben-von-methoden-override)
+  - [Überschreiben von Methoden: new](#%C3%BCberschreiben-von-methoden-new)
+  - [Gegenüberstellung von new und override](#gegen%C3%BCberstellung-von-new-und-override)
+  - [Anwendung von new](#anwendung-von-new)
   - [Abstrakte Klassen und Interfaces](#abstrakte-klassen-und-interfaces)
-    - [Explizite Implementierung von Interfaces](#explizite-implementierung-von-interfaces)
-  - [Exceptions](#exceptions)
+  - [Explizite Implementierung von Interface-Methoden](#explizite-implementierung-von-interface-methoden)
+  - [Ausnahmen (Exceptions)](#ausnahmen-exceptions)
   - [Arrays](#arrays)
 
 # .NET Fortgeschrittene Konzepte von C\#
 
-## Abgrenzung C# - Java/C++
+## Abgrenzung C# – Java/C++
+- Merkmale von Java
+  - OOP: Vererbung, dynamische Bindung, Interfaces
+  - Metainformation,
+  - Ausnahmebehandlung,
+  - statische und starke Typisierung,
+  - Garbage Collection.
+- Merkmale von C++
+  - Überladen von Operatoren,
+  - Möglichkeit, Pointer zu verwenden (unsafe code).
+- Neue Eigenschaften
+  - Attribute: Benutzerdefinierte Metainformation,
+  - Aufruf per Referenz (Übergangs- und Ausgangsparameter)
+  - Wertetypen (Strukturen) -> gibt es in JAVA nach wie vor nicht
 
-Merkmale von Java
+## Bezeichner und Namenskonventionen
+- Bezeichner
+  - Kombination aus Zeichen, Ziffern, _, @
+  - Unicode-Zeichen: `class Téléphone { … }`
+  - Groß-/Kleinschreibung ist relevant.
+- Namenskonventionen
+  - Pascal-Notation für
+    - Methoden: `CopyTo`
+    - Properties: `ToString`
+    - Typnamen: `TimeZone`
+    - Öffentl. `Felder: Empty`
+    - Interfaces: `ICloneable`
+    - Enums: `Sat, Sun, Mon`
+  - Camel-Notation für
+    - Variablen: `myVar, i`
+    - private Felder: `wordCount`
 
-* OOP
-* Metainformationen
-* Exceptions
-* statische und dynamische Typisierung
-* Garbage Collection
 
-Merkmale von C++
+## Deklarationen
+- Gültigkeitsbereiche
+  - Namenräume
+  - Klasse/Struktur, Interface
+  - Enumerationen
+  - Blöcke
+- Deklarationsreihenfolge ist nicht relevant.
+- Lokale Variablen müssen vor Verwendung deklariert werden.
+- Beispiel  
+  <img src="../pics/2_advanced/1.png" alt="bsp" width="350"/>
 
-* Überladen von Operatoren
-* Möglichkeit, Pointer zu verwenden
 
-Neue Eigenschaften
+## Anweisungen
+- if-, while-, do-while-Anweisung: wie in C++
+- switch-Anweisung
+  - Muss mit mit break abgeschlossen werden.
+  - switch-Ausdruck kann numerischer Typ, Enumeration oder String sein.
+  - Mit goto kann zu anderem Label gesprungen werden.
+- foreach-Anweisung
+  - Iteration durch Collections, die IEnumerable implementieren.
+  - Beispiel:
+    ```csharp
+    string[] names = {"Joe", "Bill", "James"};
+    foreach (string n in names)
+        Console.WriteLine(n);
+    ```
 
-* Attribute (vs. Annotationen)
-* Call by Reference
-* Wertetypen (Eigene Structs)
+## Operatoren
+<img src="../pics/2_advanced/2.png" alt="operators" width="650"/>
 
-## Neue Operatoren
+## Präprozessor
+- Unterstützte Präprozessor-Direktiven:
+  - #define, #undef: Symbole können nur definiert werden, ihnen kann aber kein Wert zugewiesen werden.
+  - #if, #elif, #else, #endif
+    ```csharp
+    #define DEBUG
+    #if DEBUG
+    // Code für Debug-Version
+    #else
+    // Code für Release-Version
+    #endif
+    ```
+  - #region, #endregion: Kennzeichnung von Code-Blöcken für Editoren, z. B.
+automatisch generierter Code.
+- Benutzerdefinierte Makros sind nicht möglich.
 
-as: Casting  
-?: Nullable  
-...
+## Typen 
+<img src="../pics/2_advanced/3.png" alt="types" width="650"/>
 
-## Typen
+## Werte- und Referenztypen
+- Wertetypen (value types)
+  - Werden am Stack bzw. im umgebenden Objekt allokiert.
+  - Defaultwert ist 0, '\0' bzw. false.
+  - Bei Zuweisung wird Wert kopiert.
+  - Im Gegensatz zu Java können Wertetypen auch selbst definiert werden (enum und struct).
+- Referenztypen (reference types)
+  - Werden am Heap allokiert.
+  - Defaultwert ist null.
+  - Bei Zuweisung wird Referenz, aber nicht das referenzierte Objekt kopiert.
 
-* Stack
-  * Wertetyp
-    * Einfache Typen (int, double,...)
-    * Enumeration
-    * Struktur
-* Heap
-  * Referenztypen
-    * Interface-Typ
-    * Pointer-Typ
-    * Array
-    * Klasse
-    * Delegate
+#### Kommentar
+    * gibt beim kopieren unterschiede, achtung bei value übergabe bei werten wird Kopie übergeben -> Änderungen bringen also nichts, bei Referenz schon!
 
-Automatische Konvertierung zwischen Referenz und Wertedatentypen (Boxing bzw. Unboxing). Wird in einer Klasse ein String gespeichert, wird nur eine Referenz darauf im Heap gespeichert. Eine Struktur hat einen signifikant geringern Overhead in der Erzeugung.
+## Einfache Typen
 
-### Einfache Typen
+<img src="../pics/2_advanced/4.png" alt="types" width="650"/>
 
-sbyte, byte, short, ushort, int, uint, long, ulong, float, double, decimal, bool, char
+## Boxing und Unboxing
 
-Verwendung dieser Datentypen sind nur Alias für die CTS Typen z.B int -> System.Int32
+- Boxing: Wertetyp -> Referenztyp
+- Boxing wird implizit durchgeführt, wenn ein Objekt benötigt wird, aber
+ein Wert vorhanden ist.
+- Beispiel:
+    ```csharp
+    Console.WriteLine("i={0} ", i); // viel speicher overhead
+    string s = 123.ToString();
+    ```
+- Unboxing: Referenztyp -> Wertetyp
+- Unboxing muss explizit mit Cast durchgeführt werden.
+- Beispiel:
+    ```csharp
+    int i = 123;
+    object o = i; // boxing
+    int j = (int)o; // unboxing
+    ```
 
-### Strukturen
-
-Wie in C++. Kann ein Interface implementieren kann aber nicht von einem Referenzdatentyp abgeleitet werden bzw. diesen implementieren. Verwenden zum Abbilden von einfachen Datentypen für effizente Verwendung ohne Objekterzeugungsoverhead.
-
-### Nullable Types
-
-Nullable Types sind Wertetypen, die als Wert auch null annehmen können.
-Normalerweise kann ein int nicht den wert null haben. Mit folgenden Synntax ist dies Möglich:
-
-```csharp
-int? i1 = 10;
-int? i2 = null;
-int j1 = i1.Value;
-int j2 = (int)i1;
-int j3 = i2 ?? 0;
-```
+## Nullable Types
+- Nullable Types sind Wertetypen, die als Wert auch null annehmen können.
+- Syntax: `T? oder Nullable<T>` (T beliebiger Wertetyp)
+    ```csharp
+        struct Nullable<T> {
+        public Nullable(T value);
+        public bool HasValue { get; }
+        public T Value { get; }
+    }
+    ```
+- Beispiel:
+    ```csharp
+        int? i1 = 10;
+        int? i2 = null; // implicit conversion
+        int j1 = i1.Value; // j1 == 10
+        int j2 = (int)i1; // j2 == 10
+        int j3 = i2 ?? 0; // j3 == 0
+    ```
+#### Kommentar
+    * nullable funktioniert auch mit strukturen
 
 ## Klassen
+- Inhalt einer Klasse:
+  - Konstanten
+  - Felder
+  - Konstruktoren/Destruktor
+  - Methoden
+  - Operatoren
+  - Properties
+  - Indexer
+  - Events
+  - statischer Konstruktor
+  - (innere) Typen
+    ```csharp
+    class Rational {
+        const double Eps = 0.001; // implizit auch statisch
+        int a, b;
+        public Rational(int a, int b) { … }
+        public void Add(Rational c) { … }
+        public static Rational
+            operator+(Rational r1, Rational r2) {…}
 
-Neue Bestandteile: Properties, Indexer, Operatoren, Konstanten, Finializer/Desktuktor
+        public int Denom {
+            get { return b; }
+            set { b = value; }
+        }
+    }
+    ```
 
-## Sichtbarkeit
+## Sichtbarkeitsattribute
 
-* public: überall
-* protected: nur abgeleitete Klasse
-* internal: selbe Assembly
-* protected internal:protected oder internal
-* private internal: protected und internal
-* private: deklerierende Klasse
+<img src="../pics/2_advanced/5.png" alt="security" width="650"/>
 
-Die Standardsichtbarkeit ist anders als in Java.
+# Konstruktoren
+- Konstruktoren dürfen überladen werden.
+- Konstruktor der Basisklasse wird im Kopf mit base aufgerufen.
+- Anderer Konstruktor kann im Kopf mit this aufgerufen werden.
+- Generierter Default-Konstruktor initialisiert alle Felder mit Standardwerten.
+    ```csharp
+    public class Ellipse {
+        int a, b;
+        public Ellipse(int a, int b) {
+            this.a = a;
+            this.b = b;
+        }
+        public Ellipse(int r) : this(r, r) {}
+    }
 
-## Destructor
+    public class ColoredEllipse: Ellipse {
+        Color color = Color.Black;
+        public ColoredEllipse(int a, int b, Color c) : base(a, b) {
+            color = c;
+        }
+    }
+    ```
+## Destruktor
 
-Wird aufgerufen, bevor der Garbage Collector das Objekt freigibt.  
-Dient zur Ressourcenfreigabe (Schließen von Files)
+- Destruktor/Finalizer wird aufgerufen, unmittelbar bevor GC ein Objekt freigibt.
+- Dient zur Ressourcenfreigabe (Schließen von Files, ...)
+- Es ist nicht definiert, wann Speicherbereinigung durchgeführt und damit der Destruktor/Finalizer aufgerufen wird.
+- Destruktor der Basisklasse wird automatisch aufgerufen (im Gegensatz zu Java).
+    ```csharp
+    public class A {
+        ~A() { // Sichtbarkeitsattribut darf
+            // nicht angegeben werden.
+            // Ressourcenfreigabe
+        }
+    }
+    ```
+#### Kommentar
+    * nichts anderes als ein Finalizer, wenn garbagecollector objekt 
+       freigeben will wird der Finalizer aufgerufen
+    * Finalizer der Base class muss explizit aufgerufen werden
 
-## Verwenden von IDisposable
-
-Zeigt an, dass diese Klasse Resourcen verwaltet, die freigegeben werden müssen. Wenn die Klasse nicht mehr benötigt werden muss explizit die Dispose Methode aufgerufen werden. Der Finalizer ruft vor beseitigung die Dispose Methode auf. Wenn die Dispose Methode explizit aufgreufen wurde, wird ein Flag gesetzt, der verhindert, dass das Objekt nicht zweimal durch den Finalizer Disposed wird.
-
-Kurzschreibweise:
-
-```csharp
-using(A a = new A()){
-    // Verwenden von a
-} // Automatisches Aufrufen von a.Dispose()
-```
+## Verwendung von IDisposable
+- Wenn explizite Ressourcenfreigabe möglich sein soll, kann Klasse IDisposable implementieren.
+- Verwender kann *Dispose()* explizit aufrufen.    
+    <img src="../pics/2_advanced/6.png" alt="idisposable" width="650"/>
 
 ## Felder und Konstanten
-
-Wenn ein Objekt konstant sein soll kann das Keyword readonly verwendet werden.
-
+- Objekt-Felder
+  - Beispiel: `int size = 0;`
+- Statische Felder
+  - Beispiel: `static Color Red = new Color(255,0,0);`
+- Konstanten
+  - Wert muss von Compiler berechnet werden können.
+  - Beispiel: `const int arrLen = byte.MaxValue/2 + 1;`
+- Schreibgeschützte Felder (readonly)
+  - Darf nur in Deklaration oder Konstruktor initialisiert werden.
+  - Beispiel: 
+    ```csharp
+    readonly Pen defaultPen; // readonly is only initialized in constructor
+    public Drawing(Color c) {
+        defaultPen = new Pen(c);
+    ```
+## Methoden
+- Objektmethoden
+  - Aufruf: object.Method()
+  - Überladen wie in Java möglich.
+- Klassenmethoden (statische Methoden)
+  - Aufruf: Class.Method()
+    ```csharp
+    class Date {
+        enum Day { Sun, Mon, Thu, ... }
+        static Day FirstDayInWeek() {
+            return Day.Mon;
+        }
+        public static void Main() {
+            Day d = Date.FirstDayInWeek();
+            Date date = new Date();
+            date.FirstDayInWeek(); // Syntaxfehler!
+        }
+    }
+    ```
 ## Arten von Parametern
-
-* Eingangsparameter
-* Übergangsparameter mit ref (explizit angeben)
-* Ausgangsparameter mit out (muss nicht initialisiert werden)
+- Eingangsparameter („*call by value*“)
+  - Definition: `int Twice(int m) { return 2*m; }`
+  - Aufruf: `m=5; n = Twice(m); // m==5, n==10`
+- Übergangsparameter (ref-Parameter)
+  - ref-Parameter muss initialisiert sein.
+  - Definition: `void Twice(ref int n) { n *= 2; }`
+  - Aufruf: `n=5; Twice(ref n); // n==10`
+- Ausgangsparameter (out-Parameter)
+  - out-Parameter muss nicht initialisiert sein.
+  - Definition: `void Twice(int m, out int n) { n = 2*m; }`
+  - Aufruf: `m=5; Twice(m, out n); // m==5, n==10`
 
 ## Variable Anzahl von Parametern
-
-```csharp
-double Sum(params double[] values);
-
-Sum(1.2, 3.4, 5.7)
-
-```
+- Definition einer Methode, die eine variable Anzahl von Parametern verarbeiten kann:
+    ```csharp
+    double Sum(params double[] values) {
+        double sum = 0;
+        foreach (double val in values) sum += val;
+            return sum;
+    }
+    ```
+- Aufruf
+  - Variable Anzahl von Parametern
+    ```csharp
+    double sum = Sum(1,2,3,4); // sum==10
+    ```
+  - Parameterübergabe in Form eines Arrays
+    ```csharp
+    double[] arr = {1,2,3,4};
+    double sum = Sum(arr); // sum==10
+    ```
 
 ## Properties
+- Zusammenfassung einer Getter- und einer Setter-Methoden zu einer Einheit.
+- Definition einer Property:
+    ```csharp
+    class Circle {
+        private double rad = 0.0;
+        public double Radius {      // Property Radius
+            get { return rad; }     // Getter-Methode
+            set { rad = value; }    // Setter-Methode
+        }
+    }
+    ```
+- Verwendung einer Property:
+    ```csharp
+    Circle c = new Circle();
+    c.Radius = 5.0; // Ausführung der Setter-Methode
+    double r = c.Radius; // Ausführung der Getter-Methode
+    ```
+- Uniform Access Principle
+  - Zugriff auf Datenkomponente oder auf eine Property unterscheiden sich nicht.
 
-Verwendung wie Felder nur, dass benuterdefinierte Aktionen beim Setzen bzw. Lesen ausgeführt werden können. Relisiert Uniform Access Principle, also kann nicht zwischen Datenkomponente und Property rein synntaktisch nicht unterschieden werdn.
+## Indexers
+- Zugriff auf ein Element einer Collection mit dem []-Opererator.
+- Definition eines Indexers:
+    ```csharp
+    class BirthdayList {
+        public DateTime this[string name] {
+            get { return GetBirthDay(name); }
+            set { SetBirthDay(name, value); }
+        }
+    }
+    ```
+- Verwendung eines Indexers:
+    ```csharp
+    BirthdayList bList = new BirthdayList();
+    bList["Huber"] = new DateTime(1970, 12, 24);
+    Console.Write("Geb.Tag: {0}", bList["Huber"]);
+    ```
+
+## Überladen von Operatoren
+- Überladen von arithmetischen, Vergleichs- und Bitoperatoren
+    ```csharp
+    class Rational {
+        public static Rational operator+(Rational r1, Rational r2){
+            return new Rational(r1.a*r2.b + r2.a*r1.b, r1.b*r2.b);
+        }
+    }
+    ```
+
+- Überladen von Konversionsoperatoren
+    ```csharp
+    class Rational {
+        public static implicit operator double(Rational r) {
+            return (double)r.a/r.b;
+        }
+        public static explicit operator long(Rational r) {
+            return r.a/r.b;
+        }
+    }
+    ```
+
+- Verwendung überladener Operatoren
+    ```csharp
+    Rational r = new Rational(1,2) + new Rational(1,4);
+    double d = r; // implizite Konvertierung
+    long l = (long)r; // explizite Konvertierung
+    ```
 
 ## Vererbung
+- Nur Einfachvererbung ist möglich.
+- Wird keine Basisklasse angegeben, wird automatisch von Object abgeleitet.
+- Öffentliche und geschützte Methoden werden vererbt:    
+    <img src="../pics/2_advanced/7.png" alt="vererbung" width="650"/>
 
-Nur Einfachvererbung möglich. Automatische Vererbung von der Klasse Object. Öffentliche und protected Methoden werden vererbt.
+## Überschreiben von Methoden: override
+- Dynamisch zu bindende Methoden müssen als virtual deklariert werden.
+- Sollen virtuelle Methoden überschrieben werden, müssen sie als override oder new deklariert werden.  
+    <img src="../pics/2_advanced/8.png" alt="override" width="650"/>
 
-### Überschrieben von Methoden
+## Überschreiben von Methoden: new
+- Eine mit new deklarierte Methode ist unabhängig von der gleichnamigen Methode (mit gleicher Signatur) der Basisklasse.
+- Referenzen mit dem statischen Typ der Basisklasse haben keinen Zugang mehr zur mit new deklarierten Methode.  
+    <img src="../pics/2_advanced/9.png" alt="new" width="650"/>
 
-Für dynamische Bindung MUSS das Keyword virtual verwendet werden. Um sie zu überschrieben muss override ode new angegeben werden.
+## Gegenüberstellung von new und override
+<img src="../pics/2_advanced/10.png" alt="newoverride" width="650"/>
 
-#### Überschrieben von Methoden mit new
-
-Neue Methode, die den selben Namen hat, wie die in der Basisklasse.
-Mit new deklerierte Methoden muss der statische Typ (Links) derselbe sein, in dem die Dekleration gschehen ist.
-
-**Anwendung**: Austausch von Basisklassen soll sich nicht auf Funktionalität von abgeleiteten Klassen auswirken. (Fragile Base Class Problem: Es wird unbeabsichtigt eine Methode überschrieben).
-
-## TODO: ADD REST
+## Anwendung von new
+- Austausch von Basisklassen soll sich nicht auf Funktionalität von abgeleiteten Klassen auswirken (*Fragile Base Class Problem*).  
+    <img src="../pics/2_advanced/11.png" alt="new" width="650"/>
 
 ## Abstrakte Klassen und Interfaces
+<img src="../pics/2_advanced/12.png" alt="abstract" width="650"/>
 
-### Explizite Implementierung von Interfaces
+## Explizite Implementierung von Interface-Methoden
+- Interface-Methoden können durch Qualifikation mit dem Interface-Namen explizit implementiert werden.
+- Methode darf weder public noch private deklariert werden.
+- Statischer Typ einer Referenz bestimmt, welche Methode sichtbar ist  
+    <img src="../pics/2_advanced/13.png" alt="interface" width="650"/>
 
-## Exceptions
+## Ausnahmen (Exceptions)
+- Ausnahmen werden nicht im Methodenkopf deklariert.
+- Ausnahmen müssen nicht behandelt werden
+    ```csharp
+    StreamReader sr = null;
+    try {
+        sr = new StreamReader(
+        new FileStream("data.txt", FileMode.Open));
+        sr.ReadLine();
+    }
+    catch(FileNotFoundException e) {…}
+    catch(IOException e) // Ausnahmenfilter
+        when(e.InnerException is ArgumentException) {…}
+    catch(IOException e) {…}
+    catch { } // Behandlung aller anderen Exceptions
+    finally { // wird immer durchlaufen
+        if (sr != null) sr.Close();
+    }
+    ```
 
 ## Arrays
+- Eindimensionale Arrays
+  - Deklaration: `int[] arr;`
+  - Initialisierung: `arr = new int[] {1,2,3};` oder `arr = {1,2,3};`
+- Mehrdimensionale Arrays
+  - „Jagged“ Arrays
+    ```csharp
+    int[][] m = new int[2][];
+    m[0] = new int[]{1,2};
+    m[1] = new int[]{4,5,6};
+    m[1][2] = 9;
+    ```
+- Rechteckige Arrays
+    ```csharp
+    int[,] m = {{1,2,3},{4,5,6}};
+    m[1,2] = 9;
+    ```  
+<img src="../pics/2_advanced/14.png" alt="interface" width="250"/>
