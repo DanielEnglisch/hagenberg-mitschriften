@@ -28,7 +28,7 @@
 
 ## .NET Framework 2.0 – 4.7 (Full Framework)
 
-<img src="../pics/1_netarch/1.png" alt="Framework" width="500"/>
+<img src="../pics/1_netarch/1.png" alt="Framework" width="650"/>
 
 ## arianten von .NET
 - Das .NET-Framework steht ausschließlich für Windows zur Verfügung.
@@ -61,27 +61,27 @@
 
 ## Die .Net-Plattform
 
-<img src="../pics/1_netarch/2.png" alt="platform" width="500"/>
+<img src="../pics/1_netarch/2.png" alt="platform" width="650"/>
 
 ## .NET Framework und die UWP (Windows 10)
 
-<img src="../pics/1_netarch/3.png" alt="uwp" width="500"/>
+<img src="../pics/1_netarch/3.png" alt="uwp" width="650"/>
 
 ## .Net Standard
 
-<img src="../pics/1_netarch/3.png" alt="uwp" width="500"/>
+<img src="../pics/1_netarch/3.png" alt="uwp" width="650"/>
 
   - Es existieren viele verschiedene Varianten von .NET.
   - Portieren von Code ist aufwändig, da sich auch die Basis-Bibliotheken unterscheiden.
   - Portable Class Libraries (PCL) sind unbefriedigend, da Entwickler auf größte gemeinsame Funktionalität eingeschränkt ist.
 
-<img src="../pics/1_netarch/4.png" alt="standard" width="500"/>
+<img src="../pics/1_netarch/4.png" alt="standard" width="650"/>
 
 - Die .NET-Standard-Library ist eine Spezifikation von .NET-APIs, die von mehreren
 Laufzeitumgebungen unterstützt werden.
 
-<img src="../pics/1_netarch/5.png" alt="standard2" width="500"/>
-<img src="../pics/1_netarch/6.png" alt="standard3" width="500"/>
+<img src="../pics/1_netarch/5.png" alt="standard2" width="650"/>
+<img src="../pics/1_netarch/6.png" alt="standard3" width="650"/>
 
 ## NET Framework Compatibility Mode
 
@@ -153,12 +153,12 @@ funktionale Sprachen)
   - Objektorientiertes Programmiermodell,
   - ermöglicht sprachübergreifende Verwendung von Typen.
 
-  <img src="../pics/1_netarch/7.png" alt="cts" width="500"/>
+  <img src="../pics/1_netarch/7.png" alt="cts" width="650"/>
 
 ## Common Type System – Beispiel
 - Über references können andere Sprachen hinzugefügt werden
 
-<img src="../pics/1_netarch/8.png" alt="ctsbsp" width="500"/>
+<img src="../pics/1_netarch/8.png" alt="ctsbsp" width="650"/>
 
 ## Common Language Specification (CLS)
 
@@ -181,11 +181,11 @@ funktionale Sprachen)
   - MSIL: Microsoft Intermediate Language.
 
 ## ILDASM
-<img src="../pics/1_netarch/9.png" alt="ildasm" width="500"/>
+<img src="../pics/1_netarch/9.png" alt="ildasm" width="650"/>
 
 ## Virtual Execution System (VES)
 
-<img src="../pics/1_netarch/10.png" alt="ves" width="500"/>
+<img src="../pics/1_netarch/10.png" alt="ves" width="650"/>
 
 ## Aufgaben des VES
 
@@ -220,14 +220,14 @@ funktionale Sprachen)
     - Aufruf von Win32 API-Funktionen
 
 ## Übersetzung und Ausführung
-  <img src="../pics/1_netarch/11.png" alt="ves" width="500"/>
+  <img src="../pics/1_netarch/11.png" alt="ves" width="650"/>
 
 ## Just in Time Compiler (JIT)
 
 - IL-Code wird immer kompiliert.
 - Code-Generierung bei erstem Methodenaufruf.
 
-<img src="../pics/1_netarch/12.png" alt="jit" width="500"/>
+<img src="../pics/1_netarch/12.png" alt="jit" width="650"/>
 
 #### Kommentar
     * Bei Aufruf einer Methode also zb Methode 1 ruft Methode 2 auf, dann wird automatisch der JIT Compiler aufgerufen
@@ -249,7 +249,7 @@ funktionale Sprachen)
 <img src="../pics/1_netarch/13.png" alt="net" width="250"/>
 
 ## Assemblys
-<img src="../pics/1_netarch/14.png" alt="asse" width="500"/>
+<img src="../pics/1_netarch/14.png" alt="asse" width="650"/>
 
 ## Managed/Unmanged Code/Types
 
@@ -261,7 +261,7 @@ funktionale Sprachen)
 - Nur Managed Types können über Assembly-Grenzen hinweg verwendet werden.
 
 ## Managed/Unmanaged Code
-<img src="../pics/1_netarch/15.png" alt="asse" width="500"/>
+<img src="../pics/1_netarch/15.png" alt="asse" width="650"/>
 
 ## Managed/Unmanaged Types
-<img src="../pics/1_netarch/16.png" alt="asse" width="500"/>
+<img src="../pics/1_netarch/16.png" alt="asse" width="650"/>
