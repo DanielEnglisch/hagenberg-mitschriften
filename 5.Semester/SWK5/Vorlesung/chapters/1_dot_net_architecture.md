@@ -30,7 +30,7 @@
 
 <img src="../pics/1_netarch/1.png" alt="Framework" width="650"/>
 
-## arianten von .NET
+## Varianten von .NET
 - Das .NET-Framework steht ausschließlich für Windows zur Verfügung.
 - .NET Core
   - Open-Source-Projekt unter Führung von Microsoft
