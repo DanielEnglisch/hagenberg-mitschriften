@@ -14,9 +14,9 @@
 
 ## Was sind Assemblys?
 - Eine Assembly fasst folgende Daten zu einer logischen Einheit zusammen:
-  - Code: Ausführbarer IL-Code.
-  - Metadaten: Selbstbeschreibung der Assembly.
-  - Ressourcen: Strings, Icons, Bilder, …
+  - **Code**: Ausführbarer IL-Code.
+  - **Metadaten**: Selbstbeschreibung der Assembly.
+  - **Ressourcen**: Strings, Icons, Bilder, …
 - Ressourcen können in Assembly eingebettet sein oder auf externe Dateien verweisen.
 - Code und Metadaten können auf mehrere Module verteilt sein.
 - Assembly enthält ein Manifest: „Inhaltsverzeichnis“ der Assembly.
