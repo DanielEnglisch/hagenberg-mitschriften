@@ -135,6 +135,54 @@ automatisch generierter Code.
 
 <img src="../pics/2_advanced/4.png" alt="types" width="650"/>
 
+## Enumerationen
+- Deklaration und Verwendung wie in C++
+- Syntax: [modifiers] enum identifier [:base-type]  {enumerator-list};
+- Enumerationskonstanten müssen qualifiziert werden
+- Beispiel:
+```csharp
+enum Day:byte {Sun = 1, Mon, Tue, Wed, Thu, Fri, Sat };
+Day d = Day.Sat;
+Console.WriteLine("day = {0}", d);
+//Output day = Sat
+```
+
+## Strukturen
+- Benutzer-definierbarer Typ, der sich wie einfacher Typ verhält:
+  - Werte werden am Stack/im umgebenden Objekt angelegt,
+  - Lebensdauer ist auf Lebensdauer des umgebendenen Blocks beschränkt,
+  - bei Zuweisung wird Wert kopiert (nicht Referenz).
+- Strukturen können nicht erben oder vererben.
+- Strukturen können Interfaces implementieren.
+- Felder dürfen bei Deklaration nicht initialisiert werden.
+- Default-Konstruktor darf nicht definiert werden.
+- Vorteile
+   - speichersparend,
+   - müssen nicht vom GC verwaltet werden.
+   
+### Strukturen Beispiele
+#### Definition
+```csharp
+struct Color {
+  public byte r, g, b:
+  public Color(byte r, byte g, byte b) {
+    this.r = r; this.g = g; this.b = b;
+  }
+}
+```
+- kann Interface implementieren
+- kann davon auch keinen Referenzdatentyp ableiten
+
+#### Verwendung
+```csharp
+// Initialisierung mit Default-Werten(0)
+Color black = new Color();
+Color yellow = new Color(255, 255, 0);
+yellow.r = 200;
+```
+- mit new nicht automatisch Speicherallokierung.
+- new in Funktion, dann Referenzspeicherung
+
 ## Boxing und Unboxing
 
 - *Boxing*: **Wertetyp -> Referenztyp**
