@@ -12,7 +12,7 @@
   - [Nullable Types](#nullable-types)
   - [Klassen](#klassen)
   - [Sichtbarkeitsattribute](#sichtbarkeitsattribute)
-- [Konstruktoren](#konstruktoren)
+  - [Konstruktoren](#konstruktoren)
   - [Destruktor](#destruktor)
   - [Verwendung von IDisposable](#verwendung-von-idisposable)
   - [Felder und Konstanten](#felder-und-konstanten)
@@ -74,8 +74,7 @@
   - Enumerationen
   - Blöcke
 - Deklarationsreihenfolge ist nicht relevant.
-- Lokale Variablen müssen vor Verwendung deklariert werden.
-- Beispiel  
+- Lokale Variablen müssen vor Verwendung deklariert werden.  
   <img src="../pics/2_advanced/1.png" alt="bsp" width="350"/>
 
 
@@ -95,7 +94,7 @@
     ```
 
 ## Operatoren
-<img src="../pics/2_advanced/2.png" alt="operators" width="650"/>
+<img src="../pics/2_advanced/2.png" alt="operators" width="700"/>
 
 ## Präprozessor
 - Unterstützte Präprozessor-Direktiven:
@@ -109,12 +108,12 @@
     // Code für Release-Version
     #endif
     ```
-  - #region, #endregion: Kennzeichnung von Code-Blöcken für Editoren, z. B.
+  - `#region, #endregion`: Kennzeichnung von Code-Blöcken für Editoren, z. B.
 automatisch generierter Code.
 - Benutzerdefinierte Makros sind nicht möglich.
 
 ## Typen 
-<img src="../pics/2_advanced/3.png" alt="types" width="650"/>
+<img src="../pics/2_advanced/3.png" alt="types" width="700"/>
 
 ## Werte- und Referenztypen
 - Wertetypen (value types)
@@ -128,7 +127,9 @@ automatisch generierter Code.
   - Bei Zuweisung wird Referenz, aber nicht das referenzierte Objekt kopiert.
 
 #### Kommentar
-    * gibt beim kopieren unterschiede, achtung bei value übergabe bei werten wird Kopie übergeben -> Änderungen bringen also nichts, bei Referenz schon!
+    * gibt beim kopieren unterschiede, 
+        achtung bei value übergabe bei werten wird Kopie übergeben 
+        -> Änderungen bringen also nichts, bei Referenz schon!
 
 ## Einfache Typen
 
@@ -136,7 +137,7 @@ automatisch generierter Code.
 
 ## Boxing und Unboxing
 
-- Boxing: Wertetyp -> Referenztyp
+- *Boxing*: **Wertetyp -> Referenztyp**
 - Boxing wird implizit durchgeführt, wenn ein Objekt benötigt wird, aber
 ein Wert vorhanden ist.
 - Beispiel:
@@ -144,7 +145,7 @@ ein Wert vorhanden ist.
     Console.WriteLine("i={0} ", i); // viel speicher overhead
     string s = 123.ToString();
     ```
-- Unboxing: Referenztyp -> Wertetyp
+- *Unboxing*: **Referenztyp -> Wertetyp**
 - Unboxing muss explizit mit Cast durchgeführt werden.
 - Beispiel:
     ```csharp
@@ -206,10 +207,10 @@ ein Wert vorhanden ist.
 
 <img src="../pics/2_advanced/5.png" alt="security" width="650"/>
 
-# Konstruktoren
+## Konstruktoren
 - Konstruktoren dürfen überladen werden.
 - Konstruktor der Basisklasse wird im Kopf mit base aufgerufen.
-- Anderer Konstruktor kann im Kopf mit this aufgerufen werden.
+- *Anderer* Konstruktor kann im Kopf mit this aufgerufen werden.
 - Generierter Default-Konstruktor initialisiert alle Felder mit Standardwerten.
     ```csharp
     public class Ellipse {
@@ -270,10 +271,10 @@ ein Wert vorhanden ist.
     ```
 ## Methoden
 - Objektmethoden
-  - Aufruf: object.Method()
+  - Aufruf: *object.Method()*
   - Überladen wie in Java möglich.
 - Klassenmethoden (statische Methoden)
-  - Aufruf: Class.Method()
+  - Aufruf: *Class.Method()*
     ```csharp
     class Date {
         enum Day { Sun, Mon, Thu, ... }
@@ -290,15 +291,15 @@ ein Wert vorhanden ist.
 ## Arten von Parametern
 - Eingangsparameter („*call by value*“)
   - Definition: `int Twice(int m) { return 2*m; }`
-  - Aufruf: `m=5; n = Twice(m); // m==5, n==10`
+  - Aufruf:     `m=5; n = Twice(m); // m==5, n==10`
 - Übergangsparameter (ref-Parameter)
   - ref-Parameter muss initialisiert sein.
   - Definition: `void Twice(ref int n) { n *= 2; }`
-  - Aufruf: `n=5; Twice(ref n); // n==10`
+  - Aufruf:     `n=5; Twice(ref n); // n==10`
 - Ausgangsparameter (out-Parameter)
   - out-Parameter muss nicht initialisiert sein.
   - Definition: `void Twice(int m, out int n) { n = 2*m; }`
-  - Aufruf: `m=5; Twice(m, out n); // m==5, n==10`
+  - Aufruf:     `m=5; Twice(m, out n); // m==5, n==10`
 
 ## Variable Anzahl von Parametern
 - Definition einer Methode, die eine variable Anzahl von Parametern verarbeiten kann:
@@ -312,7 +313,7 @@ ein Wert vorhanden ist.
 - Aufruf
   - Variable Anzahl von Parametern
     ```csharp
-    double sum = Sum(1,2,3,4); // sum==10
+    double sum = Sum(1,2,3,4); // sum==10, 1,2,3,4 automatische Konvertierung als Array
     ```
   - Parameterübergabe in Form eines Arrays
     ```csharp
@@ -417,12 +418,12 @@ ein Wert vorhanden ist.
 ## Explizite Implementierung von Interface-Methoden
 - Interface-Methoden können durch Qualifikation mit dem Interface-Namen explizit implementiert werden.
 - Methode darf weder public noch private deklariert werden.
-- Statischer Typ einer Referenz bestimmt, welche Methode sichtbar ist  
+- Statischer Typ einer Referenz bestimmt, welche Methode sichtbar ist.   
     <img src="../pics/2_advanced/13.png" alt="interface" width="650"/>
 
 ## Ausnahmen (Exceptions)
 - Ausnahmen werden nicht im Methodenkopf deklariert.
-- Ausnahmen müssen nicht behandelt werden
+- Ausnahmen müssen nicht behandelt werden.
     ```csharp
     StreamReader sr = null;
     try {
