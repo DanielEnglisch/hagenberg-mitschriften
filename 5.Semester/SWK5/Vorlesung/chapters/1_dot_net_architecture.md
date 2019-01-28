@@ -50,7 +50,7 @@
 ## NET Core
 - Motivation
   - Verschiedene Varianten des .NET-Frameworks für Desktop, Store Apps, Windows Phone.
-  - Entwicklung Framework-übergreifender Anwendung ist schwierig ( Portable Class Libraries).
+  - Entwicklung Framework-übergreifender Anwendung ist schwierig ( -> Portable Class Libraries).
   - Maschinenweite Installation: Verschiedene Versionen beeinflussen sich gegenseitig.
 - Eigenschaften
   - Plattformübergreifende Implementierung
@@ -112,7 +112,7 @@ Laufzeitumgebungen unterstützt werden.
   - lädt dynamisch Komponenten (richtige Version).
 - CLR stellt Verbindung zum Betriebssystem her.
 - CLR versteht eine Zwischensprache , in die alle .NET-Programme übersetzt werden -> IL.
-- Die Typen der Programme müssen sich an gewisse Spielregeln halten CTS.
+- Die Typen der Programme müssen sich an gewisse Spielregeln halten -> CTS.
 - Zwischensprache und Informationen über Programme werden in Assemblys verpackt.
 
 - CLR ist eine virtuelle Maschine = mit Software realisierter Prozessor.
