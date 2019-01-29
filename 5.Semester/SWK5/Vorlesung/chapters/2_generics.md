@@ -118,7 +118,7 @@ Unterschiede zu C++ und Java für die Klausur relevant auch einordnen können.
 
 ## Constructor Constraint
 
-Es kann ein Default Kontruktor von einem generischen Typ gefordert werden, falls das Anlegen einer Variable dieses Typs erforderlich ist. Auch andere Konstruktoren können gefordert werden. Man kann auch bestimmen, dass ein Wertetyp übergeben wird: where V: struct.
+Es kann ein Default Kontruktor von einem generischen Typ gefordert werden, falls das Anlegen einer Variable dieses Typs erforderlich ist. Auch andere Konstruktoren können gefordert werden. Man kann auch bestimmen, dass ein Wertetyp übergeben wird: `where V: struct`.
 
 ```csharp
 public class Node<K,V> where V : new() { 
@@ -167,7 +167,7 @@ Beim Aufrufen dieser Methode muss nicht unbedingt der generische Typ angegeben w
 
 Das Laufzeitsystem von C# kennt generische Typen, in Java kennt der Bytecode diese nicht. C# weiß zu Laufzeit welche Datentypen eingesetzt wurden.
 
-Auf IL Ebene gibt es Generics. Erst zur Laufzeit folgt die Instanzierung. Erst dann wird für T ein Typ eingesetzt. Für alle refernztypen gemeinsam wird einmal instanziert. In Java hingegen schon beim Kompilieren.
+Auf IL Ebene gibt es Generics. Erst zur Laufzeit folgt die Instanzierung. Erst dann wird für T ein Typ eingesetzt. Für alle referenztypen gemeinsam wird einmal instanziert. In Java hingegen schon beim Kompilieren.
 
 C#
 ```csharp
