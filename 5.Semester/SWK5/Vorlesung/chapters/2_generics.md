@@ -43,12 +43,14 @@ Hier können hingegen alle Personen Objekte eingefügt werden.
 
 Einsatz vom Datentyp `object` anstatt Generics erzeugt einen erheblichen Overhead beim Un/Boxing. Aufpassen auf statischer/dynamischer Typ zu Laufzeit. Wenn nur ein homogener Stack erzeugt werden will kann trotzdem zb. ein double oder string hineingeworfen werden.
 
+Problem 1: Laufzeitverlust durch Boxing und Unboxing.
 ```csharp
 // unboxing / boxing laufzeit verlust
 Stack s = new Stack(10); s.Push(1);
 int i = (int)s.Pop();
 ```
 
+Problem 2: Typsicherheit zur Übersetzungszeit nicht überprüfbar.
 ```csharp
 // typsicherheit zur Laufzeit nicht überprüfbar
 s.Push(3.14); 
@@ -105,6 +107,10 @@ public class LinkedList<K,V> where K : IComparable<K> {
         while (…) { 
             if (key.CompareTo(current.key)) {
 …
+```
+```csharp
+LinkedList<string, int> strList;
+//LinkedList<object, int> objList; // implementiert IComparable nicht
 ```
 
 Durch constraints kann man den Verwender einschränken und vorgeben welche DT übergeben werden können --> strengere Typenüberprüfungen, Fehler beim Instanzieren mit falscher DT.
@@ -208,13 +214,13 @@ Performance-Gewinn bei generischen Behälterklassen:
   list.add(100); int item = list[0];
   ```
 
-Geringerer Speicherplatzbedarf bei Behältern mit Wertetypen.   
-Zugriff auf generische Typparameter zur Laufzeit:
-```csharp
-List<int> list = new List<int>(); 
-Type collType = list.GetType();
-Type[] paramType = collType.GetTypeParameters();
-```
+- Geringerer Speicherplatzbedarf bei Behältern mit Wertetypen.   
+- Zugriff auf generische Typparameter zur Laufzeit:
+  ```csharp
+  List<int> list = new List<int>(); 
+  Type collType = list.GetType();
+  Type[] paramType = collType.GetTypeParameters();
+  ```
 Type ist das Gegenstück zu GetClass() in Java.
 
 Generics werden mit Assemblys ausgeliefert und können wiederverwendet werden, somit wird CodeBloat verhindert.
@@ -225,15 +231,13 @@ Zugriff auf Typeparameter mit Reflection während der Laufzeit.
 
 ## Unterschiede zu Generics in Java
 
-Standarddatentypen können in Java nicht als Typparameter verwendet werden.
-Es können keine Contraints definiert werden.
-- Umwandlung in Referenztypen mithilfe von Wrapper-Klassen.
+- Standarddatentypen können in Java nicht als Typparameter verwendet werden. (Es können keine Contraints definiert werden.)
+  - Umwandlung in Referenztypen mithilfe von Wrapper-Klassen.
 
-In Java stehen für Typparameter keine Konstruktoren zur Verfügung (auch nicht der Standardkonstruktor).
+- In Java stehen für Typparameter keine Konstruktoren zur Verfügung (auch nicht der Standardkonstruktor).
 
-Metadaten zu Typparametern sind in Java nur eingeschränkt verfügbar.
-- z. B. für Objekte vom Typ ArrayList<String> geht die Information über den Elementtyp verloren (type erasure). Es wird nur `object` zurückgegeben. Dieses Phänomen gibt es NICHT in C#.
- 
+- Metadaten zu Typparametern sind in Java nur eingeschränkt verfügbar.
+  - z. B. für Objekte vom Typ ArrayList<String> geht die Information über den Elementtyp verloren (type erasure). Es wird nur object` zurückgegeben. Dieses Phänomen gibt es NICHT in C#.
     ```csharp
     ArrayList<Integer> list = ...
     list.add(1); // Type erasure 
@@ -250,11 +254,10 @@ Metadaten zu Typparametern sind in Java nur eingeschränkt verfügbar.
  <img src="../pics/1.PNG" alt="Java|Bytecode" width="500"/>
   
 
-Für Generics musste die JVM nicht erweitert werden, da diese sowieso zur Kompilzeit übersetzt werden und es werden keine Metadaten gespeichert.
-
-Zur Laufzeit müssen Typenkonversionen durchgeführt werden, was die Performance verschechtert.
-
-Erhöhter Speicherplatzbedarf bei Verwendung von Wrapper-Klassen.
+- Für Generics musste die JVM nicht erweitert werden, da diese sowieso zur Kompilzeit übersetzt werden und es werden keine Metadaten gespeichert.
+- Einbußen bei Laufzeit:
+  - Zur Laufzeit müssen Typenkonversionen durchgeführt werden, was die Performance verschechtert.
+- Erhöhter Speicherplatzbedarf bei Verwendung von Wrapper-Klassen.
 
 Man darf für T keine Konstruktoren voraussetzen. Kein T[] möglich eher Objekt[].
 
