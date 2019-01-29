@@ -237,12 +237,12 @@ Zugriff auf Typeparameter mit Reflection während der Laufzeit.
 - In Java stehen für Typparameter keine Konstruktoren zur Verfügung (auch nicht der Standardkonstruktor).
 
 - Metadaten zu Typparametern sind in Java nur eingeschränkt verfügbar.
-  - z. B. für Objekte vom Typ ArrayList<String> geht die Information über den Elementtyp verloren (type erasure). Es wird nur object` zurückgegeben. Dieses Phänomen gibt es NICHT in C#.
+  - z. B. für Objekte vom Typ ArrayList<String> geht die Information über den Elementtyp verloren (type erasure). Es wird nur `object` zurückgegeben. Dieses Phänomen gibt es NICHT in C#.
     ```csharp
     ArrayList<Integer> list = ...
     list.add(1); // Type erasure 
     ```
-    Integer geht zur Laufzeit verloren, kann nicht überreflection gefunden werden. Statische Typen gehen nicht verloren.
+    Integer geht zur Laufzeit verloren, kann nicht über reflection gefunden werden. Statische Typen gehen nicht verloren.
 
 - Statische Metadaten werden hingegen im Bytecode abgelegt: Für die Klasse class X implements List<String> { … } kann der Typparameter der generischen Basisklasse bestimmt werden.
 
@@ -251,17 +251,17 @@ Zugriff auf Typeparameter mit Reflection während der Laufzeit.
     class X implements List<String>{...}
     ```
 
- <img src="../pics/1.PNG" alt="Java|Bytecode" width="500"/>
+ <img src="../pics/1.PNG" alt="Java|Bytecode" width="600"/>
   
 
 - Für Generics musste die JVM nicht erweitert werden, da diese sowieso zur Kompilzeit übersetzt werden und es werden keine Metadaten gespeichert.
 - Einbußen bei Laufzeit:
-  - Zur Laufzeit müssen Typenkonversionen durchgeführt werden, was die Performance verschechtert.
+  - Zur Laufzeit müssen Typenkonversionen durchgeführt werden, was die Performance verschlechtert.
 - Erhöhter Speicherplatzbedarf bei Verwendung von Wrapper-Klassen.
 
 Man darf für T keine Konstruktoren voraussetzen. Kein T[] möglich eher Objekt[].
 
-<img src="../pics/2.PNG" alt="Ko-Kontravarianz" width="500"/>
+<img src="../pics/2.PNG" alt="Ko-Kontravarianz" width="600"/>
 
 ## Unterschiede zu C++ Templates
 
