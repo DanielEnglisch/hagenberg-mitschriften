@@ -329,7 +329,7 @@ Offizielle Microsoft [Dokumentation](https://docs.microsoft.com/de-de/dotnet/csh
 - Sei V < U. Dann ist 
     -  f ist **kovariant**, wenn f(V) < f(U)
     -  f ist **kontravariant**, wenn f(U) < f(V)
-    - f ist invariant, wenn fweder kovariant noch kontravariant ist.
+    - f ist **invariant**, wenn f weder kovariant noch kontravariant ist.
 
 ### Kovarianz bei Feldern
 
