@@ -45,9 +45,8 @@
 - Nur Managed Types können über Assembly-Grenzen hinweg verwendet werden.
 
 
-<img src="../pics/11_interop/managedunmanagedcode_1.png" />
-
-<img src="../pics/11_interop/managedunmanagedcode_2.png" />
+<img src="../pics/11_interop/managedunmanagedcode_1.png" width="500"/>
+<img src="../pics/11_interop/managedunmanagedcode_2.png" width="500"/>
 
 
 #### Kommentar
@@ -56,7 +55,6 @@
       
 
 ## COM – Common Object Model
-
 - Komponentenmodell für Windows vor .NET
 - Probleme mit C++
   - Binärlayout von Komponenten ist nicht definiert (dynamische Casts, „name mangling“, Speicherverwaltung, …).
@@ -73,8 +71,7 @@
     * speichert info in registry
 
 ## Interoperabilität mit COM
-
-<img src="../pics/11_interop/interopcom.png" />
+<img src="../pics/11_interop/interopcom.png" width="500"/>
 
 #### Kommentar
     * Marshalling bedeutet, dass die DT in der Repräsentierung angepasst werden muss
@@ -87,7 +84,6 @@
   - **tlbimp** *COMComponent.dll [/out:Wrapper.dll]*
   - Visual Studio: Referenz auf COM-Komponente hinzufügen.
 - .NET-Client:
-
   ```csharp
   class COMClient { [STAThread] // Client läuft in einem Single Threaded Appartment
       static void Main(string[] args) {
@@ -106,12 +102,10 @@
 
 #### Kommentar
     * durch das Hinzufügen einer Referenz auf ein COM wird ein managed wrapper erzeugt zur verwendung in C#
-    * 
 
 ## COM -> .NET
 
 - Interfaces und Klassen in .NET implementieren
-
   ```csharp
   [Guid("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
   public interface ICurrencyConverter {
@@ -127,7 +121,6 @@
   - **regasm** *[/tlb:TypeLibrary.tlb] Assembly.dll*
   - Visual Studio: Projekteinstellung Register for COM Interop = True
 - VB 6 Client:
-
   ```csharp
   Dim converter As ICurrencyConverter
   Set converter = New CurrencyCalculator
@@ -163,7 +156,6 @@ wordApp.Quit(ref objFalse, ref missing, ref missing);
 - C# 4.0 unterstützt optionale und benannte Parameter.
 - Beim Aufruf kann das Schlüsselwort ref weggelassen werden.
 - Damit können COM-Clients kompakter implementiert werden:
-
 ```csharp
 wordApp.Documents.Add();
 wordApp.Quit(SaveChanges: false);
@@ -181,7 +173,6 @@ wordApp.Quit(SaveChanges: false);
   - Zuweisung der DLL-Names und des Einstiegspunkts mit dem Attribut `DLLImport`.
   - Angabe von zusätzlichen Marshaling-Informationen.
 - Einfaches Beispiel:
-
   ```csharp
   using System.Runtime.InteropServices;
   class Test { 
@@ -203,7 +194,6 @@ wordApp.Quit(SaveChanges: false);
   - Aufrufkonvention, Zeichensatz, …
 - Marshalling:
   - Mit dem Attribut MarshalAs kann Standard-Marshalling überschrieben werden.
-  
       ```csharp
       public static extern void MyFunction(
         [MarshalAs(UnmanagedType.BStr)] string s);
@@ -236,7 +226,6 @@ wordApp.Quit(SaveChanges: false);
 ## MC++: C++ with Managed Extensions (C++/CLI)
 
 - Mit MC++ können .NET-Klassen verwendet werden.
-
   ```csharp
   using namespace System; // entspricht dem using-Befehl von C#
   int main() {
@@ -248,7 +237,6 @@ wordApp.Quit(SaveChanges: false);
   ```
 
 - Mit MC++ können .NET-Klassen implementiert werden, die auch in anderen .NET-Sprachen direkt verwendbar sind.
-
   ```csharp
   public ref class CurrencyConverter {
       std::map <string,double> *pCurrencyRates;
@@ -266,7 +254,7 @@ wordApp.Quit(SaveChanges: false);
 
 - Mit MC++ implementierte Klassen können als Schnittstelle zwischen Managed und Unmanaged Code dienen.
 
-  <img src="../pics/11_interop/verbindung_managedunmanaged.png" />
+  <img src="../pics/11_interop/verbindung_managedunmanaged.png" width="500"/>
   
 #### Kommentar
       * muss selbst für das Marshalling der Parameter sorgen
@@ -275,9 +263,9 @@ wordApp.Quit(SaveChanges: false);
 
 ## Verwendung von Managed Types in Unmanged Clients
 
-<img src="../pics/11_interop/verwendungmanagedtypesinunmanagedclients.png" />
+<img src="../pics/11_interop/verwendungmanagedtypesinunmanagedclients.png" width="500"/>
 
 ## Verwendung von Managed Types in Unmanged Clients
 - `pin_ptr<>` verhindert, dass Objekt verschoben wird.
 
-  <img src="../pics/11_interop/verwendungmanagedtypesinunmanagedclients_2.png" />
+  <img src="../pics/11_interop/verwendungmanagedtypesinunmanagedclients_2.png" width="500"/>
