@@ -97,15 +97,12 @@ public class TreeSet<T> : IEnumerable<T>{
 	```
 
 ## Streams: Klassenhierarchie
-
 <img width="500" src="../pics/3_base/2.png"/>
 
 ## Streams Bsp
-
 <img width="500" src="../pics/3_base/3.png"/>
 
 ## Serialisierung
-
 - Serialisierung ist der Prozess, mit dem Objekte in eine Form gebracht werden, in der sie
   - auf einem persistenten Medium gespeichert bzw.
   - zu einem anderen Prozess transportiert werden können.
