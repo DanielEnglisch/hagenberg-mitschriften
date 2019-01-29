@@ -109,7 +109,6 @@ Win32 API hat sich bis heute im Kern nicht geändert, es wurde jedoch mehrere Ab
     *  Vorzüge:
         *   GUI-Entwicklung wesentlich vereinfacht (Hauptgrund für Popularität von VB6)
         *   Unterstützung komponentenorientierter SW-Entwicklung
-
     * NachTeile:
         * Proprietäre Programmiersprache für größere Anwendungen unbrauchbar.
         * Kein Framework.
@@ -120,7 +119,6 @@ Win32 API hat sich bis heute im Kern nicht geändert, es wurde jedoch mehrere Ab
     * Grafik noch immer mit GDI
     * keine Geschäftslogik in VB
     * Komponentenmodell einfach erweiterbar (visuell erweiterbar)
-
 
 * Windows Forms 
     *  Layout: grafisches Design-Werkzeug, Möglichkeit zur Erweiterung bzw. Neuentwicklung von Steuerelementen. 
@@ -143,12 +141,11 @@ Win32 API hat sich bis heute im Kern nicht geändert, es wurde jedoch mehrere Ab
 
 
 ## Architektur
-
- <img src="../pics/7_wpf/net_architektur.png" alt=".NET Architektur" width="500"/>
+<img src="../pics/7_wpf/net_architektur.png" alt=".NET Architektur" width="500"/>
 
 #### Kommentare
     * wir werden uns auf REST konzentrieren
-
+    
  <img src="../pics/7_wpf/wpf_architektur.png" alt="WPF Architektur" width="500"/>
  
 #### Kommentare
@@ -185,7 +182,6 @@ Win32 API hat sich bis heute im Kern nicht geändert, es wurde jedoch mehrere Ab
 
 ## Deklerative Programmierung
 Benutzeroberflächen können in XAML (eXtensible Application Markup Language) beschrieben werden.
-
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Window xmlns="http://.../xaml/presentation" xmlns:x="http://.../xaml" x:Class="XamlExperiments.SimpleDialog" Title="XamlExperiments" Height="107" Width="200">
@@ -208,20 +204,17 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
         * XAML wird aus dem Designer generiert
 
 ## Trennung von Layout und Code
-
-<img src="../pics/7_wpf/layout_code.png" alt="Layout|Code" width="500"/>
+<img src="../pics/7_wpf/layout_code.png" alt="Layout|Code" width="550"/>
 
 #### Komentare
     * wie immer: sehr, sehr wertvoll, dass man die Arbeit aufteilen kann
     
 ## Das Übersetzungsmodell
-
-<img src="../pics/7_wpf/uebersetzungsmodell.png" alt="Übersetzungsmodell" width="500"/>
+<img src="../pics/7_wpf/uebersetzungsmodell.png" alt="Übersetzungsmodell" width="600"/>
 
 #### Kommentare
     * es kommt eine dll oder exe heraus, in welcher alles drinnen steht
     * -> sehr kompakte Form
-
 
 ## XAML
 ### Was ist XAML
@@ -234,7 +227,7 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
     * Klassen -> XML-Elemente
     * Properties -> XML-Attribute
     * Registrierung von Ereignisbehandlungsmethoden -> XML-Attribute.
-    * Es existieren zahlreiche Konverter, die Zeichenketten (Werte von XMLAttributen) in die pas Abbildung XAML  .NET-Konstrukteenden CLR-Datenty -> .NET-AKonstruktendeln.
+    * Es existieren zahlreiche Konverter, die Zeichenketten (Werte von XMLAttributen) in die pas Abbildung XAML -> .NET-Konstrukteenden CLR-Datenty -> .NET-AKonstruktendeln.
 
 #### Kommentare
     * ist dafür bestimmt um statische Workflows/Objektgrafiken zu beschreiben
@@ -242,14 +235,13 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
 
 ### Abbildung XAML -> .NET Konstrukte
 
-<img src="../pics/7_wpf/abbildung_xaml.png" alt="Abbildung XAML" width="500"/>
+<img src="../pics/7_wpf/abbildung_xaml.png" alt="Abbildung XAML" width="600"/>
 
 #### Kommentar
     * xaml element == c# objekt
 
 ### Eigenschaftselemente
 * Viele Properties können komplexe Datentypen aufweisen, z. B. die Property Content von Button:  
-
     ```csharp
     Button btn = new Button();
     ImageSource bitmap = new BitmapImage(new Uri(…));
@@ -259,12 +251,10 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
     btn.Content = image;
     ```
 *  Komplexe Datentypen sind nicht direkt auf XAML-Attribute abbildbar:
-
     ```csharp
     <Button Content="<Image …/>" /> <!-- funktioniert nicht! -->
     ```
 * Eigenschaftselemente können komplexe Datentypen aufnehmen:
-
     ```xaml
     <Button>
         <Button.Content>
@@ -277,10 +267,10 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
     * komplexe Propertys müssen als ein Property-Element dargestellt werden
 
 ### Kindelemente
-<img src="../pics/7_wpf/kindelemente.png" alt="" width="500"/>
+<img src="../pics/7_wpf/kindelemente.png" alt="" width="550"/>
 
 ### Kindelemente - Content Properties
-<img src="../pics/7_wpf/kindelemente_2.png" alt="" width="500"/>
+<img src="../pics/7_wpf/kindelemente_2.png" alt="" width="550"/>
 
 #### Kommentare
     * gibt Steuerelemente, die haben Properties 
@@ -293,7 +283,6 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
 ### Typkonverter
 
 *  In vielen Fällen können einfache Typen in XAML nur sehr schwerfällig beschrieben werden:
-    
     ```xaml
     <Button.Background>
         <SolidColorBrush>
@@ -305,27 +294,23 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
     ```
     
 * Typkonverter tragen zur Vereinfachung der XAML-Beschreibung bei
-    
     ```xaml
     <Button Background="White" />
     ```
     
 * Typkonverter sind von TypeConverter abgeleitet und werden mit dem Attribut TypeConverterAttribute mit einem Typ oder einer Property verbunden
-    
     ```csharp
     [TypeConverter(typeof(BrushConverter))] public abstract class Brush : … { … }
     ```
 
 ### Markup Extensions
 * Mit Markup-Extensions können Attributwerte flexibel definiert werden:
-    
     ```xaml
     <Element SomeProperty = "{MyMarkupExtension Prop1=Value}">
     ```
     
 * Die Markup-Extension fasst Parameter zusammen, die Property-Wert bestimmen.
-* ProvideValue liefert den Wert, welcher der Property zugewiesen wird.
-    
+* ProvideValue liefert den Wert, welcher der Property zugewiesen wird. 
     ```csharp
     public MyMarkupExtension: MarkupExtension {
      public override object ProvideValue(…);
@@ -339,7 +324,6 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
     *  StaticResource[Extension] 
     *  DynamicResource[Extension]
 * Beispiel:
-    
     ```xaml
     <Button Height="{x:Static Member = SystemParameters.IconHeight}"/>
     <TextBox Text="{Binding Path=LastName}"/>
@@ -352,7 +336,7 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
 
 * Mit XAML können Objekte beliebiger .NET-Klassen erzeugt werden.
 * Die Initialisierung erfolgt über Attribute (-> Properties) bzw. Typkonverter.  
-    <img src="../pics/7_wpf/einbindung_net_wpf.png" alt="einbindung_net_wpf" width="500"/>
+    <img src="../pics/7_wpf/einbindung_net_wpf.png" alt="einbindung_net_wpf" width="550"/>
 
 
 #### Kommentar
@@ -360,8 +344,7 @@ Benutzeroberflächen können in XAML (eXtensible Application Markup Language) be
 
 ## Aufbau von WPF-Programmen
 
-Hello World Code
-
+Hello World Code:
 ```csharp
 public class HelloWindow: Window {
  private Button btn;
@@ -394,21 +377,18 @@ public class HelloWindow: Window {
 
 ### Klassen Application und Window
 
-* Das Singleton Application verwaltet die Fenster und die Hauptereignisschleife einer WPF-Anwendung
-    
+* Das Singleton Application verwaltet die Fenster und die Hauptereignisschleife einer WPF-Anwendung  
     ```csharp
     Application app = new Application();
     ```
 
 *  Methode Run:  Start der Hauptereignisschleife 
-    
     ```csharp
     Window win = new Window();
     app.Run(win);
     ```
     
-* Equivalent zu:
-    
+* Equivalent zu: 
     ```csharp
     Window win = new Window();
     win.Show();
@@ -460,17 +440,15 @@ public partial class HelloWindow: Window {
 
 ### Das "Code-Behind" Konzept
 
-<img src="../pics/7_wpf/codebehind.png" alt="codebehind" width="500"/>
+<img src="../pics/7_wpf/codebehind.png" alt="codebehind" width="550"/>
 
 #### Kommentar
     *xaml wird im generierten Code geladen und verbindung hergestellt
 
-
 ## Klassen der WPF
 
 ### Basisklassen der WPF
-
-<img src="../pics/7_wpf/basisklassen.png" alt="basisklassen" width="500"/>
+<img src="../pics/7_wpf/basisklassen.png" alt="basisklassen" width="250"/>
 
 #### Kommentare
     * WPF - Objektorientiertes Framework
@@ -491,7 +469,6 @@ public partial class HelloWindow: Window {
 
 *  await/async vereinfacht die asynchrone Programmierung enorm
 *  Der Synchronisationskontext der WPF (DispatcherSynchronizationContext) sorgt dafür, dass nach Aufruf einer asynchronen Methode im UI-Thread, die Ausführung wieder im UIThread fortgesetzt wird.
-
     ```csharp
     void async Task < object > MethodExecutedInSomeThreadAsync() {…}
     void SomeEventHandler() {
@@ -568,7 +545,6 @@ Control.FontSizeProperty = DependencyProperty.Register(
 ### Anwendungsbeispiele für Dependency Properties
 
 *  Beispiel 1: Vererbung von Property-Werten
-    
     ```xaml
     <Window FontSize="20">
         <StackPanel>
@@ -579,7 +555,6 @@ Control.FontSizeProperty = DependencyProperty.Register(
     ```
     
 *  Beispiel 2: Styling von Steuerelementen 
-    
     ```xaml
     <Style TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="Green"/>
@@ -592,7 +567,6 @@ Control.FontSizeProperty = DependencyProperty.Register(
     ```
     
 *  Beispiel 3: „Abhorchen“ von Änderungen des Property-Werts 
-    
     ```csharp
     DependencyPropertyDescriptor propDescr = 
         DependencyPropertyDescriptor.FromProperty(
@@ -676,7 +650,7 @@ class DockPanel: Panel {
 
 ### Die wichtigsten Steuerelemente
 
-<img src="../pics/7_wpf/Steuerelemente.png" alt="steuerelemente" width="500"/>
+<img src="../pics/7_wpf/Steuerelemente.png" alt="steuerelemente" width="550"/>
 
 #### Kommentar
     *label == beliebiger content
@@ -685,7 +659,7 @@ class DockPanel: Panel {
 
 - Steuerelemente dieser Gruppe können ein beliebiges Kindelement enthalten (nicht nur eine Zeichenkette).
 - Beispiele:  
-    <img src="../pics/7_wpf/ContentControll.png" alt="ContentControll" width="500"/>
+    <img src="../pics/7_wpf/ContentControll.png" alt="ContentControll" width="550"/>
     
 #### Kommentare
     * StackPanel bedeutet horizontal bzw. vertikal anordnen -> kann Elemente zusammenfassen
@@ -695,23 +669,21 @@ class DockPanel: Panel {
 
 - Steuerelement besitzt neben dem Kindelement eine Überschrift.
 - Beispiele:  
-    <img src="../pics/7_wpf/HeaderContentControll.png" alt="HeaderContentControll" width="500"/>
+    <img src="../pics/7_wpf/HeaderContentControll.png" alt="HeaderContentControll" width="550"/>
 
 #### Kommentar
     * Controls die sowohl einen Content als auch einen Header haben
     
-
+    
 ### Steuerelemente zur Darstellung und Bearbeitung von Text
 - TextBlock: Darstellung von Text in verschiedenen Fonts und mit diversen Hervorhebungsarten.  
     <img src="../pics/7_wpf/text.png" alt="text" width="500"/>
 
 ### Steuerelemente mit mehreren Kindelementen (ItemsControl)
-
-<img src="../pics/7_wpf/Steuerelemente_2.png" alt="steuerelemente_2" width="500"/>
-
+<img src="../pics/7_wpf/Steuerelemente_2.png" alt="steuerelemente_2" width="550"/>
 
 ### Listen mit Auswahlmöglichkeit (Selector)
-<img src="../pics/7_wpf/list.png" alt="list" width="500"/>
+<img src="../pics/7_wpf/list.png" alt="list" width="550"/>
 
 #### Kommentare
     * Contentproperty sind die Items
@@ -729,7 +701,7 @@ class DockPanel: Panel {
 
 ### Die Layout-Klassen der WPF
 
-<img src="../pics/7_wpf/layout.png" alt="layout" width="500"/>
+<img src="../pics/7_wpf/layout.png" alt="layout" width="550"/>
 
 #### Kommentare
     * C# unterstützt nur Single inheritence
@@ -753,7 +725,7 @@ Kindelementen zugeordnet werden.
     * Physische Pixeldichte = Windows-Pixeldichte = 192 DPI
         * 96 logische Einheiten = 192 physische Einheiten = 1 Zoll
     * Fonts werden ebenfalls in logischen Einheiten angegeben: FontSize="11" entspricht FontSize="8.25pt" (8.25pt = 8.25/72in = 11/96in)  
-    <img src="../pics/7_wpf/panels.png" alt="panels" width="500"/>
+    <img src="../pics/7_wpf/panels.png" alt="panels_1" width="50"/>
 
 #### Kommentare
     * Aufgabe der Layoutcontainer: Kindelemente entsprechend der Wünsche anzupassen
@@ -769,24 +741,24 @@ Kindelementen zugeordnet werden.
   Minimale/Maximale Breite/Höhe.
 - HorizontalAlignment= ["Left"|"Right"|"Center"|"Stretch"]:  
   Horizontale Ausrichtung, falls LayoutZelle breiter ist als das Kindelement.  
-    <img src="../pics/7_wpf/layout_prop1.png" alt="layout_prop1" width="500"/>
+    <img src="../pics/7_wpf/layout_prop1.png" alt="layout_prop1" width="100"/>
 
 - VerticalAlignment= ["Top"|"Bottom"|"Center"|"Stretch"]:   
   Horizontale Ausrichtung, falls LayoutZelle höher ist als das Kindelement.  
-    <img src="../pics/7_wpf/layout_prop2.png" alt="layout_prop2" width="500"/>
+    <img src="../pics/7_wpf/layout_prop2.png" alt="layout_prop2" width="100"/>
 
 - Margin="Left,Top,Right,Bottom": 
   Abstand des Kindelements zu den Rändern der Layout-Zelle.
 - Padding="Left,Top,Right,Bottom": 
   Abstand des Inhalts zum Rand des Kindelements.  
-    <img src="../pics/7_wpf/layout_prop3.png" alt="layout_prop3" width="500"/>
+    <img src="../pics/7_wpf/layout_prop3.png" alt="layout_prop3" width="100"/>
 
 
 - LayoutTransform: 
   Transformationsmatrix, die auf Kindelement angewandt wird (bewirkt Verschiebung, Skalierung, Rotation bzw. Verzerrung). Umschließendes Rechteck wird neu berechnet.
 - Rendertransform: 
   Wie LayoutTransform, die Größe des umschließenden Rechtecks wird aber nicht neu ermittelt  
-    <img src="../pics/7_wpf/layout_prop4.png" alt="layout_prop4" width="500"/>
+    <img src="../pics/7_wpf/layout_prop4.png" alt="layout_prop4" width="100"/>
 
 #### Kommentare - Summary der folgenden Panels
     * Stackpanel - (horizontal oder vertikal) mit orientation festgelegt
@@ -803,7 +775,6 @@ Kindelementen zugeordnet werden.
 * Elemente können an maximal zwei angrenzenden Kanten angehängt werden. 
 * Wichtige Layout-Properties: 
     * Margin: Nur für Seiten relevant, an die das Element angehängt wurde.
-
     ```xaml
     <Canvas Name="layoutRoot">
         <Button                                      Background="Red"    >…</Button>
@@ -814,8 +785,7 @@ Kindelementen zugeordnet werden.
         <Button Canvas.Left="0"   Canvas.Bottom="0"  Background="Magenta">…</Button>
     </Canvas>
     ```  
-
-<img src="../pics/7_wpf/layout_canvas.png" alt="layout_canvas" width="500"/>
+    <img src="../pics/7_wpf/layout_canvas.png" alt="layout_canvas" width="250"/>
 
 ### Layout: StackPanel
 
@@ -835,8 +805,7 @@ Kindelementen zugeordnet werden.
     * Margin 
     * HorizontalAlignment (falls Orientation="Vertical")
     * VerticalAlignment (falls Orientation="Horizontal")  
-
-    <img src="../pics/7_wpf/layout_stackpanel.png" alt="layout_stackpanel" width="500"/>
+    <img src="../pics/7_wpf/layout_stackpanel.png" alt="layout_stackpanel" width="300"/>
 
 ### Layout: DockPanel
 
@@ -857,7 +826,7 @@ Kindelementen zugeordnet werden.
     * HorizontalAlignment: für oben, unten und im Zentrum angeordnete Elemente. 
     * VerticalAlignment: für links, rechts und im Zentrum angeordnete Elemente.  
 
-    <img src="../pics/7_wpf/layout_docker.png" alt="layout_dockpanel" width="500"/>
+    <img src="../pics/7_wpf/layout_docker.png" alt="layout_dockpanel" width="300"/>
 
 ### Layout: WrapPanel
 
@@ -877,7 +846,7 @@ Kindelementen zugeordnet werden.
     *  HorizontalAlignment (falls Orientation="Vertical"): Ausrichtung der Elemente innerhalb einer Zeile.
     *  VerticalAlignment (falls Orientation="Horizontal"): Ausrichtung der Elemente innerhalb einer Spalte  
 
-<img src="../pics/7_wpf/layout_wrappanel.png" alt="layout_wrappanel" width="500"/>
+<img src="../pics/7_wpf/layout_wrappanel.png" alt="layout_wrappanel" width="300"/>
 
 ### Layout: UniformGrid
 
@@ -898,7 +867,7 @@ Kindelementen zugeordnet werden.
     * HorizontalAlignment
     * VerticalAlignment  
 
-<img src="../pics/7_wpf/layout_uniform.png" alt="layout_uniform" width="500"/>
+<img src="../pics/7_wpf/layout_uniform.png" alt="layout_uniform" width="300"/>
 
 ### Layout Grid
 
@@ -922,7 +891,7 @@ Kindelementen zugeordnet werden.
 </Grid>
 ```
 
-<img src="../pics/7_wpf/layout_grid.png" alt="layout_grid" width="500"/>
+<img src="../pics/7_wpf/layout_grid.png" alt="layout_grid" width="250"/>
 
 * Der verfügbare Platz wird in Zeilen und Spalten zerlegt
 * Die Art der Zeile/Spalte bestimmt seine Höhe/Breite:
@@ -941,10 +910,10 @@ Kindelementen zugeordnet werden.
 
 ### ScrollViewer und Viewbox
 
-<img src="../pics/7_wpf/layout_scrollview.png" alt="layout_scrollview" width="500"/>
+<img src="../pics/7_wpf/layout_scrollview.png" alt="layout_scrollview" width="300"/>
+
 
 ## Ressourcen
-
 
 ### Ressourcen
 
@@ -965,7 +934,6 @@ Kindelementen zugeordnet werden.
 * Häufig benötigte Objekte können an einer zentralen Stelle definiert und mehrmals in der WPF-Anwendung verwendet werden
 *  Eine Ressource kann ein beliebiges .NET-Objekt sein, dem ein Schlüssel (x:Key) zugeordnet wird. 
 *  Definition von Ressourcen in XAML  
-    
     ```yaml
     <Window.Resources>
         <SolidColorBrush x:Key="backBrush" Color="Orange" /> 
@@ -991,8 +959,7 @@ Kindelementen zugeordnet werden.
 
 * StaticResource 
     * Ressource wird beim Laden des Fensters erzeugt und nur einmal auf das Ziel angewandt
-    * Ressource muss in XAML definiert werden, bevor sie verwendet wird.
-    
+    * Ressource muss in XAML definiert werden, bevor sie verwendet wird.  
     ```yaml
     <Button Background="{StaticResource backBrush}" … />
     ```
@@ -1004,7 +971,6 @@ Kindelementen zugeordnet werden.
 * DynamicResource 
     * Ressource wird geladen, wenn sie benötigt wird (wenn das Objekt, das die Ressource referenziert, erzeugt wird). 
     * Element wird aktualisiert, wenn sich Ressource ändert  
-    
     ```yaml
     <Button Background="{DynamicResource backBrush}" … />
     ```
@@ -1019,7 +985,7 @@ Kindelementen zugeordnet werden.
 
 ### Gültigkeitsbereiche von Ressourcen
 
-<img src="../pics/7_wpf/ressources_gültigkeitsbereich.png" alt="ressources_gültigkeitsbereich" width="500"/>
+<img src="../pics/7_wpf/ressources_gültigkeitsbereich.png" alt="ressources_gültigkeitsbereich" width="350"/>
 
 * Ressourcen können für jedes Element im Elementebaum definiert werden. 
 * Anwendungsglobale Ressourcen werden dem Applikationsobjekt zugeordnet
@@ -1037,7 +1003,6 @@ Kindelementen zugeordnet werden.
 ### Behandlung von Ereignissen
 
 * Die Verbindung von Ereignissen mit Ereignisbehandlungsmethoden kann in XAML oder im Code erfolgen (auf Basis von .NET-Delegates)  
-    
     ```yaml
     <Button Name="button1" Click="ButtonClick" Content="Button 1" /> 
     ```
@@ -1063,20 +1028,18 @@ Kindelementen zugeordnet werden.
     <img src="../pics/7_wpf/routed_events.png" alt="routed_events" width="500"/>
 
 *  Unterbrechen des Routings  
-    
     ```csharp
-    private void EventHandler(object sender, RoutedEventArgs e) { … e.Handled = true; // Ab jetzt werden keine weiteren Handler aufgerufen.
+    private void EventHandler(object sender, RoutedEventArgs e) { … e.Handled = true; 
+    	// Ab jetzt werden keine weiteren Handler aufgerufen.
     } 
     ```
     
 * Sender und Auslöser (Source) eines Ereignisses  
-    
     ```csharp
     private void EventHandler(object sender, RoutedEventArgs e) { 
     object source = e.Source; … 
     } 
     ```
-    
     * sender: Objekt, das sich bei der Ereignisquelle registriert hat. 
     * e.Source: Objekt, welches das Ereignis ausgelöst hat. 
     * e.OriginalSource: Objekt im Visual Tree, welches das Ereignis ausgelöst hat
@@ -1150,7 +1113,6 @@ public void SaveCanExecuteHandler(object sender, CanExecuteRoutedEventArgs e) {
 ### Definition einer Bindung
 - Mithilfe einer Bindung wird eine Property eines Quellobjekts (Source) mit einer Property eines Zielobjekts (Target) automatisch synchronisiert.  
     <img src="../pics/7_wpf/def_binding.png" alt="def_binding" width="500"/>
-
     ```xaml
     <Container DataContext="{StaticResource sourceObject}">
         <Target TargProperty1="{Binding Path=SrcProperty1}" />
@@ -1197,7 +1159,6 @@ public void SaveCanExecuteHandler(object sender, CanExecuteRoutedEventArgs e) {
 ### Kopplung zweier GUI-Elemente
 
 <img src="../pics/7_wpf/kopplung.png" alt="kopplung" width="500"/>
-
 ```xaml
 <StackPanel>
     <Slider Name="slider" 
@@ -1209,13 +1170,11 @@ public void SaveCanExecuteHandler(object sender, CanExecuteRoutedEventArgs e) {
             UpdateSourceTrigger=PropertyChanged}" … />
 </StackPanel>
 ```
-
-<img src="../pics/7_wpf/kopplung_2.png" alt="kopplung2" width="200"/>
+<img src="../pics/7_wpf/kopplung_2.png" alt="kopplung2" width="250"/>
 
 ### Propagation von Eigenschaftsänderungen
 
 - Klassen, die INotifyPropertyChanged implementieren, verständigen interessierte Clients von Wertänderungen an ihren Properties.  
-    
     ```csharp
     public class Person: INotifyPropertyChanged {
         private string name;
@@ -1236,8 +1195,7 @@ public void SaveCanExecuteHandler(object sender, CanExecuteRoutedEventArgs e) {
     ```
 
 - Behälterklassen müssen zusätzlich INotifyCollectionChanged implementieren, damit auch das Hinzufügen und Löschen von Elementen berücksichtigt wird.
-- ObservableCollection ist eine generische Implementierung dieses Interfaces:  
-    
+- ObservableCollection ist eine generische Implementierung dieses Interfaces:   
     ```csharp
     public class People : ObservableCollection<Person> { … }
     ```
@@ -1274,14 +1232,13 @@ public void SaveCanExecuteHandler(object sender, CanExecuteRoutedEventArgs e) {
 
 ### Typkonvertierung
 ValueConverter führen Typumwandlung zwischen Quell- und Ziel-Property durch.  
-<img src="../pics/7_wpf/value_converter.png" alt="value_converter" width="500"/>
+<img src="../pics/7_wpf/value_converter.png" alt="value_converter" width="550"/>
 
 ### Validierung
 * Bei der Konvertierung zwischen der Quell- und Ziel-Property können Fehler auftreten, die behandelt werden müssen.
 * Validierungsregeln sind für die Prüfung der Eingaben verantwortlich (eingebaute Regel: ExceptionValidationRule).
 * Validierungsfehler können im Code behandelt werden.
-* Steuerelemente können bei Validierungsfehlern mit einem eigenen Template gerendert werden (Validation.ErrorTemplate).  
-    
+* Steuerelemente können bei Validierungsfehlern mit einem eigenen Template gerendert werden (Validation.ErrorTemplate).    
     ```xaml
     <TextBox Validation.Error="HandleDateTimeValidationError" …>
         <TextBox.Text >
@@ -1298,7 +1255,6 @@ ValueConverter führen Typumwandlung zwischen Quell- und Ziel-Property durch.
     ```
 
 * Definition von benutzerdefinierten Validierungsregeln:  
-    
     ```xaml
     <TextBox Validation.Error="HandleDateTimeValidationError" …>
         <TextBox.Text>
@@ -1328,8 +1284,7 @@ ValueConverter führen Typumwandlung zwischen Quell- und Ziel-Property durch.
 * Mit jedem Datenbehälter können mehrere Sichten verbunden werden.
 * Sichten sind vollkommen entkoppelt von den Daten.
 * In der Sicht sind Navigations-, Sortier-, Gruppierungs- und Filterparameter gespeichert  
-    <img src="../pics/7_wpf/views_image.png" alt="value_converter" width="500"/>
-
+    <img src="../pics/7_wpf/views_image.png" alt="value_converter" width="250"/>
     ```csharp
     private void chkSortItems_Click(object sender, RoutedEventArgs e) {
         ICollectionView view =
@@ -1353,7 +1308,7 @@ ValueConverter führen Typumwandlung zwischen Quell- und Ziel-Property durch.
     * kann View mit z.B. Sortierregeln festlegen
 
 ### Model-View-ViewModel (MVVM)
-<img src="../pics/7_wpf/mvvm.png" alt="mvvm" width="500"/>
+<img src="../pics/7_wpf/mvvm.png" alt="mvvm" width="550"/>
 
 * ViewModel bereitet Daten für die View auf.
 * View und ViewModel sind nur über Datenbindung aneinander gekoppelt.
@@ -1363,16 +1318,15 @@ ValueConverter führen Typumwandlung zwischen Quell- und Ziel-Property durch.
     * benötigt eigene Klassen, die die Daten so aufbereiten, wie sie auf der View dann ange
 
 #### Beispiel
-<img src="../pics/7_wpf/mvvm_bsp.png" alt="mvvm_bsp" width="500"/>
+<img src="../pics/7_wpf/mvvm_bsp.png" alt="mvvm_bsp" width="550"/>
 
 #### Navigation im View-Modell
-<img src="../pics/7_wpf/mvvm_bsp2.png" alt="mvvm_bsp2" width="500"/>
+<img src="../pics/7_wpf/mvvm_bsp2.png" alt="mvvm_bsp2" width="550"/>
 
 ## Styles und Templates
 ### Styles
 * Styles fassen eine Menge von Eigenschaften zu einer Einheit zusammen.
 * Ein Style kann von mehreren Steuerelementen (unterschiedlichen Typs) verwendet werden.
-
     ```xaml
         <Window.Resources>
             <Style x:Key="controlStyle">
@@ -1390,25 +1344,22 @@ ValueConverter führen Typumwandlung zwischen Quell- und Ziel-Property durch.
         </StackPanel>
     ```  
     
-<img src="../pics/7_wpf/styles_img.png" alt="artstyles" width="500"/>
+<img src="../pics/7_wpf/styles_img.png" alt="artstyles" width="250"/>
 
 ### Arten von Styles
 * Styles können auf bestimmte Steuerelemente eingeschränkt werden ->
-    typisierte Styles:   
-    
+    typisierte Styles:    
     ```xaml
     <Style x:Key="controlStyle" TargetType="{x:Type Button}>
     <Setter Property="Background" Value="Yellow" />
     …
     </Style>
     ```
-- Benannte Styles (x:Key="name") müssen explizit referenziert werden:  
-    
+- Benannte Styles (x:Key="name") müssen explizit referenziert werden:   
     ```xaml
     <Button Style="{StaticResource controlStyle}" … >Press me</Button>
     ```
 - Implizite Styles werden auf alle Instanzen eines Steuerelements angewandt:  
-
     ```xaml
     <Style TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Yellow" />
@@ -1422,13 +1373,12 @@ ValueConverter führen Typumwandlung zwischen Quell- und Ziel-Property durch.
     </StackPanel>
     ```
 
-<img src="../pics/7_wpf/artstyles.png" alt="artstyles" width="500"/>
+<img src="../pics/7_wpf/artstyles.png" alt="artstyles" width="250"/>
 
 ### Trigger 
 - Property-Trigger:
     - Wertänderung einer Property löst Wertänderungen von anderen Properties aus.
 - Sobald die Bedingung nicht mehr erfüllt ist, werden Wertänderungen wieder zurückgenommen.  
-
     ```xaml
     <Style TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Yellow" />
@@ -1443,7 +1393,6 @@ ValueConverter führen Typumwandlung zwischen Quell- und Ziel-Property durch.
 
 - Ereignis-Trigger (EventTrigger)
     - Tritt ein (Routed) Event ein, werden Aktionen (TriggerAction) ausgelöst.
-    
     ```xaml
     <Style TargetType="{x:Type Button}">
         <Style.Triggers>
@@ -1454,14 +1403,12 @@ ValueConverter führen Typumwandlung zwischen Quell- und Ziel-Property durch.
     </Style>
     ```
 
-<img src="../pics/7_wpf/trigger_imgs.png" alt="trigger_imgs" width="500"/>
+<img src="../pics/7_wpf/trigger_imgs.png" alt="trigger_imgs" width="250"/>
 
 ### Control-Templates 
 * Das Verhalten von WPF-Steuerelementen (Logik) ist unabhängig von ihrer visuellen Repräsentation
 *  Mit Templates wird das Erscheinungsbild eines Steuerelements festgelegt, ohne auf die Logik Einfluss zu nehmen
-
-<img src="../pics/7_wpf/control_template.png" alt="control_template" width="500"/>
-
+<img src="../pics/7_wpf/control_template.png" alt="control_template" width="450"/>
 * WPF-Steuerelemente werden daher oft als look-less bezeichnet
 * Das Bindeglied zwischen Logik und Template stellen die Properties dar
 
@@ -1489,8 +1436,7 @@ ValueConverter führen Typumwandlung zwischen Quell- und Ziel-Property durch.
 ```xaml
 <Button Template="{StaticResource ovalBtnTempl}" Content="My Button 1" … />
 ```
-
-<img src="../pics/7_wpf/button_template.png" alt="button_template" width="500"/>
+<img src="../pics/7_wpf/button_template.png" alt="button_template" width="250"/>
 
 ContentPresenter ist ein Platzhalter für den Wert der Property Content.
 
@@ -1514,16 +1460,13 @@ Für {TemplateBindingpropertyName} ist ein Platzhalter für den Wert der Propert
 ```xaml
 <Button Template="{StaticResource ovalBtnTempl}" Padding="15" Background="LightBlue" Content="My Button 2" … />
 ```
-
-<img src="../pics/7_wpf/template_binding.png" alt="template_binding" width="500"/>
+<img src="../pics/7_wpf/template_binding.png" alt="template_binding" width="250"/>
 
 ## Animation und Grafik
 ### Animation
 * Viele Dependency-Properties können animiert werden: int, double, Color, Point, Size, Vector, Thickness, Rotation, …
 * Mit einem StoryBoard kann festgelegt werden, wie sich ein Propertywert in der Zeit ändern soll
-
-    <img src="../pics/7_wpf/animation.png" alt="animation" width="500"/>
-
+    <img src="../pics/7_wpf/animation.png" alt="animation" width="250"/>
     ```xaml
     <Style TargetType="{x:Type Button}">
         <Setter Property="LayoutTransform">
@@ -1544,7 +1487,6 @@ Für {TemplateBindingpropertyName} ist ein Platzhalter für den Wert der Propert
     </Style>
     ```
 
-
 ### 2D-Grafik
 * Grafikelemente werden wie andere Steuerelementen automatisch gerendert
 * Grafikelemente müssen nach dem Hinzufügen zum Visual Tree nicht neu gezeichnet werden
@@ -1552,12 +1494,11 @@ Für {TemplateBindingpropertyName} ist ein Platzhalter für den Wert der Propert
 * Mit Path können durch Geraden- oder Bézier-Segmente begrenzte Figuren dargestellt werden. 
 *  Grafikelemente können beliebig transformiert (skaliert, rotiert, …) werden
 *  Grafikelemente können mit boolschen Operationen kombiniert werden
-
     ```xaml
     <Path Stroke="DarkGreen" StrokeThickness="3" Fill="Orange" Data="M 10,10  C 10,300 50,200 300,200  L 10,10" />
     ```
 
-<img src="../pics/7_wpf/2d_graphics.png" alt="2d_graphics" width="500"/>
+<img src="../pics/7_wpf/2d_graphics.png" alt="2d_graphics" width="250"/>
 
 ### 3D-Grafik
 * WPF erlaubt die Visualisierung einfacher 3D-Modelle
