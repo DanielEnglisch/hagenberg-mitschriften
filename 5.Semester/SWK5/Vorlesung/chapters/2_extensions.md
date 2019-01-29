@@ -116,7 +116,7 @@ var myList = new List<String>();
 
 ### Anonyme Typen
 
-Gibt es auch in Java, nur das der anonymt Typ durch ein Interface (Functional-Interface) festgelegt wird, vergleiche EventHandler in Java. Da, der Datentyp anonym angelegt wird, muss var verwendet werden.
+Gibt es auch in Java, nur das der anonyme Typ durch ein Interface (Functional-Interface) festgelegt wird, vergleichbar mit EventHandler in Java. Da, der Datentyp anonym angelegt wird, muss var verwendet werden.
 
 ```csharp
 var myObj = {Id = 1 , name = "MyName"};
@@ -134,7 +134,6 @@ Console.WriteLine(obj.GetType());
 Die Struktur der anonymen C#-Klasse wird durch 
 - die verwendeten Properties und 
 - die impliziten Typen der zugewiesenen Ausdrücke  
-
 festgelegt.
 
 Bei Java wird die Struktur der anonymen Klasse aus dem implementierten Interface bzw. der Basisklasse abgeleitet.  
