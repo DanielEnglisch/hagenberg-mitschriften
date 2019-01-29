@@ -133,7 +133,7 @@ Es können die in der invocation list definierten Methoden einzeln abgearbeitet 
 <img src="../pics/delegate_represent.png" alt="RepresentDelegate" width="500"/>
 
 ## Events
-* Delegate -Felder können als Felder können als Felder können als Felder können als `event` deklariert werden: deklariert werden:
+* Delegate-Felder können als `event` deklariert werden:werden:
 ```csharp
 class EventSource {
     public Callback OnCallback;
