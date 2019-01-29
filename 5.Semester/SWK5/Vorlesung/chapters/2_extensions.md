@@ -35,6 +35,18 @@
 # Spracherweiterungen C# 
 
 ## Neuerungen C# 3.0
+- Die zentrale Erweiterung von C# 3.0 ist LINQ (Language Integrated Query).
+- Die meisten Erweiterungen sind Voraussetzung für die Verwendung von LINQ-Ausdrücken.
+  - Einfache Initialisierung von Objekten -> Objekt- und Behälterinitialisierer.
+  - Erzeugung von Objekten anonymer Typen.
+  - Deklaration von Variablen, in denen Objekte von anonymen Typen gespeichert werden
+  können -> automatische Typableitung.
+  - Einfache Definition von Funktionen und Prädikaten -> Lambda-Ausdrücke.
+  - Erweiterung von Interfaces um neue Methoden -> Erweiterungsmethoden.
+  - Repräsentation von Ausdrücken -> Expression Trees.
+- Andere Erweiterungen:
+  - Automatische Implementierung von Properties.
+  - Automatische Ableitung von Feldtypen.
 
 ### Objektinitialisierer(Object initializer)
 
