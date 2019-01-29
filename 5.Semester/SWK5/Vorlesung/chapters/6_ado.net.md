@@ -104,7 +104,7 @@
         int age = (int)reader["age"];
     }
     ```
-    <img src="../pics/6_ado/3.png" alt="data" width="250"/>
+    <img src="../pics/6_ado/3.png" alt="data" width="200"/>
 
 ## Command – Datenbank-Abfragen
 - ExecuteNonQuery:
@@ -241,7 +241,7 @@
 - Data Adapter stellen Verbindung zur Datenquelle her.
 - DataSets sind ein Offline-Container für Daten.
 - DataSets können offline modifiziert werden.
-<img src="../pics/6_ado/5.png" alt="data" width="450"/>
+<img src="../pics/6_ado/5.png" alt="data" width="200"/>
 
 ## Untyped Datasets
 - Erzeugung eines Untyped Datasets:
