@@ -75,6 +75,7 @@
 
 #### Kommentar
     * Marshalling bedeutet, dass die DT in der Repräsentierung angepasst werden muss
+    * [MSDN Interop Marshaling](https://docs.microsoft.com/en-us/dotnet/framework/interop/interop-marshaling)
     * Callable Wrapper macht diese Anpassung
     * bedeutet einen gewissen Overhead (nicht nur aufgrund des Marshallings)
 
