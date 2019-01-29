@@ -108,7 +108,7 @@ empls = "some string"; // ->Syntaxfehler
 - var sollte mit Bedacht verwendet werden.
 - Die Hauptanwendung von var sind Variablen, denen Objekte anonymer Klassen zugewiesen
 
-Anstatt auf der linken und rechten Seite einer Zuweisung bei der Definition dasselbe hingeschrieben werden muss kann das Keyword `var` für lokale Variablen verwendet werden. Die Änderung der Datentyps zur aufzwit ist nicht möglich! Verwendung bei Anonymen Typen/Klassen.
+Anstatt auf der linken und rechten Seite einer Zuweisung bei der Definition dasselbe hingeschrieben werden muss kann das Keyword `var` für lokale Variablen verwendet werden. Die Änderung der Datentyps zur Laufzeit ist nicht möglich! Verwendung bei Anonymen Typen/Klassen.
 
 ```csharp
 var myList = new List<String>();
