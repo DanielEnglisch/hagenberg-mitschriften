@@ -69,19 +69,18 @@
 
 ## .Net Standard
 
-<img src="../pics/1_netarch/3.png" alt="uwp" width="650"/>
+<img src="../pics/1_netarch/4.png" alt="standard" width="650"/>
 
   - Es existieren viele verschiedene Varianten von .NET.
   - Portieren von Code ist aufwändig, da sich auch die Basis-Bibliotheken unterscheiden.
   - Portable Class Libraries (PCL) sind unbefriedigend, da Entwickler auf größte gemeinsame Funktionalität eingeschränkt ist.
 
-<img src="../pics/1_netarch/4.png" alt="standard" width="650"/>
+<img src="../pics/1_netarch/5.png" alt="standard1" width="650"/>
 
 - Die .NET-Standard-Library ist eine Spezifikation von .NET-APIs, die von mehreren
 Laufzeitumgebungen unterstützt werden.
 
-<img src="../pics/1_netarch/5.png" alt="standard2" width="650"/>
-<img src="../pics/1_netarch/6.png" alt="standard3" width="650"/>
+<img src="../pics/1_netarch/6.png" alt="standard2" width="650"/>
 
 ## NET Framework Compatibility Mode
 
