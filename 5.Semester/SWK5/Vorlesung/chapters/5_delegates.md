@@ -38,7 +38,7 @@ Subject stellt Methode zur Verfügung die alle Observer verständigt (Notify). J
 Subject muss einen Behälter haben der alle Observer speichert. Detach und Attach fügt hinzu bzw entfernt Observer.
 Functional Interfaces (Interfaces mit einer einzigen Methode sind die Basis für Lambda Ausdrücke).
 
-<img src="../pics/observer_java.png" alt="ObserverPatternJava" width="500"/>
+<img src="../pics/observer_java.png" alt="ObserverPatternJava" width="600"/>
 
 
 ## Definition von Delegates
