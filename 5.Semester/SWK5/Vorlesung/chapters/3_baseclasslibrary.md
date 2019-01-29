@@ -32,7 +32,7 @@
 
 ## Enumeratoren (Iteratoren)
 
-<img width="500" src="../pics/3_base/1.png"/>
+<img width="650" src="../pics/3_base/1.png"/>
 
 ## Automatisch generierte Iteratoren
 - Die Implementierung von Iteratoren kann mit dem Schlüsselwort yield vereinfacht werden.
