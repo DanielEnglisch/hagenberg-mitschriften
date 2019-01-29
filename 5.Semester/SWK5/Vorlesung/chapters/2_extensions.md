@@ -321,20 +321,20 @@ int fact = mathScript.factorial(5);
 
 Offizielle Microsoft [Dokumentation](https://docs.microsoft.com/de-de/dotnet/csharp/programming-guide/concepts/covariance-contravariance).
 
-- Gegeben seien zwei Typen U und Vmit einer Relation <, die eine Ordnung auf Typen definiert im Bezug auf den Wertebereich. 
-    - Beispiel 1: $int < float < double$
-    - Beispiel 2: $V < U$, falls V ist eine Unterklasse von U.
-- Sei f : $U -> U‘$ ist eine Abbildung, die einen Typ U auf einen anderen Typ U‘ abbildet.
-    - Beispiel: $T -> IEnumerable<T> oder T -> T[]$
-- Sei $V < U$. Dann ist 
-    -  f ist **kovariant**, wenn $f(V) < f(U)$
-    -  f ist **kontravariant**, wenn $f(U) < f(V)$
+- Gegeben seien zwei Typen U und V mit einer Relation <, die eine Ordnung auf Typen definiert im Bezug auf den Wertebereich. 
+    - Beispiel 1: int < float < double
+    - Beispiel 2: V < U, falls V ist eine Unterklasse von U.
+- Sei f : U -> U‘ ist eine Abbildung, die einen Typ U auf einen anderen Typ U‘ abbildet.
+    - Beispiel: T -> IEnumerable<T> oder T -> T[]
+- Sei V < U. Dann ist 
+    -  f ist **kovariant**, wenn f(V) < f(U)
+    -  f ist **kontravariant**, wenn f(U) < f(V)
     - f ist invariant, wenn fweder kovariant noch kontravariant ist.
 
 ### Kovarianz bei Feldern
 
-Die Abbildung $T -> T[]$ eines Referenztyps T ist in C# und Java kovariant (Ordnungsrelation ist Vererbungsbeziehung).
-- U is subtype of $V => U[]$ is subtype of $V[]$
+Die Abbildung T -> T[] eines Referenztyps T ist in C# und Java kovariant (Ordnungsrelation ist Vererbungsbeziehung).
+- U is subtype of V => U[] is subtype of V[]
 
 ```csharp
 object[] objArr; 
