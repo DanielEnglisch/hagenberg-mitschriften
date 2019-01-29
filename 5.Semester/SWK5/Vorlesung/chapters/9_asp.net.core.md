@@ -21,8 +21,8 @@
     - [Tag-Helper](#tag-helper)
     - [Beispiele:](#beispiele)
     - [Razor-Pages](#razor-pages)
-  - [Architektur von "Single-Page" Webanwendungen](#architektur-von-%22single-page%22-webanwendungen)
-  - [Entwicklung von "Single-Page" Webanwendungen](#entwicklung-von-%22single-page%22-webanwendungen)
+  - [Architektur von Single-Page Webanwendungen](#architektur-von-single-page-webanwendungen)
+  - [Entwicklung von Single-Page Webanwendungen](#entwicklung-von-single-page-webanwendungen)
 
 # ASP.NET Core
 
@@ -71,8 +71,6 @@
     - Wird aber als Bestandteil des .NET-Frameworks fortgeführt
 
 ## .NET Plattform
-
-
 <img src="../pics/10_aspnetcore/netplattform.png" width="400" />
 
 #### Kommentare
@@ -115,8 +113,7 @@
     * Kestrel == Tomcat für .NET Core
 
 ## Einbinden von Web-Servern
-
-<img src="../pics/10_aspnetcore/webserver.png" width="400" />
+<img src="../pics/10_aspnetcore/webserver.png" width="500" />
 
 #### Kommentare
     * Reverse-Proxy leitet den Traffic an den Kestrel weiter
@@ -203,7 +200,6 @@
 - Konfiguration erfolgt in Klasse *Startup*.
   - Der Name dieser Klasse wird im Host festgelegt.
 - Methode *ConfigureServices*: Konfiguration der Services, die mit Abhängigkeitsinjektion an Klassen der Web-Anwendung übergeben werden können.  
-
   ```csharp
   public void ConfigureServices(IServiceCollection services)
     services.AddEntityFramework().AddSqlServer();
@@ -212,7 +208,6 @@
   ```
   
 - Methode Configure: Konfiguration der Middlewarekomponenten  
-
   ```csharp
   public void Configure(IApplicationBuilder app,
                         IHostingEnvironment env) {
@@ -231,7 +226,6 @@
   - Austauschbare Komponenten: Interface und Implementierung
   - Infrastruktur- und anwendungsbezogene Services
 - Implementierung eines Service:
-
   ```csharp
   public interface IMyService {
     void myServiceMethod();
@@ -241,14 +235,12 @@
   public class MyService : IMyService { … }
   ```
 - Hinzufügen zum Service-Container:  
-
   ```csharp
   public void ConfigureServices(IServiceCollection services)
     services.AddScoped<IMyService, MyServiceImpl>();
   }
   ```
 - Injektion der Abhängigkeiten im Container:
-
   ```csharp
   public class MyController {
     private IMyService myService;
@@ -256,11 +248,10 @@
   }
   ```
 ## Middleware - Konzept
-
 * Middleware-Komponenten verarbeiten Requests und können Resultate zur Response hinzufügen.
 * Middlware-Komponenten werden in der Konfiguration zu einer Kette zusammengefügt.
 
-<img src="../pics/10_aspnetcore/middlewareconcept.png" width="400" />
+<img src="../pics/10_aspnetcore/middlewareconcept.png" width="500" />
 
 
 ## Implementierung von Middleware-Komponenten
@@ -295,7 +286,6 @@ public class Startup {
 ## Konfiguration einer Web-Anwendung
 
 - Einfachste Web-Anwendung: Registrierung eines Callbacks, das für jedes Request aufgerufen wird.  
-
   ```csharp
   public class Startup {
     public void Configure(IApplicationBuilder app) {
@@ -307,7 +297,6 @@ public class Startup {
   ```
 - Verarbeitung statischer Dateien
   - Dateien müssen sich in *wwwroot* befinden  
-  
   ```csharp
   public class Startup {
     public void Configure(IApplicationBuilder app) {
@@ -321,7 +310,6 @@ public class Startup {
 
 ## Implementierung der ASP.NET-MVC-Anwendung
 - Konfiguration
-
   ```csharp
   public class Startup {
     public void ConfigureServices(IServiceCollection services) {
@@ -364,7 +352,6 @@ public class Startup {
 ## Unterstützung mehrerer Frameworks
 
 * Eine .NET-Core-Anwendung können parallel für mehrere Frameworks entwickelt werden.
-
   ```xml
   <TargetFramework>
     netcoreapp2.1;net472
@@ -373,7 +360,7 @@ public class Startup {
 
 * Visual Studio überprüft die Kompatiblität mit allen Frameworks.
 
-  <img src="../pics/10_aspnetcore/multiplefwsupport1.png" width="400" />
+  <img src="../pics/10_aspnetcore/multiplefwsupport1.png" width="450" />
 
 * .NET Core ist ein Teil des .NET Frameworks -> für gewisse Funktionen muss Ersatz gesucht werden.
 
@@ -447,7 +434,6 @@ public class Startup {
     - Page-Klasse implementiert Callback-Methoden, die mit HTTP-Verbs assoziiert sind: OnGet[Asnyc], OnPost[Asnyc], ...
 
 - Beispiel (View):
-
   ```cshtml
   @page "{id:int}"
   @model EditPersonModel
@@ -459,7 +445,6 @@ public class Startup {
   ```
 
 - Beispiel (Code-Behind):
-
   ```csharp
   public class EditPersonModel :
         Microsoft.AspNetCore.Mvc.RazorPages.PageModel {
@@ -481,15 +466,14 @@ public class Startup {
   ```
 
 
-## Architektur von "Single-Page" Webanwendungen
+## Architektur von Single-Page Webanwendungen
 
-<img src="../pics/10_aspnetcore/spaarchitecture.png" width="400" />
+<img src="../pics/10_aspnetcore/spaarchitecture.png" width="500" />
 
-## Entwicklung von "Single-Page" Webanwendungen
+## Entwicklung von Single-Page Webanwendungen
 
 - SPA und ASP.NET-Core-Anwendung (Backend) kann gemeinsam entwickelt werden.
 - Eine Middleware-Komponente unterstützt die Entwicklung von SPAs.
-
   ```csharp
   public void Configure(IApplicationBuilder app) {
       app.UseSpaStaticFiles();
