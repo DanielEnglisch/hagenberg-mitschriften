@@ -104,7 +104,7 @@
         int age = (int)reader["age"];
     }
     ```
-    <img src="../pics/6_ado/3.png" alt="data" width="450"/>
+    <img src="../pics/6_ado/3.png" alt="data" width="250"/>
 
 ## Command – Datenbank-Abfragen
 - ExecuteNonQuery:
