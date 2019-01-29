@@ -17,6 +17,9 @@
 
 # Delegates und Events
 
+(MSDN Delegates)[https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/using-delegates]
+(MSDN Event)[https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/event]
+
 ## Motivation
 
 - GUI-Frameworks sind ereignisorientiert.
@@ -160,7 +163,7 @@ Durch hinzufügen von event ist der = Operator nicht mehr öffentlich. Hinzufüg
 
 ## Abfrage auf null
 
-- Wird eine Delegate-Variablen keine Methoden-Referenz zugewiesen, ist diese null 
+- Wird eine Delegate-Variablen keine Methoden-Referenz zugewiesen, ist diese null ->
 - Bei Ausführung des Delegates ist dies zu berücksichtigen:
     ```csharp
     public event Callback OnCallback;
@@ -178,7 +181,6 @@ Durch hinzufügen von event ist der = Operator nicht mehr öffentlich. Hinzufüg
     ```
 
 ## Observer Pattern: Realisierung in C# mit Delegates
-
 <img src="../pics/observer_sharp.png" alt="ObserverPatternCsharp" width="600"/>
 
 ## Anonyme Methoden und Lambda-Asdrücke
