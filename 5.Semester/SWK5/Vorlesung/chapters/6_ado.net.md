@@ -37,7 +37,7 @@
   - Datenaustausch zwischen verschiedenen Plattformen und Architekturen (Web Services)
 
 ## Architektur
- <img src="../pics/6_ado/1.png" alt="Architektur" width="700"/>
+ <img src="../pics/6_ado/1.png" alt="Architektur" width="750"/>
 
 ## Data-Provider: Konzept
 - Geschichte
