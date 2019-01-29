@@ -71,7 +71,7 @@
 ## IIS 7 und ASP.NET: Systemarchitektur
 BILD HERE
 
-<img src="../pics/9_aspnet/iis7.png"/>
+<img src="../pics/9_aspnet/iis7.png" width="600"/>
 
 #### Kommentar
     * IIS = Internet Information Server (alt)
@@ -118,22 +118,20 @@ BILD HERE
 - Controller stellt Verbindung zu Geschäftslogik her.
 - Controller ist unabhängig von der Ansicht und kann daher einfach getestet werden.
 
-<img src="../pics/9_aspnet/grund1.png"/>
+<img src="../pics/9_aspnet/grund1.png" width="600"/>
 
 
 #### Kommentar
     * Controller gibts für diverse Aufgaben
 
 ## Komponenten von ASP.NET MVC
-
-<img src="../pics/9_aspnet/komponentaspmvc.png"/>
+<img src="../pics/9_aspnet/komponentaspmvc.png" width="600"/>
 
 #### Kommentar
     * Routing System leitet request zu Controller oder liefert statische Webseite
 
 ## Eine einfache ASP.NET-MVC-Anwendung 
 - Implementierung des Controllers:  
-
     ```csharp
     public class CurrenciesController: Controller {
         private ICurrencyCalculator calc = new CurrencyCalculator();
@@ -174,8 +172,6 @@ BILD HERE
       </table>
    </body>
 </html>
-
-
 ```
 
 #### Kommentar
@@ -187,7 +183,7 @@ BILD HERE
 
 ## Das Routing-System
 
-<img src="../pics/9_aspnet/routing.png"/>
+<img src="../pics/9_aspnet/routing.png" width="600"/>
 
 #### Kommentar
     * RouteHandler = factory für MVCHandler
@@ -226,7 +222,6 @@ public static void RegisterRoutes(RouteCollection routes) {
 ## Routing: Verbindung zu ASP.NET MVC
 
 - MapRoute ist eine Erweiterungsmethode, die der Route ein *MvcRouteHandler-Objekt* zuordnet:  
-
     ```csharp
     public static Route MapRoute(this RouteCollection routes, 
                                     string name, string url, 
@@ -258,7 +253,6 @@ public static void RegisterRoutes(RouteCollection routes) {
 ## Controller: Programmiermodell 
 - Alle Controller implementieren das Interface IController
 - Einfachste Form eines Controllers:  
-
     ```csharp
     public class HelloController: System.Web.Mvc.IController {
 	public void Execute(RequestContext req) {
@@ -268,7 +262,6 @@ public static void RegisterRoutes(RouteCollection routes) {
     }
     ```
 - Durch Ableiten von Controller werden View und Controller voneinander getrennt:  
-
     ```csharp
     public class HelloController: System.Web.Mvc.Controller {
         public ViewResult Index() {
@@ -294,7 +287,6 @@ public static void RegisterRoutes(RouteCollection routes) {
 | ... |  |
 
 - Beispiel:  
-
     ```csharp
     public ActionResult Convert() {
         string inValueStr = Request.Form["inputValue"];
@@ -306,7 +298,6 @@ public static void RegisterRoutes(RouteCollection routes) {
 - Parameter der HTTP-Anfrage und Routenparameter können auf ControllerMethoden abgebildet werden.
 - Konvertierungsfehler werden in ModelState gespeichert.
     - Beispiel 1: url/converter?**inputValue**=100&**selectedCurrency**=USD  
-    
         ```csharp
         public ActionResult Convert(decimal? inputValue,
                                     string selectedCurrency) {
@@ -314,7 +305,6 @@ public static void RegisterRoutes(RouteCollection routes) {
         }
         ```
     - Beispiel 2: url/persons/list/**10000**
-    
         ```csharp
         routes.MapRoute(…,
                 "{controller}/{action}/{id}",
@@ -346,7 +336,6 @@ public static void RegisterRoutes(RouteCollection routes) {
 ## Controller: ViewResult
 
 - In einem *ViewResult-Objekt* werden der Name der View und die View-Parameter (das Präsentationsmodell) an die View-Engine übergeben.  
-   
    ```csharp
     public class MyController: Controller {
         public ViewResult Action1() {
@@ -369,11 +358,10 @@ public static void RegisterRoutes(RouteCollection routes) {
     
 ## Controller: ActionResult
 
-<img src="../pics/9_aspnet/actionresult.png"/>
+<img src="../pics/9_aspnet/actionresult.png" width="600"/>
 
 
 - Ergebnis einer Controller-Methode ist ein strukturiertes Objekt, das zum Testen verwendet werden kann.  
-
     ```csharp
     public class MyController: Controller {
         public ViewResult Action1() {
@@ -388,7 +376,6 @@ public static void RegisterRoutes(RouteCollection routes) {
 
 ## Controller: RedirectResult
 - In Controller-Methoden möchte man andere Controller-Methoden aufrufen und damit Ansichten gemeinsam nutzen.  
-
     ```csharp
     public ActionResult AddToCart(CartItem item) {
         businessLogic.AddToCart(item)
@@ -396,7 +383,6 @@ public static void RegisterRoutes(RouteCollection routes) {
     }
     ```
 - Problem: URL wird nicht aktualisiert -> Probleme bei Aktualisierung der Seite  
-
     ```
     http://host/Cart/AddToCart
     ```
@@ -422,9 +408,7 @@ public static void RegisterRoutes(RouteCollection routes) {
     * Um Url zu aktualisiern (nicht mehrfache ungewünschte aktion bei Refresh)
 
 ## Views: Konzept
-
-<img src="../pics/9_aspnet/viewconcept.png"/>
-
+<img src="../pics/9_aspnet/viewconcept.png" width="600"/>
 
 #### Kommentar
     * ViewResult von Controller
@@ -434,7 +418,7 @@ public static void RegisterRoutes(RouteCollection routes) {
 ## Views und View-Engines
 - ASP.NET MVC unterstützt zwei View-Engines:
 
-<img src="../pics/9_aspnet/viewengines.png"/>
+<img src="../pics/9_aspnet/viewengines.png" width="600"/>
 
 - Andere View-Engines können hinzugefügt werden: Spark, NHaml, NVelocity, …
 
@@ -444,7 +428,7 @@ public static void RegisterRoutes(RouteCollection routes) {
 ## Views: Das Präsentationsmodell
 - Der Controller hat verschiedene Möglichkeiten, Daten an Ansichten zu übergeben:
 
-<img src="../pics/9_aspnet/presentationmodel.png"/>
+<img src="../pics/9_aspnet/presentationmodel.png" width="600"/>
 
 #### Kommentar
     * letzte Variante bevorzugen (Typsicherheit)
@@ -454,7 +438,7 @@ public static void RegisterRoutes(RouteCollection routes) {
 - HTML-Hilfsmethoden erleichtern die Generierung des HTML-Codes.
 - Für die meisten Formularelemente existieren Hilfsmethoden, z. B  
 
-    <img src="../pics/9_aspnet/htmlhelper.png"/>
+    <img src="../pics/9_aspnet/htmlhelper.png" width="600"/>
 
 - Der angezeigte Wert im Formularelement wird folgendermaßen ermittelt:
     1. ModelState["Email"].Value.AttemptedValue, falls Validierungsfehler vorliegt.
@@ -464,7 +448,6 @@ public static void RegisterRoutes(RouteCollection routes) {
     5. @Model.Email
 
 - Es existieren typsichere Varianten der Hilfsmethoden:  
-
     ```csharp
     Html.TextBoxFor(model => model.Email)
     ```
@@ -475,7 +458,6 @@ public static void RegisterRoutes(RouteCollection routes) {
 ## View: Selbstdefinierte HTML-Hilfsmethoden
 - Möglichkeit 1: Implementierung von Erweiterungsmethoden für die Klasse *HtmlHelper*.
 - Möglichkeit 2: Inline-Methoden (bei Verwendung der Razor-View-Engine)  
-
     ```csharp
     @helper CreateList(string[] items) {
     <ul>
@@ -507,11 +489,9 @@ public static void RegisterRoutes(RouteCollection routes) {
    @Html.EditorFor(model => model.FirstName)
 </div>
 }
-
 ```
 
 Wird zu =>
-
 ```html
 <form action="/Person/Edit/1" method="post">
    <input id="Id" name="Id" type="hidden" value="1" />
@@ -531,7 +511,6 @@ Wird zu =>
 ## Dateneingabe
 
 - Über eine GET-Anfrage wird das HTTP-Formular angefordert:  
-
     ```csharp
     [HttpGet]
     public ActionResult Edit(int id) {
@@ -541,7 +520,6 @@ Wird zu =>
     ```
 
 - Mit einer POST-Anfrage wird das ausgefüllte Formular an den Server gesendet:  
-
     ```csharp
     [HttpPost]
     public ActionResult Edit(int id, FormCollection collection) {
@@ -565,10 +543,9 @@ Wird zu =>
 ## Dateneingabe: Modellbindung
 - Formularfelder können auf .NET-Objekt abgebildet werden:  
 
-<img src="../pics/9_aspnet/modelbinding.png"/>
+<img src="../pics/9_aspnet/modelbinding.png" width="600"/>
 
 - Formularfelder werden auf gleichnamige Eigenschaften abgebildet:  
-
     ```html
     <input name="FirstName" type="text" value="Franz" />
     ```
@@ -577,7 +554,6 @@ Wird zu =>
     > pm.FirstName  
 
 - Mit dem Attribut Bind kann der Abbildungsprozess näher definiert werden:  
-
     ```csharp
     public ActionResult Edit(int id,
                 [Bind(Prefix="pers", Exclude="Email")] PersonModel pm) { … }
@@ -622,14 +598,13 @@ Wird zu =>
     - Html.ValidationMessage("field-name"):
     - Html.ValidationSummary():
 
-<img src="../pics/9_aspnet/displayvalidiation.png"/>
+<img src="../pics/9_aspnet/displayvalidiation.png" width="300"/>
 
 #### Kommentare
     * entweder für ein Feld oder füre alle Felder
 
 ## Validierung: Client-seitige Validierung
 -  Mit Attributen können Validierungsregeln definiert werden, die bei der client- und serverseitigen Validierung berücksichtigt werden:  
-
     ```csharp
     public class PersonModel { 
     [Required(ErrorMessage = "Email is required")]
@@ -643,7 +618,6 @@ Wird zu =>
     
 - *jQuery*-basierte Validierungsbibliothek muss in HTML inkludiert werden.
 - HTML-Hilfsfunktionen reichern HTML-Elemente mit zusätzlichen „data-*“-Attributen an, die zur Validierung verwendet werden:  
-
     ```html
     <input data-val="true" data-val-regex="Email format is wrong"
             data-val-regex-pattern="^\w+..." name="Email" type="text" value="..." />
@@ -660,13 +634,11 @@ Wird zu =>
     
 
 ## Validierung: Beispiel
-
-<img src="../pics/9_aspnet/validationexample.png"/>
+<img src="../pics/9_aspnet/validationexample.png" width="600"/>
 
 ## Testen von ASP.NET-MVC-Anwendungen
 
 - Da Controller und Ansichten konsequent getrennt sind, können für Controller sehr einfach Unittests erstellt werden:  
-
     ```csharp
     [TestMethod]
     public void IndexTest() {
