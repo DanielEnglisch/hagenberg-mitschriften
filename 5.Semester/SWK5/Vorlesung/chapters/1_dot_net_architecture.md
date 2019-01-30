@@ -252,6 +252,7 @@ funktionale Sprachen)
 ## Managed/Unmanged Code/Types
 
 - Managed Code wird von der CLR ausgeführt. [MSDN Managed Code](https://docs.microsoft.com/en-us/dotnet/standard/managed-code)
+  - Dadurch ergeben sich Vorteile wie: automatic memory management, security boundaries, type safety etc. 
 - Unmanaged Code wird direkt vom Prozessor ausgeführt.
 - Alle .NET-Sprachen, außer C++, werden in Managed Code übersetzt.
 - C++-Code kann entweder in nativen oder Managed Code übersetzt werden.
