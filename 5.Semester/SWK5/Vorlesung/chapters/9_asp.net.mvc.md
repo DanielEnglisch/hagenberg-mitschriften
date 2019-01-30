@@ -573,7 +573,7 @@ Wird zu =>
 	public ActionResult Edit(int id, PersonModel pm) {
 		if (ModelState.IsValidField("Email"))   // If field Email in correct format …
 		if (!Logic.IsRegistered(pm.Email))      // If Email is not found in data base …
-		ModelState.AddModelError("Email", "Unregistered email address");
+			ModelState.AddModelError("Email", "Unregistered email address");
 		if (ModelState.IsValid) {               // If all fields are valid …
 			persAdmin.Update(pm.ToPerson());
 			return RedirectToAction("Index");
@@ -606,8 +606,8 @@ Wird zu =>
 -  Mit Attributen können Validierungsregeln definiert werden, die bei der client- und serverseitigen Validierung berücksichtigt werden:  
     ```csharp
     public class PersonModel { 
-    [Required(ErrorMessage = "Email is required")]
-    [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Email format is wrong")]
+    	[Required(ErrorMessage = "Email is required")]
+    	[RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Email format is wrong")]
         public string Email {
             get;
             set;
