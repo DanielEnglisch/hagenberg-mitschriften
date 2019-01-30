@@ -116,6 +116,7 @@ automatisch generierter Code.
 <img src="../pics/2_advanced/3.png" alt="types" width="700"/>
 
 ## Werte- und Referenztypen
+[Stackoverflow](https://stackoverflow.com/questions/1113819/arrays-heap-and-stack-and-value-types)
 - Wertetypen (value types)
   - Werden am Stack bzw. im umgebenden Objekt allokiert.
   - Defaultwert ist 0, '\0' bzw. false.
