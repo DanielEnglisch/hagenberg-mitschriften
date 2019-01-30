@@ -659,7 +659,7 @@ class DockPanel: Panel {
 
 - Steuerelemente dieser Gruppe können ein beliebiges Kindelement enthalten (nicht nur eine Zeichenkette).
 - Beispiele:  
-    <img src="../pics/7_wpf/ContentControll.png" alt="ContentControll" width="550"/>
+    <img src="../pics/7_wpf/ContentControll.png" alt="ContentControl" width="550"/>
     
 #### Kommentare
     * StackPanel bedeutet horizontal bzw. vertikal anordnen -> kann Elemente zusammenfassen
@@ -725,7 +725,7 @@ Kindelementen zugeordnet werden.
     * Physische Pixeldichte = Windows-Pixeldichte = 192 DPI
         * 96 logische Einheiten = 192 physische Einheiten = 1 Zoll
     * Fonts werden ebenfalls in logischen Einheiten angegeben: FontSize="11" entspricht FontSize="8.25pt" (8.25pt = 8.25/72in = 11/96in)  
-    <img src="../pics/7_wpf/panels.png" alt="panels_1" width="50"/>
+    <img src="../pics/7_wpf/panels_1.png" alt="panels_1" width="50"/>
 
 #### Kommentare
     * Aufgabe der Layoutcontainer: Kindelemente entsprechend der Wünsche anzupassen
