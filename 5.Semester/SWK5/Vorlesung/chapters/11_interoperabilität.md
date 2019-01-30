@@ -37,13 +37,14 @@
     * Managed Code wird automatisch generiert
 
 ## Managed/Unmanged Code/Types
-- Managed Code wird von der CLR ausgeführt.
+
+- Managed Code wird von der CLR ausgeführt. [MSDN Managed Code](https://docs.microsoft.com/en-us/dotnet/standard/managed-code)
+  - Dadurch ergeben sich Vorteile wie: automatic memory management, security boundaries, type safety etc. 
 - Unmanaged Code wird direkt vom Prozessor ausgeführt.
 - Alle .NET-Sprachen, außer C++, werden in Managed Code übersetzt.
-- C++ Code kann entweder in nativen oder Managed Code übersetzt werden.
+- C++-Code kann entweder in nativen oder Managed Code übersetzt werden.
 - Managed Code darf nicht mit Managed Types verwechselt werden. Nur Managed Types werden vom Garbage Collector automatisch freigegeben.
 - Nur Managed Types können über Assembly-Grenzen hinweg verwendet werden.
-
 
 <img src="../pics/11_interop/managedunmanagedcode_1.png" width="500"/>
 <img src="../pics/11_interop/managedunmanagedcode_2.png" width="500"/>
