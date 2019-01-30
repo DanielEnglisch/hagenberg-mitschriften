@@ -154,7 +154,7 @@ funktionale Sprachen)
   <img src="../pics/1_netarch/7.png" alt="cts" width="650"/>
 
 ## Common Type System – Beispiel
-- Über references können andere Sprachen hinzugefügt werden
+- Über references können andere Sprachen hinzugefügt werden. [MSDN](https://docs.microsoft.com/en-us/dotnet/standard/base-types/common-type-system)
 
 <img src="../pics/1_netarch/8.png" alt="ctsbsp" width="650"/>
 
@@ -251,7 +251,7 @@ funktionale Sprachen)
 
 ## Managed/Unmanged Code/Types
 
-- Managed Code wird von der CLR ausgeführt.
+- Managed Code wird von der CLR ausgeführt. [MSDN Managed Code](https://docs.microsoft.com/en-us/dotnet/standard/managed-code)
 - Unmanaged Code wird direkt vom Prozessor ausgeführt.
 - Alle .NET-Sprachen, außer C++, werden in Managed Code übersetzt.
 - C++-Code kann entweder in nativen oder Managed Code übersetzt werden.
