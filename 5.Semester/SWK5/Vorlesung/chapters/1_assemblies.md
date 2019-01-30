@@ -86,7 +86,7 @@
 Full Framework).
 - Jede Anwendung ist fest an bestimmte Assembly-Versionen gebunden.
 - *Sidy-by-Side Execution*: CLR kann mehrere Versionen eines Assemblys verwalten und
-bei Bedarf auch gleichzeitig laden.
+bei Bedarf auch gleichzeitig laden. [MSDN Doc Side by Side Execution](https://docs.microsoft.com/en-us/dotnet/framework/deployment/side-by-side-execution)
 
 #### Kommentare
     * Bei zwei versch. Versionen wird nicht automatisch die höhere verwendet
