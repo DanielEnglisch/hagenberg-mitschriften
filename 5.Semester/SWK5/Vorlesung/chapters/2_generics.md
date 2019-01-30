@@ -15,29 +15,25 @@
 
 ## Einstiegsfragen
 
-- Warum kann in Java auf Template-Parameter der new-Operator nicht angewandt werden?
-
 - Was bedeutet:
     ```csharp
     Set<T>.addAll(Collection<? extends T> c) bzw. 
     Set<T>.containsAll(Collection<?> c)?
     ```
+    1. Hängt alle Elemente von c hinten an Set. Returniert boolean
+    2. Gibt zurück ob alle Elemente von c in Set sind
 
-- Auswirkungen von ?
-    ```csharp
-    ArrayList<? extends Person> pList = new ArrayList<Student>();
-    ```
+- Warum kann in Java auf Template-Parameter der new-Operator nicht angewandt werden?
+  1. ByteCode zur Laufzeit konstant ist, Template-Parameter sind unbekannt, kein ByteCode kann generiert werden
+ 
 - Ist `ArrayList` dasselbe wie `ArrayList<Object>?`
+  1. Ja, die ArrayList kann jeden von Object abgeleiteten Typ verwenden.
 
 - Ist `ArrayList<Person>` eine Oberklasse von `ArrayList<Student>`, ist also `ArrayList<Person> pList = new ArrayList<Student>()` möglich? Wenn nein, warum nicht?
+  1. Nein, da nur die Klasse Person verwendet werden kann.
+
 - Was sind die Auswirkungen der Zuweisung `ArrayList<? extends Person> pList = new ArrayList<Student>()` ?
-
-Keine Möglichkeit Methoden aufzurufen, die einen Eingangeparameter haben.
-
-```csharp
-ArrayList<Person> pList = new ArrayList<Student>();
-```
-Hier können hingegen alle Personen Objekte eingefügt werden.
+  1. Funktioniert da durch Wildcard alle abgeleiteten Klassen von Person verwendet werden dürfen.
 
 ## Probleme bei Objekt-basierten Behältern
 
