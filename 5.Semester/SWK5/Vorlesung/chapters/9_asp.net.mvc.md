@@ -569,19 +569,18 @@ Wird zu =>
 - Validierungsfehler werden im Objekt ModelState gespeichert.
     - Eingaben werden vom Framework im Zuge der Modellbindung automatisch auf Korrektheit überprüft.
     - In Contollermethoden können die Eingaben explizit validiert und bei Bedarf Validierungsfehler zu ModelState hinzugefügt werden.  
-<br />
-    ```csharp
-    public ActionResult Edit(int id, PersonModel pm) {
-        if (ModelState.IsValidField("Email")) // If field Email in correct format …
-        if (!Logic.IsRegistered(pm.Email)) // If Email is not found in data base …
-        ModelState.AddModelError("Email", "Unregistered email address");
-        if (ModelState.IsValid) { // If all fields are valid …
-            persAdmin.Update(pm.ToPerson());
-            return RedirectToAction("Index");
-        }
-        else return View();
-    }
-    ```
+	```csharp
+	public ActionResult Edit(int id, PersonModel pm) {
+		if (ModelState.IsValidField("Email"))   // If field Email in correct format …
+		if (!Logic.IsRegistered(pm.Email))      // If Email is not found in data base …
+		ModelState.AddModelError("Email", "Unregistered email address");
+		if (ModelState.IsValid) {               // If all fields are valid …
+			persAdmin.Update(pm.ToPerson());
+			return RedirectToAction("Index");
+		}
+		else return View();
+	}
+	```
 
 #### Kommentare
     * Client- und Serverseitig durchführen
