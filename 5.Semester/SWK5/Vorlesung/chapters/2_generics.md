@@ -13,7 +13,7 @@
 
 # Generics
 
-## Einstiegsfragen
+## Einstiegsfragen zu Generics bei JAVA
 
 - Was bedeutet:
     ```csharp
